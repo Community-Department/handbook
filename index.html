@@ -833,19 +833,19 @@
 </div>
 <script>
 // AUTHORIZED USERS LIST — Only these exact usernames can access the handbook
+// Format: each username must be in quotes, separated by commas
 const AUTHORIZED_USERS = [
     'miskaspiritualyti',
     'papervv',
-    'Marshelitto',
-    'newuser'
-    // Add more authorized usernames here, e.g.:
-    // 'thirduser'
+    'Marshelitto'
+    // Add more usernames below this line:
 ];
 
 // ADMIN USERS — CD and CSEC can edit quota table
 const ADMIN_USERS = [
     'miskaspiritualyti',
     'papervv'
+    // Add admin usernames below this line:
 ];
 
 let currentUser = '';
@@ -863,8 +863,9 @@ function handleLogin() {
         return;
     }
 
-    // Check if username is authorized
-    if (!AUTHORIZED_USERS.includes(username)) {
+    // Check if username is authorized (case-insensitive match)
+    const isAuthorized = AUTHORIZED_USERS.some(u => u.toLowerCase() === username);
+    if (!isAuthorized) {
         input.style.borderColor = '#ef4444';
         input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
 
@@ -893,7 +894,7 @@ function handleLogin() {
     btn.disabled = true;
 
     currentUser = username;
-    isAdmin = ADMIN_USERS.includes(username);
+    isAdmin = ADMIN_USERS.some(u => u.toLowerCase() === username);
 
     setTimeout(() => {
         document.getElementById('loginScreen').classList.add('hidden');
