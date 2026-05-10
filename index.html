@@ -25,6 +25,8 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); overflow-x: hidden; }
+
+        /* LOGIN SCREEN */
         .login-screen {
             position: fixed; inset: 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #172554 100%);
@@ -76,8 +78,12 @@
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
         .btn-primary:active { transform: translateY(0); }
         .login-footer { position: absolute; bottom: 24px; color: rgba(255,255,255,0.3); font-size: 12px; }
+
+        /* APP CONTAINER */
         .app-container { display: none; min-height: 100vh; }
         .app-container.active { display: flex; }
+
+        /* SIDEBAR */
         .sidebar { width: 280px; background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%); color: white; position: fixed; height: 100vh; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
         .sidebar-header { padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .sidebar-header .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
@@ -89,22 +95,30 @@
         .nav-item:hover { background: rgba(255,255,255,0.08); color: white; }
         .nav-item.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
         .nav-item i { width: 20px; text-align: center; font-size: 13px; }
+
+        /* TOP BAR */
         .top-bar { position: fixed; top: 0; left: 280px; right: 0; height: 64px; background: linear-gradient(135deg, #1e3a8a, #1e40af); display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; z-index: 99; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .user-badge { display: flex; align-items: center; gap: 12px; color: white; font-size: 14px; font-weight: 500; }
         .user-badge .avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #60a5fa, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
         .btn-exit { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; margin-left: 16px; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
         .btn-exit:hover { background: rgba(255,255,255,0.2); }
-        .main-content { margin-left: 280px; margin-top: 64px; padding: 40px 48px; max-width: calc(100vw - 280px - 96px); min-height: calc(100vh - 64px); }
+
+        /* MAIN CONTENT */
+        .main-content { margin-left: 280px; margin-top: 64px; padding: 40px 48px; max-width: calc(100vw - 280px); min-height: calc(100vh - 64px); }
         .section-header { margin-bottom: 32px; }
         .section-label { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
         .section-title { font-size: 36px; font-weight: 800; color: var(--primary); line-height: 1.2; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary-light), var(--accent)); border-radius: 2px; }
+
+        /* CARDS */
         .content-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s ease; }
         .content-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
         .card-title i { width: 32px; height: 32px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--primary); }
         .card-text { color: var(--text-light); font-size: 14px; line-height: 1.8; }
         .card-text strong { color: var(--text); font-weight: 600; }
+
+        /* ALERTS */
         .alert-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: 12px; padding: 16px 20px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; }
         .alert-box i { color: #d97706; font-size: 18px; margin-top: 2px; }
         .alert-box .alert-title { font-weight: 700; color: #92400e; font-size: 13px; margin-bottom: 4px; }
@@ -117,12 +131,16 @@
         .alert-box.green i { color: #16a34a; }
         .alert-box.green .alert-title { color: #166534; }
         .alert-box.green .alert-text { color: #15803d; }
+
+        /* TOC */
         .toc-grid { display: grid; gap: 12px; }
         .toc-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; }
         .toc-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 16px rgba(59,130,246,0.1); transform: translateX(4px); }
         .toc-num { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; flex-shrink: 0; }
         .toc-info h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
         .toc-info p { font-size: 13px; color: var(--text-light); }
+
+        /* RANK CARDS */
         .rank-card { border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
         .rank-header { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; color: white; }
         .rank-header.cd { background: linear-gradient(135deg, #1e3a8a, #312e81); }
@@ -139,12 +157,16 @@
         .rank-body li { counter-increment: duty; display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-light); line-height: 1.6; }
         .rank-body li:last-child { border-bottom: none; }
         .rank-body li::before { content: counter(duty); width: 28px; height: 28px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); flex-shrink: 0; }
+
+        /* EVENTS */
         .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
         .event-type { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
         .event-type:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(59,130,246,0.15); }
         .event-type h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
         .event-type p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
-        .quota-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; max-width: 100%; }
+
+        /* QUOTA TABLE */
+        .quota-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
         .quota-table { width: 100%; border-collapse: collapse; font-size: 14px; }
         .quota-table thead { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
         .quota-table th { padding: 16px; font-weight: 600; text-align: left; font-size: 13px; letter-spacing: 0.5px; }
@@ -155,6 +177,12 @@
         .quota-table .rank-tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 4px; }
         .quota-table .num { font-weight: 700; color: var(--primary); font-size: 16px; }
         .quota-table .unit { font-size: 11px; color: var(--text-light); font-weight: 400; }
+
+        /* Admin editable indicator */
+        .admin-edit-hint { display: none; background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: #92400e; }
+        .admin-edit-hint i { margin-right: 6px; }
+
+        /* CHAIN */
         .chain-flow { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
         .chain-level { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
         .chain-level-header { padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: white; }
@@ -174,10 +202,14 @@
         .chain-level.low .chain-badge { background: #ccfbf1; color: #0f766e; }
         .chain-info p { font-size: 13px; color: var(--text-light); line-height: 1.7; margin-top: 8px; }
         .chain-arrow { text-align: center; color: var(--primary-light); font-size: 20px; margin: -8px 0; }
+
+        /* GUIDELINES */
         .guidelines-list { list-style: none; counter-reset: guide; }
         .guidelines-list li { counter-increment: guide; display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-light); line-height: 1.6; }
         .guidelines-list li:last-child { border-bottom: none; }
         .guidelines-list li::before { content: counter(guide); width: 28px; height: 28px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0; }
+
+        /* SIGNATURES */
         .signatures-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
         .signature-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; transition: all 0.3s ease; }
         .signature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
@@ -194,17 +226,25 @@
         .signature-card .sig-footer { display: flex; justify-content: space-between; align-items: center; }
         .signature-card .sig-rank { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
         .signature-card .sig-date { font-size: 11px; color: var(--text-light); }
+
+        /* FOOTER */
         .doc-footer { text-align: center; padding: 40px 0 20px; margin-top: 40px; border-top: 1px solid var(--border); }
         .doc-seal { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800; border: 3px solid var(--border); margin-bottom: 16px; }
         .doc-footer h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
         .doc-footer p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
         .doc-footer .classified-footer { margin-top: 12px; font-size: 11px; color: var(--warning); font-weight: 600; letter-spacing: 0.5px; }
+
+        /* SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(30,58,138,0.3); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(30,58,138,0.5); }
+
+        /* ANIMATIONS */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-in { animation: fadeInUp 0.5s ease forwards; }
+
+        /* RESPONSIVE */
         @media (max-width: 1200px) { .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
         @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
         @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } }
@@ -222,7 +262,7 @@
     <div class="login-subtitle">Official Handbook</div>
     <div class="classified-banner">
         <div class="label"><i class="fas fa-shield-alt"></i> Classified Document — Restricted Access</div>
-        <p>This handbook is strictly classified and intended exclusively for authorized members of the Community Department within the Tedder Management Staff Team of CUSA. Unauthorized access, distribution, sharing, or leaking of any content contained within this document is a serious violation of your agreement and will result in immediate disciplinary action, up to and including permanent removal from the team and maybe associated groups.</p>
+        <p>This handbook is strictly classified and intended exclusively for authorized members of the Community Department within the Tedder Management Staff Team of CUSA. Unauthorized access, distribution, sharing, or leaking of any content contained within this document is a serious violation of your agreement and will result in immediate disciplinary action, up to and including permanent removal from the team and associated groups.</p>
     </div>
     <div class="login-card">
         <h3><i class="fas fa-lock-open" style="color: #60a5fa;"></i> Identity Verification</h3>
@@ -265,6 +305,7 @@
     </div>
 
     <main class="main-content">
+        
         <!-- SECTION 01: WELCOME -->
         <section id="section-welcome" class="animate-in">
             <div class="section-header">
@@ -309,7 +350,7 @@
             <div class="content-card">
                 <div class="card-title"><i class="fas fa-crosshairs"></i> Department Scope</div>
                 <div class="card-text">
-                    <p>The <strong>Community Department</strong> The Community Department support Moderation Department with all non-military community interactions including discord moderation, in-game support, ticket resolution, community events (Only CD), giveaway administration (Only CD), and rank logging for eligible personnel:</p>
+                    <p>The <strong>Community Department</strong> supports the Moderation Department with all non-military community interactions including Discord moderation, in-game support, ticket resolution, community events (CD only), giveaway administration (CD only), and rank logging for eligible personnel:</p>
                     <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-light); line-height: 2;">
                         <li>Moderating the CUSA game servers and Discord community to ensure a safe environment for all players.</li>
                         <li>Planning, organizing, and hosting community events and giveaways to engage the playerbase.</li>
@@ -338,7 +379,7 @@
                         <li><strong style="color: var(--primary);">Roblox</strong> — Primary game platform where moderation and community events take place within CUSA.</li>
                         <li><strong style="color: var(--primary);">Discord</strong> — Main communication hub for all department meetings, announcements, logs, and coordination.</li>
                         <li><strong style="color: var(--primary);">Department Logs Channel</strong> — Where all official logs — moderation, event, and rank logs — are submitted by department members.</li>
-                        <li><strong style="color: var(--primary);">Request Channel</strong> — Used for submitting lower quota, vc and other requirements inside quota. With a valid reason..</li>
+                        <li><strong style="color: var(--primary);">Request Channel</strong> — Used for submitting lower quota, VC and other requirements inside quota with a valid reason.</li>
                         <li><strong style="color: var(--primary);">LoA Channel</strong> — Leave of Absence channel for members who need to temporarily step away from their duties.</li>
                     </ol>
                 </div>
@@ -363,10 +404,10 @@
                 </div>
                 <div class="rank-body">
                     <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishement Guide.</li>
+                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help Lower Ranks if they need help on a question or issue.</li>
+                        <li>Help lower ranks if they need help on a question or issue.</li>
                         <li>Give news about the department.</li>
                     </ol>
                 </div>
@@ -383,11 +424,11 @@
                 <div class="rank-body">
                     <ol>
                         <li>Assist the Community Director in managing day-to-day departmental operations.</li>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishement Guide.</li>
+                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask to a partner.</li>
+                        <li>If you have any issues or questions, you may ask a partner.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help Lower Ranks if they need help on a question or issue.</li>
+                        <li>Help lower ranks if they need help on a question or issue.</li>
                         <li>Help the Moderation Department with rank logs.</li>
                         <li>Help Community Director with quota and updates.</li>
                     </ol>
@@ -404,11 +445,11 @@
                 </div>
                 <div class="rank-body">
                     <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishement Guide.</li>
+                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask to a partner.</li>
+                        <li>If you have any issues or questions, you may ask a partner.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help Community Moderator if they need help on a question or issue.</li>
+                        <li>Help Community Moderators if they need help on a question or issue.</li>
                     </ol>
                 </div>
             </div>
@@ -423,9 +464,9 @@
                 </div>
                 <div class="rank-body">
                     <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishement Guide.</li>
+                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask to a partner.</li>
+                        <li>If you have any issues or questions, you may ask a partner.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
                         <li>Meet weekly quota requirements as outlined in the Quota section of this handbook.</li>
                     </ol>
@@ -439,18 +480,18 @@
                 <div class="section-label"><i class="fas fa-calendar-star"></i> Section 04</div>
                 <h1 class="section-title">Events &amp; Giveaways</h1>
             </div>
-            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">Community events and giveaways are essential for maintaining player retention and fostering positive relations between CUSA Staff Team and CUSA engagement.</div>
+            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">Community events and giveaways are essential for maintaining player retention and fostering positive relations between CUSA Staff Team and community engagement.</div>
 
             <div class="content-card">
                 <div class="card-title"><i class="fas fa-calendar-check"></i> Event Protocol</div>
                 <div class="card-title" style="font-size: 15px; margin-top: 16px;"><i class="fas fa-info-circle" style="background: #e0e7ff; color: #4338ca;"></i> Event Information</div>
                 <div class="card-text">
-                    <p>All community events must not be related to anything against CUSA and follow both CUSA, and Roblox ToS. You can refer to the Community Event gaame document for more information about community events:</p>
+                    <p>All community events must not be related to anything against CUSA and follow both CUSA and Roblox ToS. You can refer to the Community Event game document for more information about community events:</p>
                     <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-light); line-height: 2;">
                         <li>Events must be announced via the designated community event channel.</li>
                         <li>All events must have a clearly defined name and description.</li>
                         <li>The hosting moderator must remain present and active throughout the entirety of the event.</li>
-                        <li>A minimum of one (1) person must be present to your event for at least 5 minutes for it to be valid.</li>
+                        <li>A minimum of one (1) person must be present at your event for at least 5 minutes for it to be valid.</li>
                     </ul>
                 </div>
                 <div class="card-title" style="font-size: 15px; margin-top: 24px;"><i class="fas fa-layer-group" style="background: #e0e7ff; color: #4338ca;"></i> Event Types</div>
@@ -460,8 +501,8 @@
                     <div class="event-type"><h4>Trivia Events</h4><p>Quiz-style events covering CUSA lore, general knowledge, or Roblox topics.</p></div>
                     <div class="event-type"><h4>Tournaments</h4><p>Competitive events where community members compete against each other in specific games or challenges.</p></div>
                     <div class="event-type"><h4>Holiday Events</h4><p>Special themed events organized around real-world or Roblox holidays and celebrations.</p></div>
-                    <div class="event-type"><h4>Obbiy</h4><p>Games where people do parkour/obby..</p></div>
-                     <div class="event-type"><h4>Horror Games</h4><p>Horror games where people team together to complete a story or defeat something.</p></div>
+                    <div class="event-type"><h4>Obby</h4><p>Games where people do parkour/obby challenges.</p></div>
+                    <div class="event-type"><h4>Horror Games</h4><p>Horror games where people team together to complete a story or defeat something.</p></div>
                 </div>
             </div>
 
@@ -471,8 +512,7 @@
                     <p>Proper logging is mandatory for all events hosted by Community Department members. Failure to document events may result in the event not counting toward the weekly quota.</p>
                     <div style="margin-top: 16px; padding-left: 16px; border-left: 3px solid var(--primary-light);">
                         <p style="font-weight: 600; color: var(--text); margin-bottom: 4px;">Event Log Format</p>
-                        <p style="font-size: 13px;">Logs must include the event name, event description, host name. (Inside community event channel not the event logs channel)</p>
-                    </div>
+                        <p style="font-size: 13px;">Logs must include the event name, event description, and host name. (Inside community event channel, not the event logs channel)</p>
                     </div>
                 </div>
             </div>
@@ -512,60 +552,64 @@
                 </div>
             </div>
 
-            <div class="quota-table-wrap">
-                <table class="quota-table">
-                    <thead>
-                        <tr>
-                            <th>Rank</th>
-                            <th>Minutes</th>
-                            <th>Community Events</th>
-                            <th>Moderation Logs</th>
-                            <th>Rank Logs</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="rank-name">Community Moderator</div>
-                                <span class="rank-tag" style="background: #e0f2fe; color: #0369a1;">CMOD &middot; Low Command</span>
-                            </td>
-                            <td><span class="num">450</span> <span class="unit">min</span></td>
-                            <td><span class="num">4</span> <span class="unit">events</span></td>
-                            <td><span class="num">20</span> <span class="unit">logs</span></td>
-                            <td><span class="unit">&mdash;</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="rank-name">Senior Community Moderator</div>
-                                <span class="rank-tag" style="background: #ccfbf1; color: #0f766e;">SCMOD &middot; Low Command</span>
-                            </td>
-                            <td><span class="num">450</span> <span class="unit">min</span></td>
-                            <td><span class="num">4</span> <span class="unit">events</span></td>
-                            <td><span class="num">20</span> <span class="unit">logs</span></td>
-                            <td><span class="unit">&mdash;</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="rank-name">Community Secretary</div>
-                                <span class="rank-tag" style="background: #ede9fe; color: #5b21b6;">CSEC &middot; Middle Command</span>
-                            </td>
-                            <td><span class="num">450</span> <span class="unit">min</span></td>
-                            <td><span class="num">3</span> <span class="unit">events</span></td>
-                            <td><span class="num">17</span> <span class="unit">logs</span></td>
-                            <td><span class="num">15</span> <span class="unit">logs</span></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="rank-name">Community Director</div>
-                                <span class="rank-tag" style="background: #dbeafe; color: #1e40af;">CD &middot; High Command</span>
-                            </td>
-                            <td><span class="num">300</span> <span class="unit">min</span></td>
-                            <td><span class="num">2</span> <span class="unit">events</span></td>
-                            <td><span class="num">15</span> <span class="unit">logs</span></td>
-                            <td><span class="num">8</span> <span class="unit">logs</span></td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="content-card">
+                <div class="admin-edit-hint" id="quotaAdminHint"><i class="fas fa-lock"></i> Admin-only: Quota values are editable by CD and CSEC ranks.</div>
+                <div class="card-title"><i class="fas fa-table"></i> Quota Requirements by Rank</div>
+                <div class="quota-table-wrap">
+                    <table class="quota-table" id="quotaTable">
+                        <thead>
+                            <tr>
+                                <th>Rank</th>
+                                <th>Minutes</th>
+                                <th>Community Events</th>
+                                <th>Moderation Logs</th>
+                                <th>Rank Logs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr data-rank="cmod">
+                                <td>
+                                    <div class="rank-name">Community Moderator</div>
+                                    <span class="rank-tag" style="background: #e0f2fe; color: #0369a1;">CMOD &middot; Low Command</span>
+                                </td>
+                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
+                                <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
+                                <td><span class="num" data-field="modlogs">20</span> <span class="unit">logs</span></td>
+                                <td><span class="unit">&mdash;</span></td>
+                            </tr>
+                            <tr data-rank="scmod">
+                                <td>
+                                    <div class="rank-name">Senior Community Moderator</div>
+                                    <span class="rank-tag" style="background: #ccfbf1; color: #0f766e;">SCMOD &middot; Low Command</span>
+                                </td>
+                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
+                                <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
+                                <td><span class="num" data-field="modlogs">20</span> <span class="unit">logs</span></td>
+                                <td><span class="unit">&mdash;</span></td>
+                            </tr>
+                            <tr data-rank="csec">
+                                <td>
+                                    <div class="rank-name">Community Secretary</div>
+                                    <span class="rank-tag" style="background: #ede9fe; color: #5b21b6;">CSEC &middot; Middle Command</span>
+                                </td>
+                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
+                                <td><span class="num" data-field="events">3</span> <span class="unit">events</span></td>
+                                <td><span class="num" data-field="modlogs">17</span> <span class="unit">logs</span></td>
+                                <td><span class="num" data-field="ranklogs">15</span> <span class="unit">logs</span></td>
+                            </tr>
+                            <tr data-rank="cd">
+                                <td>
+                                    <div class="rank-name">Community Director</div>
+                                    <span class="rank-tag" style="background: #dbeafe; color: #1e40af;">CD &middot; High Command</span>
+                                </td>
+                                <td><span class="num" data-field="minutes">300</span> <span class="unit">min</span></td>
+                                <td><span class="num" data-field="events">2</span> <span class="unit">events</span></td>
+                                <td><span class="num" data-field="modlogs">15</span> <span class="unit">logs</span></td>
+                                <td><span class="num" data-field="ranklogs">8</span> <span class="unit">logs</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <div class="content-card" style="margin-top: 24px;">
@@ -587,7 +631,7 @@
                     <i class="fas fa-exclamation-triangle"></i>
                     <div>
                         <div class="alert-title">Warning</div>
-                        <div class="alert-text">Failures to meet quota without an approved exemption will result in a formal strike, and continued non-compliance may lead to demotion or removal from the Community Department.</div>
+                        <div class="alert-text">Failure to meet quota without an approved exemption will result in a formal strike, and continued non-compliance may lead to demotion or removal from the Community Department.</div>
                     </div>
                 </div>
             </div>
@@ -608,7 +652,7 @@
                         <div class="chain-icon"><i class="fas fa-crown"></i></div>
                         <div class="chain-info">
                             <h4>Community Director <span class="chain-abbr">(CD)</span> <span class="chain-badge">High Command</span></h4>
-                            <p>The highest authority within the Community Department. The Community Director sets the direction of the department, and oversees the department. They work directly alongside the other High Command, Senior Management+.</p>
+                            <p>The highest authority within the Community Department. The Community Director sets the direction of the department and oversees all operations. They work directly alongside other High Command and Senior Management.</p>
                         </div>
                     </div>
                 </div>
@@ -619,7 +663,7 @@
                         <div class="chain-icon"><i class="fas fa-user-tie"></i></div>
                         <div class="chain-info">
                             <h4>Community Secretary <span class="chain-abbr">(CSEC)</span> <span class="chain-badge">Middle Command</span></h4>
-                            <p>Middle command who directly assist the Community Director. Community Secretaries handle rank changes, and supervise lower command.</p>
+                            <p>Middle command who directly assists the Community Director. Community Secretaries handle rank changes and supervise lower command.</p>
                         </div>
                     </div>
                 </div>
@@ -630,7 +674,7 @@
                         <div class="chain-icon"><i class="fas fa-star"></i></div>
                         <div class="chain-info">
                             <h4>Senior Community Moderator <span class="chain-abbr">(SCMOD)</span> <span class="chain-badge">Low Command</span></h4>
-                            <p>Experienced moderators who have proven their dedication and skill within the Community Department. They serve as mentors to Community Moderators, and assist them if needed.</p>
+                            <p>Experienced moderators who have proven their dedication and skill within the Community Department. They serve as mentors to Community Moderators and assist them when needed.</p>
                         </div>
                     </div>
                 </div>
@@ -703,11 +747,6 @@
                         </div>
                     </div>
                     <div class="sig-line">[CD Username]</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">High Command</span>
-                        <span class="sig-date">Signature</span>
-                    </div>
-                </div>v class="sig-line">[CD Username]</div>
                     <div class="sig-footer">
                         <span class="sig-rank">High Command</span>
                         <span class="sig-date">Signature</span>
@@ -792,7 +831,6 @@
 
     </main>
 </div>
-
 <script>
 // AUTHORIZED USERS LIST — Only these exact usernames can access the handbook
 const AUTHORIZED_USERS = [
@@ -801,6 +839,15 @@ const AUTHORIZED_USERS = [
     // Add more authorized usernames here, e.g.:
     // 'thirduser'
 ];
+
+// ADMIN USERS — CD and CSEC can edit quota table
+const ADMIN_USERS = [
+    'miskaspiritualyti',
+    'papervv'
+];
+
+let currentUser = '';
+let isAdmin = false;
 
 function handleLogin() {
     const input = document.getElementById('usernameInput');
@@ -842,11 +889,22 @@ function handleLogin() {
 
     btn.textContent = 'Verifying...';
     btn.disabled = true;
+
+    currentUser = username;
+    isAdmin = ADMIN_USERS.includes(username);
+
     setTimeout(() => {
         document.getElementById('loginScreen').classList.add('hidden');
         document.getElementById('appContainer').classList.add('active');
         document.getElementById('userDisplay').textContent = '@' + username;
         document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
+
+        // Show admin edit hint if admin
+        if (isAdmin) {
+            const hint = document.getElementById('quotaAdminHint');
+            if (hint) hint.style.display = 'block';
+            makeQuotaEditable();
+        }
     }, 1200);
 }
 
@@ -856,6 +914,12 @@ function handleLogout() {
     document.getElementById('usernameInput').value = '';
     document.getElementById('loginBtn').textContent = 'Request Access';
     document.getElementById('loginBtn').disabled = false;
+    currentUser = '';
+    isAdmin = false;
+
+    // Hide admin hint
+    const hint = document.getElementById('quotaAdminHint');
+    if (hint) hint.style.display = 'none';
 }
 
 function setActive(el) {
@@ -870,35 +934,65 @@ function setActiveByHref(href) {
     });
 }
 
-// Smooth scroll navigation — prevents page reload on local files
-document.querySelectorAll('.nav-item, .toc-item').forEach(link => {
-    link.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href && href.startsWith('#')) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // Update active nav state
-                document.querySelectorAll('.nav-item').forEach(item => {
-                    item.classList.remove('active');
-                    if (item.getAttribute('href') === href) item.classList.add('active');
-                });
+// Smooth scroll navigation
+function initSmoothScroll() {
+    document.querySelectorAll('.nav-item, .toc-item').forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.querySelectorAll('.nav-item').forEach(item => {
+                        item.classList.remove('active');
+                        if (item.getAttribute('href') === href) item.classList.add('active');
+                    });
+                }
             }
-        }
+        });
     });
-});
+}
 
-document.getElementById('usernameInput').addEventListener('keypress', function(e) {
-    if (e.key === 'Enter') handleLogin();
-});
+// Make quota table editable for admins
+function makeQuotaEditable() {
+    const table = document.getElementById('quotaTable');
+    if (!table) return;
 
-// Clear error on input
-document.getElementById('usernameInput').addEventListener('input', function() {
-    const errorMsg = document.getElementById('loginError');
-    if (errorMsg) errorMsg.textContent = '';
-    this.style.borderColor = '';
-    this.style.boxShadow = '';
+    const editableCells = table.querySelectorAll('[data-field]');
+    editableCells.forEach(cell => {
+        cell.contentEditable = 'true';
+        cell.style.cursor = 'text';
+        cell.style.borderBottom = '1px dashed var(--primary-light)';
+        cell.title = 'Click to edit quota value';
+
+        cell.addEventListener('blur', function() {
+            const val = this.textContent.trim();
+            if (!/^\d+$/.test(val)) {
+                this.textContent = this.dataset.original || this.textContent;
+            }
+        });
+
+        cell.addEventListener('focus', function() {
+            if (!this.dataset.original) this.dataset.original = this.textContent;
+        });
+    });
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    initSmoothScroll();
+
+    document.getElementById('usernameInput').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') handleLogin();
+    });
+
+    document.getElementById('usernameInput').addEventListener('input', function() {
+        const errorMsg = document.getElementById('loginError');
+        if (errorMsg) errorMsg.textContent = '';
+        this.style.borderColor = '';
+        this.style.boxShadow = '';
+    });
 });
 </script>
 </body>
