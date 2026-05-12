@@ -33,40 +33,40 @@
         body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
         .login-page { position: fixed; inset: 0; z-index: 1000; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%); display: flex; align-items: center; justify-content: center; padding: 20px; transition: opacity 0.6s ease, transform 0.6s ease; }
         .login-page.hidden { opacity: 0; pointer-events: none; transform: scale(1.05); }
-        .login-container { width: 100%; max-width: 420px; animation: fadeInUp 0.8s ease; }
+        .login-container { width: 100%; max-width: 360px; animation: fadeInUp 0.8s ease; }
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        .classified-banner { background: linear-gradient(90deg, var(--danger), #b91c1c); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; text-align: center; animation: pulse 2s infinite; box-shadow: 0 0 30px rgba(239, 68, 68, 0.3); }
+        .classified-banner { background: linear-gradient(90deg, var(--danger), #b91c1c); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; text-align: center; animation: pulse 2s infinite; box-shadow: 0 0 30px rgba(239, 68, 68, 0.3); }
         @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); } 50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.6); } }
-        .classified-banner i { font-size: 28px; margin-bottom: 8px; display: block; }
-        .classified-banner h3 { font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
-        .classified-banner p { font-size: 12px; opacity: 0.9; }
-        .login-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 32px 28px; box-shadow: var(--shadow); }
-        .login-logo { text-align: center; margin-bottom: 28px; }
-        .login-logo .shield { width: 72px; height: 72px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 16px; box-shadow: 0 8px 32px rgba(37, 99, 235, 0.4); }
-        .login-logo h1 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+        .classified-banner i { font-size: 24px; margin-bottom: 6px; display: block; }
+        .classified-banner h3 { font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .classified-banner p { font-size: 11px; opacity: 0.9; }
+        .login-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 24px 20px; box-shadow: var(--shadow); }
+        .login-logo { text-align: center; margin-bottom: 20px; }
+        .login-logo .shield { width: 60px; height: 60px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 12px; box-shadow: 0 8px 32px rgba(37, 99, 235, 0.4); }
+        .login-logo h1 { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
         .login-logo span { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 3px; display: block; margin-top: 4px; }
-        .form-group { margin-bottom: 20px; }
+        .form-group { margin-bottom: 16px; }
         .form-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; }
         .form-group input { width: 100%; padding: 14px 16px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 15px; font-family: 'Inter', sans-serif; transition: all 0.3s ease; -webkit-appearance: none; }
         .form-group input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
         .form-group input::placeholder { color: var(--text-muted); }
-        .btn { width: 100%; padding: 14px 24px; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; -webkit-appearance: none; }
+        .btn { width: 100%; padding: 12px 20px; border: none; border-radius: 12px; font-size: 13px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; -webkit-appearance: none; }
         .btn-primary { background: linear-gradient(135deg, var(--primary-light), var(--primary)); color: white; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5); }
         .btn-danger { background: linear-gradient(135deg, var(--danger), #b91c1c); color: white; }
         .btn-success { background: linear-gradient(135deg, var(--success), #059669); color: white; }
         .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
         .btn-sm { padding: 8px 16px; font-size: 12px; }
-        .pin-dots { display: flex; gap: 12px; justify-content: center; margin: 24px 0; }
-        .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); background: transparent; transition: all 0.3s ease; }
-        .pin-dot.filled { background: var(--primary-light); border-color: var(--primary-light); box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
-        .pin-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
-        .pin-key { aspect-ratio: 1; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 16px; color: var(--text-primary); font-size: 22px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; user-select: none; }
+        .pin-dots { display: flex; gap: 10px; justify-content: center; margin: 16px 0; }
+        .pin-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid var(--border); background: transparent; transition: all 0.3s ease; }
+        .pin-dot.filled { background: var(--primary-light); border-color: var(--primary-light); box-shadow: 0 0 10px rgba(37, 99, 235, 0.6); }
+        .pin-keypad { display: grid; grid-template-columns: repeat(3, auto); gap: 10px; margin-top: 16px; justify-content: center; }
+        .pin-key { width: 60px; height: 60px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 14px; color: var(--text-primary); font-size: 20px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; user-select: none; }
         .pin-key:hover { background: var(--bg-card-hover); border-color: var(--primary-light); }
         .pin-key:active { transform: scale(0.95); background: var(--primary); }
-        .pin-key.delete { font-size: 18px; color: var(--danger); }
+        .pin-key.delete { font-size: 16px; color: var(--danger); }
         .error-msg { color: var(--danger); font-size: 13px; text-align: center; margin-top: 12px; min-height: 20px; }
-        .step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+        .step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 16px; }
         .step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; }
         .step-dot.active { background: var(--primary-light); width: 24px; border-radius: 4px; }
         .app { display: none; min-height: 100vh; }
@@ -169,6 +169,7 @@
         .user-list-item:hover { border-color: var(--border); }
         .user-list-item .user-email { font-size: 13px; font-weight: 500; word-break: break-all; }
         .user-list-item .user-rank { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; text-transform: uppercase; white-space: nowrap; margin-left: 8px; }
+        .user-list-item .user-rank.rank-admin { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
         .user-list-item .actions { display: flex; gap: 6px; flex-shrink: 0; margin-left: 8px; }
         .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
         .icon-btn.delete { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
@@ -733,6 +734,7 @@
                                 <option value="csec">Community Secretary (CSEC)</option>
                                 <option value="scmod">Senior Community Moderator (SCMOD)</option>
                                 <option value="cmod">Community Moderator (CMOD)</option>
+                                <option value="admin">Administrator</option>
                             </select>
                             <button class="btn btn-success" onclick="addUser()">Add User</button>
                         </div>
@@ -777,7 +779,7 @@ const RANKS = {
     csec: { label: 'Community Secretary (CSEC)', class: 'rank-csec', level: 'Middle Command' },
     scmod: { label: 'Senior Community Moderator (SCMOD)', class: 'rank-scmod', level: 'Low Command' },
     cmod: { label: 'Community Moderator (CMOD)', class: 'rank-cmod', level: 'Low Command' },
-    admin: { label: 'System Administrator', class: 'rank-admin', level: 'Admin' }
+    admin: { label: 'Administrator', class: 'rank-admin', level: 'Admin' }
 };
 
 const SECTIONS = ['welcome', 'introduction', 'responsibilities', 'events', 'quota', 'chain', 'closing', 'admin'];
@@ -902,7 +904,7 @@ function enterApp() {
     rankBadge.textContent = rankInfo.label;
     rankBadge.className = 'rank-badge ' + rankInfo.class;
 
-    // Show admin panel only for admin rank
+    // Show admin panel for admin rank users
     if (user.rank === 'admin') {
         document.querySelectorAll('.nav-item.admin-only').forEach(el => el.classList.add('visible'));
     }
@@ -996,8 +998,6 @@ function renderUserList() {
     container.innerHTML = '';
 
     Object.entries(DB.users).forEach(([email, data]) => {
-        if (email === 'admin@cusa.gov') return; // Hide admin
-
         const rankInfo = RANKS[data.rank];
         const item = document.createElement('div');
         item.className = 'user-list-item';
@@ -1007,6 +1007,7 @@ function renderUserList() {
                 <span class="user-rank ${rankInfo.class}">${rankInfo.label}</span>
             </div>
             <div class="actions">
+                ${data.rank !== 'admin' ? `<button class="icon-btn" onclick="promoteToAdmin('${email}')" title="Promote to Admin" style="background:rgba(245,158,11,0.15);color:var(--secondary);"><i class="fas fa-crown"></i></button>` : ''}
                 <button class="icon-btn delete" onclick="removeUser('${email}')" title="Remove user">
                     <i class="fas fa-trash"></i>
                 </button>
@@ -1109,6 +1110,15 @@ function formatTime(iso) {
 }
 
 // ========== PERSISTENCE ==========
+function promoteToAdmin(email) {
+    if (!confirm('Are you sure you want to promote ' + email + ' to Administrator? They will have full access to the Admin Panel.')) return;
+
+    DB.users[email].rank = 'admin';
+    saveUsers();
+    addAudit('user', 'User promoted to Admin', email);
+    renderUserList();
+}
+
 function saveUsers() {
     localStorage.setItem('cusa_users', JSON.stringify(DB.users));
 }
