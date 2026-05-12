@@ -5,7 +5,7 @@
     <meta property="og:title" content="Community Department Handbook — CUSA">
     <meta property="og:description" content="Official classified handbook for the Community Department.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png?ex=6a04a634&is=6a0354b4&hm=ce2a9709c28806b68b205b739ed878877191defa9c6cb08d2deeddcae322919a&">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:site_name" content="CUSA Community Department">
@@ -80,7 +80,6 @@
         .login-error { color: #fca5a5; font-size: 13px; margin-top: 12px; text-align: center; font-weight: 500; display: none; }
         .login-error.show { display: block; }
 
-        /* PIN STYLES */
         .pin-dots { display: flex; gap: 16px; justify-content: center; margin: 24px 0; }
         .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s ease; }
         .pin-dot.filled { background: #60a5fa; border-color: #60a5fa; box-shadow: 0 0 12px rgba(96,165,250,0.5); }
@@ -638,6 +637,7 @@
                 </div>
             </div>
         </section>
+
         <!-- SECTION 04: EVENTS & GIVEAWAYS -->
         <section id="section-events" class="content-section" style="display:none;">
             <div class="section-header">
@@ -857,6 +857,7 @@
                 </ol>
             </div>
         </section>
+
         <!-- SECTION 07: CLOSING & SIGNATURES -->
         <section id="section-closing" class="content-section" style="display:none;">
             <div class="section-header">
@@ -1005,6 +1006,7 @@
                 <p class="classified-footer">This document is classified. Unauthorized distribution is strictly prohibited.</p>
             </div>
         </section>
+
         <!-- SECTION ADMIN: ADMIN PANEL -->
         <section id="section-admin" class="content-section admin-panel" style="display:none;">
             <div class="section-header">
@@ -1161,16 +1163,23 @@
 // ============================================
 // AUTHORIZED USERS & ADMIN CONFIGURATION
 // ============================================
+// CRITICAL FIX: Default users are ALWAYS available in-memory.
+// localStorage is used ONLY for ADDITIONAL users added by admins.
+// This ensures the handbook works on ANY device/browser immediately.
 const DEFAULT_USERS = [
-    { email: "elspethmiska@gmail.com", isAdmin: true, addedBy: "System", dateAdded: new Date().toISOString() },
-    { email: "laneyjames333@gmail.com", isAdmin: true, addedBy: "System", dateAdded: new Date().toISOString() },
-    { email: "imperatore.jr18@gmail.com", isAdmin: true, addedBy: "System", dateAdded: new Date().toISOString() },
+    { email: "elspethmiska@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
+    { email: "laneyjames333@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
+    { email: "imperatore.jr18@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
+    { email: "sarthak009k@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
+    { email: "bully.tiny2026@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
+    { email: "brookcuscus@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
 ];
 
-let AUTHORIZED_USERS = [...DEFAULT_USERS];
+// Runtime user list: defaults + any saved extras from localStorage
+let AUTHORIZED_USERS = [];
 
 // ============================================
-// DATA STORAGE (localStorage)
+// DATA STORAGE (localStorage) — EXTRAS ONLY
 // ============================================
 let currentUser = '';
 let currentUserIsAdmin = false;
@@ -1179,33 +1188,34 @@ let tempPin = '';
 let confirmPin = '';
 let enterPin = '';
 
-function loadData() {
+function getExtraUsers() {
     try {
-        const savedUsers = localStorage.getItem('cusa_authorized_users');
-        let parsed = savedUsers ? JSON.parse(savedUsers) : [];
-        
-        // ALWAYS merge defaults — prevents lockout on new devices
-        const savedEmails = parsed.map(u => u.email.toLowerCase());
-        DEFAULT_USERS.forEach(defUser => {
-            if (!savedEmails.includes(defUser.email.toLowerCase())) {
-                parsed.push(defUser);
-            }
-        });
-
-        AUTHORIZED_USERS = parsed;
-        saveUsers();
+        const saved = localStorage.getItem('cusa_extra_users');
+        return saved ? JSON.parse(saved) : [];
     } catch (e) {
-        console.log('localStorage not available, using defaults');
-        AUTHORIZED_USERS = [...DEFAULT_USERS];
+        return [];
     }
 }
 
-function saveUsers() {
+function saveExtraUsers(extras) {
     try {
-        localStorage.setItem('cusa_authorized_users', JSON.stringify(AUTHORIZED_USERS));
+        localStorage.setItem('cusa_extra_users', JSON.stringify(extras));
     } catch (e) {
-        console.log('Could not save to localStorage');
+        console.log('Could not save extra users to localStorage');
     }
+}
+
+function rebuildUserList() {
+    const extras = getExtraUsers();
+    // Start with defaults, then merge extras (avoiding duplicates)
+    const merged = [...DEFAULT_USERS];
+    const defaultEmails = new Set(DEFAULT_USERS.map(u => u.email.toLowerCase()));
+    extras.forEach(extra => {
+        if (!defaultEmails.has(extra.email.toLowerCase())) {
+            merged.push(extra);
+        }
+    });
+    AUTHORIZED_USERS = merged;
 }
 
 function getLoginLogs() {
@@ -1326,6 +1336,9 @@ function handleEmailSubmit() {
         return;
     }
 
+    // Rebuild user list fresh each time to ensure defaults are always present
+    rebuildUserList();
+
     const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email);
     if (!userEntry) {
         showLoginError('Access Denied: This email is not authorized for this document.');
@@ -1341,14 +1354,12 @@ function handleEmailSubmit() {
         const existingPin = getUserPin(email);
 
         if (existingPin) {
-            // User has PIN — show enter PIN screen
             showLoginStep('loginStepEnterPin');
             enterPin = '';
             updateEnterPinDots();
             document.getElementById('enterPinStatus').textContent = 'Enter your PIN';
             document.getElementById('enterPinStatus').className = 'pin-status';
         } else {
-            // First time — show create PIN screen
             showLoginStep('loginStepCreatePin');
             tempPin = '';
             confirmPin = '';
@@ -1407,8 +1418,6 @@ function updateCreatePinDots() {
 
 function submitCreatePin() {
     if (tempPin.length !== 4) return;
-
-    // Move to confirm PIN step
     showLoginStep('loginStepConfirmPin');
     confirmPin = '';
     updateConfirmPinDots();
@@ -1465,7 +1474,6 @@ function submitConfirmPin() {
         return;
     }
 
-    // PINs match — save and login
     saveUserPin(tempEmail, tempPin);
     completeLogin(tempEmail);
 }
@@ -1507,7 +1515,6 @@ function submitEnterPin() {
         return;
     }
 
-    // PIN correct — login
     completeLogin(tempEmail);
 }
 
@@ -1544,7 +1551,6 @@ function completeLogin(email) {
         makeQuotaEditable();
     }
 
-    // Reset all PIN states
     tempEmail = '';
     tempPin = '';
     confirmPin = '';
@@ -1673,6 +1679,7 @@ function switchAdminTab(tabId, btn) {
 }
 
 function refreshAdminPanel() {
+    rebuildUserList();
     updateStats();
     renderUsersTable();
     renderLoginsTable();
@@ -1703,6 +1710,7 @@ function renderUsersTable() {
 
     tbody.innerHTML = AUTHORIZED_USERS.map(user => {
         const isCurrentUser = user.email.toLowerCase() === currentUser.toLowerCase();
+        const isDefault = DEFAULT_USERS.some(d => d.email.toLowerCase() === user.email.toLowerCase());
         return `
             <tr>
                 <td class="email-cell">${escapeHtml(user.email)}</td>
@@ -1710,7 +1718,7 @@ function renderUsersTable() {
                 <td>${user.addedBy ? escapeHtml(user.addedBy) : '<span style="color:#94a3b8">System</span>'}</td>
                 <td>${user.dateAdded ? formatDate(user.dateAdded) : '<span style="color:#94a3b8">—</span>'}</td>
                 <td class="actions">
-                    ${!isCurrentUser ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : '<span style="color:#94a3b8; font-size:12px;">You</span>'}
+                    ${!isCurrentUser && !isDefault ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : (isDefault ? '<span style="color:#94a3b8; font-size:12px;">Built-in</span>' : '<span style="color:#94a3b8; font-size:12px;">You</span>')}
                 </td>
             </tr>
         `;
@@ -1760,7 +1768,7 @@ function renderActivityTable() {
 
     tbody.innerHTML = logs.map(log => `
         <tr>
-            <td><span class="badge ${log.action === 'ADDED' ? 'badge-added' : 'badge-removed'}">${log.action}</span></td>
+            <td><span class="badge ${log.action === 'ADDED' ? 'badge-added' : (log.action === 'REMOVED' ? 'badge-removed' : 'badge-pin')}">${log.action}</span></td>
             <td class="email-cell">${escapeHtml(log.targetEmail)}</td>
             <td class="email-cell">${escapeHtml(log.performedBy)}</td>
             <td>${formatDateTime(log.timestamp)}</td>
@@ -1808,6 +1816,8 @@ function addUser() {
         return;
     }
 
+    rebuildUserList();
+
     if (AUTHORIZED_USERS.some(u => u.email.toLowerCase() === email)) {
         alert('This email is already authorized.');
         return;
@@ -1820,8 +1830,12 @@ function addUser() {
         dateAdded: new Date().toISOString()
     };
 
-    AUTHORIZED_USERS.push(newUser);
-    saveUsers();
+    // Save to extras only
+    const extras = getExtraUsers();
+    extras.push(newUser);
+    saveExtraUsers(extras);
+
+    rebuildUserList();
 
     saveAdminActivity({
         action: 'ADDED',
@@ -1842,13 +1856,13 @@ function removeUser(email) {
         return;
     }
 
-    const index = AUTHORIZED_USERS.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
-    if (index === -1) return;
+    // Only remove from extras
+    let extras = getExtraUsers();
+    extras = extras.filter(u => u.email.toLowerCase() !== email.toLowerCase());
+    saveExtraUsers(extras);
 
-    AUTHORIZED_USERS.splice(index, 1);
-    saveUsers();
+    rebuildUserList();
 
-    // Also remove their PIN
     removeUserPin(email);
 
     saveAdminActivity({
@@ -1909,7 +1923,8 @@ function formatDateTime(isoString) {
 // INITIALIZATION
 // ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    loadData();
+    // Always rebuild on load to ensure defaults exist
+    rebuildUserList();
 
     document.getElementById('emailInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') handleEmailSubmit();
