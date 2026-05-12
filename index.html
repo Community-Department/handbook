@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Department Handbook — CUSA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
@@ -222,7 +222,7 @@
         .signature-card .sig-role-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 2px; }
         .signature-card .sig-role-name { font-size: 15px; font-weight: 700; color: var(--text); }
         .signature-card .sig-role-abbr { font-size: 12px; color: var(--text-light); font-weight: 500; }
-        .signature-card .sig-line { border-bottom: 2px dashed var(--border); padding-bottom: 8px; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace; font-size: 16px; font-weight: 500; color: var(--primary); font-style: italic; }
+        .signature-card .sig-line { border-bottom: 2px dashed var(--border); padding-bottom: 8px; margin-bottom: 8px; font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: 600; color: var(--primary); font-style: normal; letter-spacing: 0.5px; }
         .signature-card .sig-footer { display: flex; justify-content: space-between; align-items: center; }
         .signature-card .sig-rank { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
         .signature-card .sig-date { font-size: 11px; color: var(--text-light); }
@@ -249,6 +249,7 @@
         @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
         @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } }
     </style>
+<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -761,7 +762,10 @@
                     </div>
                 </div>
             </div>
-             <div class="signature-card staff-overseer">
+
+            <!-- SECOND SM ROW -->
+            <div class="signatures-grid" style="margin-top: 20px;">
+                <div class="signature-card staff-overseer">
                     <div class="sig-header">
                         <div class="sig-avatar">SM</div>
                         <div>
@@ -775,8 +779,9 @@
                         <span class="sig-date">Signature</span>
                     </div>
                 </div>
+            </div>
 
-            <!-- SECOND ROW: CSEC Signatures -->
+            <!-- CSEC Signatures -->
             <div class="signatures-grid" style="margin-top: 20px;">
                 <div class="signature-card csec">
                     <div class="sig-header">
