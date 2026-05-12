@@ -251,6 +251,7 @@
     </style>
 <base target="_blank">
 <base target="_blank">
+<base target="_blank">
 </head>
 <body>
 
@@ -448,7 +449,7 @@
                     <ol>
                         <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask a partner.</li>
+                        <li>If you have any issues or questions, you may ask another Community Member.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
                         <li>Help Community Moderators if they need help on a question or issue.</li>
                     </ol>
@@ -467,7 +468,7 @@
                     <ol>
                         <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
                         <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask a partner.</li>
+                        <li>If you have any issues or questions, you may ask another Community Member.</li>
                         <li>Maintain activity requirements as specified in quota section.</li>
                         <li>Meet weekly quota requirements as outlined in the Quota section of this handbook.</li>
                     </ol>
@@ -1007,8 +1008,48 @@ function makeQuotaEditable() {
 }
 
 // Initialize
+
+
+// SECTION HIGHLIGHTING ON SCROLL
+// Uses IntersectionObserver to detect which section is currently in view
+function initSectionHighlight() {
+    const sections = document.querySelectorAll('section[id]');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    if (!sections.length || !navItems.length) return;
+
+    const observerOptions = {
+        root: null,
+        rootMargin: '-20% 0px -60% 0px', // Trigger when section is ~20% from top, keep active until 60% from bottom
+        threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const sectionId = entry.target.id;
+
+                // Remove active from all nav items
+                navItems.forEach(item => item.classList.remove('active'));
+
+                // Add active to the nav item matching this section
+                navItems.forEach(item => {
+                    const href = item.getAttribute('href');
+                    if (href === '#' + sectionId) {
+                        item.classList.add('active');
+                    }
+                });
+            }
+        });
+    }, observerOptions);
+
+    sections.forEach(section => observer.observe(section));
+}
+
 document.addEventListener('DOMContentLoaded', function() {
     initSmoothScroll();
+    initSectionHighlight();
+
 
     document.getElementById('usernameInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') handleLogin();
