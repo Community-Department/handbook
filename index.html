@@ -2,1938 +2,1157 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta property="og:title" content="Community Department Handbook — CUSA">
-    <meta property="og:description" content="Official classified handbook for the Community Department.">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="CUSA Community Department">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Department Handbook — CUSA</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>CUSA Community Department Handbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #1e3a8a; --primary-dark: #172554; --primary-light: #3b82f6;
-            --accent: #60a5fa; --surface: #f8fafc; --text: #1e293b;
-            --text-light: #64748b; --border: #e2e8f0;
-            --glass: rgba(255,255,255,0.08); --glass-border: rgba(255,255,255,0.15);
-            --warning: #dc2626; --warning-bg: rgba(220,38,38,0.12);
-            --success: #16a34a; --success-bg: rgba(22,163,74,0.12);
+            --primary: #1e3a8a;
+            --primary-light: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #f59e0b;
+            --secondary-light: #fbbf24;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --border: #334155;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --glass: rgba(30, 58, 138, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); overflow-x: hidden; }
-
-        .login-screen {
-            position: fixed; inset: 0;
-            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #172554 100%);
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 1000; transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-        .login-screen::before {
-            content: ''; position: absolute; inset: 0;
-            background: repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px);
-            pointer-events: none;
-        }
-        .login-screen.hidden { opacity: 0; pointer-events: none; transform: scale(1.02); }
-        .login-logo {
-            width: 80px; height: 80px;
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 24px;
-            box-shadow: 0 0 40px rgba(59,130,246,0.4), 0 8px 32px rgba(0,0,0,0.3);
-            border: 3px solid rgba(255,255,255,0.2);
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
-        .login-logo i { font-size: 32px; color: white; }
-        .login-org { color: rgba(255,255,255,0.7); font-size: 13px; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 4px; font-weight: 500; }
-        .login-suborg { color: rgba(255,255,255,0.5); font-size: 11px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 24px; }
-        .login-title { font-size: 48px; font-weight: 800; color: white; text-align: center; line-height: 1.1; margin-bottom: 8px; text-shadow: 0 4px 20px rgba(0,0,0,0.3); }
-        .login-title span { background: linear-gradient(135deg, #93c5fd, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .login-subtitle { color: rgba(255,255,255,0.6); font-size: 14px; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 40px; }
-        .classified-banner {
-            background: var(--warning-bg); border: 1px solid rgba(220,38,38,0.3);
-            border-radius: 12px; padding: 20px 24px; max-width: 560px; width: 90%;
-            margin-bottom: 24px; backdrop-filter: blur(10px);
-        }
-        .classified-banner .label { color: #fca5a5; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .classified-banner p { color: rgba(255,255,255,0.7); font-size: 12px; line-height: 1.7; }
-        .login-card {
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 16px; padding: 32px; max-width: 480px; width: 90%;
-            backdrop-filter: blur(20px); box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-        }
-        .login-card h3 { color: white; font-size: 18px; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
-        .login-card .desc { color: rgba(255,255,255,0.6); font-size: 13px; line-height: 1.6; margin-bottom: 24px; }
-        .input-group label { display: block; color: rgba(255,255,255,0.7); font-size: 11px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
-        .input-group input { width: 100%; padding: 14px 16px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; color: white; font-size: 15px; font-family: 'Inter', sans-serif; outline: none; transition: all 0.3s ease; }
-        .input-group input::placeholder { color: rgba(255,255,255,0.35); }
-        .input-group input:focus { border-color: #3b82f6; background: rgba(255,255,255,0.15); box-shadow: 0 0 0 3px rgba(59,130,246,0.2); }
-        .btn-primary { width: 100%; padding: 14px; background: linear-gradient(135deg, #3b82f6, #2563eb); border: none; border-radius: 10px; color: white; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
-        .btn-primary:active { transform: translateY(0); }
-        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
-        .login-footer { position: absolute; bottom: 24px; color: rgba(255,255,255,0.3); font-size: 12px; }
-        .login-error { color: #fca5a5; font-size: 13px; margin-top: 12px; text-align: center; font-weight: 500; display: none; }
-        .login-error.show { display: block; }
-
-        .pin-dots { display: flex; gap: 16px; justify-content: center; margin: 24px 0; }
-        .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s ease; }
-        .pin-dot.filled { background: #60a5fa; border-color: #60a5fa; box-shadow: 0 0 12px rgba(96,165,250,0.5); }
-        .pin-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 240px; margin: 0 auto; }
-        .pin-key {
-            aspect-ratio: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
-            border-radius: 14px; color: white; font-size: 22px; font-weight: 600;
-            font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s ease;
-            display: flex; align-items: center; justify-content: center;
-        }
-        .pin-key:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
-        .pin-key:active { transform: scale(0.95); background: rgba(59,130,246,0.3); }
-        .pin-key.backspace { font-size: 16px; }
-        .pin-key.empty { pointer-events: none; opacity: 0; }
-        .pin-status { text-align: center; color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 16px; min-height: 20px; }
-        .pin-status.error { color: #fca5a5; }
-        .pin-status.success { color: #86efac; }
-        .pin-step-indicator { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
-        .pin-step { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; }
-        .pin-step.active { background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.5); }
-        .pin-step.completed { background: #22c55e; }
-
-        .app-container { display: none; min-height: 100vh; }
-        .app-container.active { display: flex; }
-
-        .sidebar { width: 280px; background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%); color: white; position: fixed; height: 100vh; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
-        .sidebar-header { padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
-        .sidebar-header .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
-        .sidebar-header .brand-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 16px; }
-        .sidebar-header .brand-text { font-size: 15px; font-weight: 700; }
-        .sidebar-header .brand-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-left: 48px; }
-        .sidebar-section-label { padding: 20px 20px 8px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 20px; margin: 2px 12px; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; text-decoration: none; border: none; background: none; width: calc(100% - 24px); text-align: left; font-family: inherit; }
-        .nav-item:hover { background: rgba(255,255,255,0.08); color: white; }
-        .nav-item.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
-        .nav-item i { width: 20px; text-align: center; font-size: 13px; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+        body { font-family: 'Inter', sans-serif; background: var(--bg-dark); color: var(--text-primary); min-height: 100vh; overflow-x: hidden; line-height: 1.6; }
+        .login-page { position: fixed; inset: 0; z-index: 1000; background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%); display: flex; align-items: center; justify-content: center; padding: 20px; transition: opacity 0.6s ease, transform 0.6s ease; }
+        .login-page.hidden { opacity: 0; pointer-events: none; transform: scale(1.05); }
+        .login-container { width: 100%; max-width: 420px; animation: fadeInUp 0.8s ease; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        .classified-banner { background: linear-gradient(90deg, var(--danger), #b91c1c); border: 2px solid rgba(239, 68, 68, 0.5); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; text-align: center; animation: pulse 2s infinite; box-shadow: 0 0 30px rgba(239, 68, 68, 0.3); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.3); } 50% { box-shadow: 0 0 40px rgba(239, 68, 68, 0.6); } }
+        .classified-banner i { font-size: 28px; margin-bottom: 8px; display: block; }
+        .classified-banner h3 { font-size: 16px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 4px; }
+        .classified-banner p { font-size: 12px; opacity: 0.9; }
+        .login-card { background: var(--glass); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 32px 28px; box-shadow: var(--shadow); }
+        .login-logo { text-align: center; margin-bottom: 28px; }
+        .login-logo .shield { width: 72px; height: 72px; background: linear-gradient(135deg, var(--primary-light), var(--primary)); border-radius: 16px; display: inline-flex; align-items: center; justify-content: center; font-size: 32px; margin-bottom: 16px; box-shadow: 0 8px 32px rgba(37, 99, 235, 0.4); }
+        .login-logo h1 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 700; color: var(--text-primary); line-height: 1.3; }
+        .login-logo span { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 3px; display: block; margin-top: 4px; }
+        .form-group { margin-bottom: 20px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--text-secondary); margin-bottom: 8px; }
+        .form-group input { width: 100%; padding: 14px 16px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 12px; color: var(--text-primary); font-size: 15px; font-family: 'Inter', sans-serif; transition: all 0.3s ease; -webkit-appearance: none; }
+        .form-group input:focus { outline: none; border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); }
+        .form-group input::placeholder { color: var(--text-muted); }
+        .btn { width: 100%; padding: 14px 24px; border: none; border-radius: 12px; font-size: 14px; font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; -webkit-appearance: none; }
+        .btn-primary { background: linear-gradient(135deg, var(--primary-light), var(--primary)); color: white; box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4); }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(37, 99, 235, 0.5); }
+        .btn-danger { background: linear-gradient(135deg, var(--danger), #b91c1c); color: white; }
+        .btn-success { background: linear-gradient(135deg, var(--success), #059669); color: white; }
+        .btn-secondary { background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border); }
+        .btn-sm { padding: 8px 16px; font-size: 12px; }
+        .pin-dots { display: flex; gap: 12px; justify-content: center; margin: 24px 0; }
+        .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--border); background: transparent; transition: all 0.3s ease; }
+        .pin-dot.filled { background: var(--primary-light); border-color: var(--primary-light); box-shadow: 0 0 12px rgba(37, 99, 235, 0.6); }
+        .pin-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 20px; }
+        .pin-key { aspect-ratio: 1; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 16px; color: var(--text-primary); font-size: 22px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; -webkit-tap-highlight-color: transparent; user-select: none; }
+        .pin-key:hover { background: var(--bg-card-hover); border-color: var(--primary-light); }
+        .pin-key:active { transform: scale(0.95); background: var(--primary); }
+        .pin-key.delete { font-size: 18px; color: var(--danger); }
+        .error-msg { color: var(--danger); font-size: 13px; text-align: center; margin-top: 12px; min-height: 20px; }
+        .step-indicator { display: flex; justify-content: center; gap: 8px; margin-bottom: 24px; }
+        .step-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; }
+        .step-dot.active { background: var(--primary-light); width: 24px; border-radius: 4px; }
+        .app { display: none; min-height: 100vh; }
+        .app.active { display: flex; }
+        .sidebar { position: fixed; left: 0; top: 0; bottom: 0; width: 280px; background: linear-gradient(180deg, var(--primary) 0%, var(--primary-dark) 100%); z-index: 100; transform: translateX(-100%); transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1); overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; }
+        .sidebar.open { transform: translateX(0); }
+        .sidebar-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(4px); z-index: 99; opacity: 0; pointer-events: none; transition: opacity 0.3s ease; }
+        .sidebar-overlay.active { opacity: 1; pointer-events: all; }
+        .sidebar-header { padding: 28px 24px 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .sidebar-header .shield-sm { width: 48px; height: 48px; background: rgba(255, 255, 255, 0.15); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 12px; }
+        .sidebar-header h2 { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; line-height: 1.3; }
+        .sidebar-header p { font-size: 11px; opacity: 0.7; text-transform: uppercase; letter-spacing: 2px; margin-top: 4px; }
+        .sidebar-section { padding: 20px 16px; }
+        .sidebar-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; opacity: 0.5; margin-bottom: 12px; padding: 0 8px; }
+        .nav-item { display: flex; align-items: center; gap: 14px; padding: 12px 16px; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; margin-bottom: 4px; color: rgba(255, 255, 255, 0.8); font-size: 14px; font-weight: 500; -webkit-tap-highlight-color: transparent; }
+        .nav-item:hover { background: rgba(255, 255, 255, 0.1); color: white; }
+        .nav-item.active { background: rgba(255, 255, 255, 0.2); color: white; font-weight: 600; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); }
+        .nav-item i { width: 24px; text-align: center; font-size: 16px; }
         .nav-item.admin-only { display: none; }
         .nav-item.admin-only.visible { display: flex; }
-
-        .top-bar { position: fixed; top: 0; left: 280px; right: 0; height: 64px; background: linear-gradient(135deg, #1e3a8a, #1e40af); display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; z-index: 99; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
-        .user-badge { display: flex; align-items: center; gap: 12px; color: white; font-size: 14px; font-weight: 500; }
-        .user-badge .avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #60a5fa, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
-        .btn-exit { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; margin-left: 16px; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
-        .btn-exit:hover { background: rgba(255,255,255,0.2); }
-
-        .main-content { margin-left: 280px; margin-top: 64px; padding: 40px 48px; max-width: calc(100vw - 280px); min-height: calc(100vh - 64px); }
+        .user-info { padding: 16px; margin: 16px; background: rgba(255, 255, 255, 0.1); border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1); }
+        .user-info .email { font-size: 12px; font-weight: 600; word-break: break-all; }
+        .user-info .rank-badge { display: inline-block; margin-top: 6px; padding: 3px 10px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+        .rank-cd { background: linear-gradient(135deg, #f59e0b, #d97706); color: #1e293b; }
+        .rank-csec { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+        .rank-scmod { background: linear-gradient(135deg, #10b981, #059669); color: white; }
+        .rank-cmod { background: linear-gradient(135deg, #8b5cf6, #7c3aed); color: white; }
+        .rank-admin { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
+        .logout-btn { margin: 0 16px 20px; padding: 10px; background: rgba(239, 68, 68, 0.2); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; color: #fca5a5; font-size: 12px; font-weight: 600; text-align: center; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1px; }
+        .logout-btn:hover { background: rgba(239, 68, 68, 0.3); }
+        .main { flex: 1; margin-left: 0; min-height: 100vh; transition: margin-left 0.4s ease; }
+        .top-bar { position: sticky; top: 0; z-index: 50; background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; }
+        .menu-toggle { width: 40px; height: 40px; border-radius: 10px; background: var(--bg-card); border: 1px solid var(--border); color: var(--text-primary); font-size: 18px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
+        .menu-toggle:hover { background: var(--bg-card-hover); }
+        .top-bar-title { font-size: 16px; font-weight: 600; color: var(--text-primary); }
+        .content-area { padding: 24px 20px; max-width: 900px; margin: 0 auto; }
+        .section { display: none; animation: fadeIn 0.5s ease; }
+        .section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .section-header { margin-bottom: 32px; }
-        .section-label { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
-        .section-title { font-size: 36px; font-weight: 800; color: var(--primary); line-height: 1.2; position: relative; display: inline-block; }
-        .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary-light), var(--accent)); border-radius: 2px; }
-
-        .content-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s ease; }
-        .content-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
-        .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
-        .card-title i { width: 32px; height: 32px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--primary); }
-        .card-text { color: var(--text-light); font-size: 14px; line-height: 1.8; }
-        .card-text strong { color: var(--text); font-weight: 600; }
-
-        .alert-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: 12px; padding: 16px 20px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; }
-        .alert-box i { color: #d97706; font-size: 18px; margin-top: 2px; }
-        .alert-box .alert-title { font-weight: 700; color: #92400e; font-size: 13px; margin-bottom: 4px; }
-        .alert-box .alert-text { color: #a16207; font-size: 13px; line-height: 1.6; }
-        .alert-box.red { background: linear-gradient(135deg, #fef2f2, #fecaca); border-color: #ef4444; }
-        .alert-box.red i { color: #dc2626; }
-        .alert-box.red .alert-title { color: #991b1b; }
-        .alert-box.red .alert-text { color: #b91c1c; }
-        .alert-box.green { background: linear-gradient(135deg, #f0fdf4, #bbf7d0); border-color: #22c55e; }
-        .alert-box.green i { color: #16a34a; }
-        .alert-box.green .alert-title { color: #166534; }
-        .alert-box.green .alert-text { color: #15803d; }
-
-        .toc-grid { display: grid; gap: 12px; }
-        .toc-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: inherit; }
-        .toc-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 16px rgba(59,130,246,0.1); transform: translateX(4px); }
-        .toc-num { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; flex-shrink: 0; }
-        .toc-info h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
-        .toc-info p { font-size: 13px; color: var(--text-light); }
-
-        .rank-card { border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
-        .rank-header { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; color: white; }
-        .rank-header.cd { background: linear-gradient(135deg, #1e3a8a, #312e81); }
-        .rank-header.csec { background: linear-gradient(135deg, #4c1d95, #7c3aed); }
-        .rank-header.scmod { background: linear-gradient(135deg, #0f766e, #14b8a6); }
-        .rank-header.cmod { background: linear-gradient(135deg, #0369a1, #0ea5e9); }
-        .rank-header .rank-title { display: flex; align-items: center; gap: 12px; }
-        .rank-header .rank-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
-        .rank-header h3 { font-size: 16px; font-weight: 700; }
-        .rank-header .rank-abbr { font-size: 12px; opacity: 0.7; font-weight: 500; }
-        .rank-header .badge { background: rgba(255,255,255,0.2); padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
-        .rank-body { background: white; padding: 20px 24px; }
-        .rank-body ol { list-style: none; counter-reset: duty; }
-        .rank-body li { counter-increment: duty; display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-light); line-height: 1.6; }
-        .rank-body li:last-child { border-bottom: none; }
-        .rank-body li::before { content: counter(duty); width: 28px; height: 28px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); flex-shrink: 0; }
-
-        .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
-        .event-type { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
-        .event-type:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(59,130,246,0.15); }
-        .event-type h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
-        .event-type p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
-
-        .quota-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
-        .quota-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-        .quota-table thead { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
-        .quota-table th { padding: 16px; font-weight: 600; text-align: left; font-size: 13px; letter-spacing: 0.5px; }
-        .quota-table td { padding: 16px; border-bottom: 1px solid var(--border); color: var(--text-light); }
-        .quota-table tr:last-child td { border-bottom: none; }
-        .quota-table tr:nth-child(even) { background: #f8fafc; }
-        .quota-table .rank-name { font-weight: 700; color: var(--text); }
-        .quota-table .rank-tag { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; margin-top: 4px; }
-        .quota-table .num { font-weight: 700; color: var(--primary); font-size: 16px; }
-        .quota-table .unit { font-size: 11px; color: var(--text-light); font-weight: 400; }
-
-        .admin-edit-hint { display: none; background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: #92400e; }
-        .admin-edit-hint i { margin-right: 6px; }
-        .admin-edit-hint.visible { display: block; }
-
-        .chain-flow { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
-        .chain-level { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
-        .chain-level-header { padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: white; }
-        .chain-level.high .chain-level-header { background: linear-gradient(135deg, #1e3a8a, #312e81); }
-        .chain-level.middle .chain-level-header { background: linear-gradient(135deg, #5b21b6, #7c3aed); }
-        .chain-level.low .chain-level-header { background: linear-gradient(135deg, #0f766e, #14b8a6); }
-        .chain-level-body { background: white; padding: 20px; display: flex; align-items: flex-start; gap: 16px; }
-        .chain-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 20px; color: white; flex-shrink: 0; }
-        .chain-level.high .chain-icon { background: linear-gradient(135deg, #1e3a8a, #4338ca); }
-        .chain-level.middle .chain-icon { background: linear-gradient(135deg, #5b21b6, #8b5cf6); }
-        .chain-level.low .chain-icon { background: linear-gradient(135deg, #0f766e, #2dd4bf); }
-        .chain-info h4 { font-size: 16px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
-        .chain-info .chain-abbr { font-size: 12px; color: var(--text-light); font-weight: 500; }
-        .chain-info .chain-badge { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; margin-left: 8px; }
-        .chain-level.high .chain-badge { background: #fef3c7; color: #92400e; }
-        .chain-level.middle .chain-badge { background: #ede9fe; color: #5b21b6; }
-        .chain-level.low .chain-badge { background: #ccfbf1; color: #0f766e; }
-        .chain-info p { font-size: 13px; color: var(--text-light); line-height: 1.7; margin-top: 8px; }
-        .chain-arrow { text-align: center; color: var(--primary-light); font-size: 20px; margin: -8px 0; }
-
-        .guidelines-list { list-style: none; counter-reset: guide; }
-        .guidelines-list li { counter-increment: guide; display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-light); line-height: 1.6; }
-        .guidelines-list li:last-child { border-bottom: none; }
-        .guidelines-list li::before { content: counter(guide); width: 28px; height: 28px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0; }
-
-        .signatures-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
-        .signature-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; transition: all 0.3s ease; }
-        .signature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
-        .signature-card.full-width { grid-column: 1 / -1; }
-        .signature-card .sig-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-        .signature-card .sig-avatar { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 700; color: white; flex-shrink: 0; }
-        .signature-card.cd .sig-avatar { background: linear-gradient(135deg, #1e3a8a, #4338ca); }
-        .signature-card.staff-overseer .sig-avatar { background: linear-gradient(135deg, #be123c, #e11d48); }
-        .signature-card.csec .sig-avatar { background: linear-gradient(135deg, #5b21b6, #8b5cf6); }
-        .signature-card .sig-role-label { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-light); margin-bottom: 2px; }
-        .signature-card .sig-role-name { font-size: 15px; font-weight: 700; color: var(--text); }
-        .signature-card .sig-role-abbr { font-size: 12px; color: var(--text-light); font-weight: 500; }
-        .signature-card .sig-line { border-bottom: 2px dashed var(--border); padding-bottom: 8px; margin-bottom: 8px; font-family: 'Dancing Script', cursive; font-size: 28px; font-weight: 600; color: var(--primary); font-style: normal; letter-spacing: 0.5px; }
-        .signature-card .sig-footer { display: flex; justify-content: space-between; align-items: center; }
-        .signature-card .sig-rank { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
-        .signature-card .sig-date { font-size: 11px; color: var(--text-light); }
-
-        .admin-panel { display: none; }
-        .admin-panel.active { display: block; }
-
-        .admin-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-        .admin-stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
-        .admin-stat-card .stat-num { font-size: 32px; font-weight: 800; color: var(--primary); }
-        .admin-stat-card .stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
-
-        .admin-form { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
-        .admin-form h4 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
-        .admin-form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
-        .admin-form .input-group { margin-bottom: 0; }
-        .admin-form .input-group label { color: var(--text-light); font-size: 11px; }
-        .admin-form .input-group input { background: white; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; }
-        .admin-form .input-group input::placeholder { color: #94a3b8; }
-        .admin-form .input-group input:focus { border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
-        .btn-success { padding: 12px 20px; background: linear-gradient(135deg, #22c55e, #16a34a); border: none; border-radius: 10px; color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
-        .btn-success:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(22,163,74,0.3); }
-        .btn-danger { padding: 8px 14px; background: linear-gradient(135deg, #ef4444, #dc2626); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
-        .btn-danger:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220,38,38,0.3); }
-        .btn-secondary { padding: 8px 14px; background: linear-gradient(135deg, #64748b, #475569); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
-        .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(71,85,105,0.3); }
-        .btn-warning { padding: 8px 14px; background: linear-gradient(135deg, #f59e0b, #d97706); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
-        .btn-warning:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(217,119,6,0.3); }
-
-        .admin-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
-        .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
-        .admin-table thead { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
-        .admin-table th { padding: 14px 16px; font-weight: 600; text-align: left; font-size: 12px; letter-spacing: 0.5px; }
-        .admin-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-light); }
-        .admin-table tr:last-child td { border-bottom: none; }
-        .admin-table tr:nth-child(even) { background: #f8fafc; }
-        .admin-table .email-cell { font-weight: 600; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
-        .admin-table .actions { display: flex; gap: 6px; }
-        .admin-table .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
-        .badge-admin { background: #dbeafe; color: #1e40af; }
-        .badge-user { background: #f1f5f9; color: #475569; }
-        .badge-added { background: #dcfce7; color: #166534; }
-        .badge-removed { background: #fef2f2; color: #991b1b; }
-        .badge-login { background: #dbeafe; color: #1e40af; }
-        .badge-pin { background: #fef3c7; color: #92400e; }
-
-        .admin-tabs { display: flex; gap: 4px; margin-bottom: 24px; background: #f1f5f9; padding: 4px; border-radius: 10px; width: fit-content; }
-        .admin-tab { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-light); transition: all 0.2s ease; font-family: inherit; }
-        .admin-tab:hover { color: var(--primary); }
-        .admin-tab.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
-
-        .admin-tab-content { display: none; }
-        .admin-tab-content.active { display: block; }
-
-        .empty-state { text-align: center; padding: 40px; color: var(--text-light); }
-        .empty-state i { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
-        .empty-state p { font-size: 14px; }
-
-        .doc-footer { text-align: center; padding: 40px 0 20px; margin-top: 40px; border-top: 1px solid var(--border); }
-        .doc-seal { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800; border: 3px solid var(--border); margin-bottom: 16px; }
-        .doc-footer h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
-        .doc-footer p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
-        .doc-footer .classified-footer { margin-top: 12px; font-size: 11px; color: var(--warning); font-weight: 600; letter-spacing: 0.5px; }
-
-        ::-webkit-scrollbar { width: 8px; }
+        .section-header h1 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; margin-bottom: 8px; background: linear-gradient(135deg, var(--text-primary), var(--text-secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .section-header p { color: var(--text-secondary); font-size: 15px; }
+        .card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 20px; transition: all 0.3s ease; }
+        .card:hover { border-color: var(--primary-light); box-shadow: 0 8px 32px rgba(37, 99, 235, 0.1); }
+        .card h3 { font-size: 18px; font-weight: 600; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+        .card h3 i { color: var(--primary-light); }
+        .card p, .card li { color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+        .card ul { padding-left: 20px; margin-top: 8px; }
+        .card li { margin-bottom: 6px; }
+        .highlight-box { background: linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(30, 58, 138, 0.1)); border-left: 4px solid var(--primary-light); border-radius: 0 12px 12px 0; padding: 16px 20px; margin: 16px 0; }
+        .highlight-box.warning { background: linear-gradient(135deg, rgba(245, 158, 11, 0.15), rgba(217, 119, 6, 0.1)); border-left-color: var(--secondary); }
+        .highlight-box.danger { background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(220, 38, 38, 0.1)); border-left-color: var(--danger); }
+        .quota-table { width: 100%; border-collapse: collapse; margin-top: 16px; overflow-x: auto; display: block; }
+        .quota-table thead { display: none; }
+        .quota-table th { background: var(--primary); color: white; padding: 14px 16px; text-align: left; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+        .quota-table td { padding: 14px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .quota-table tr:hover td { background: rgba(37, 99, 235, 0.05); }
+        .quota-table .rank-cell { font-weight: 600; color: var(--text-primary); }
+        .quota-cards { display: flex; flex-direction: column; gap: 16px; }
+        .quota-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; transition: all 0.3s ease; }
+        .quota-card:hover { border-color: var(--primary-light); }
+        .quota-card .rank-title { font-size: 16px; font-weight: 700; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--border); }
+        .quota-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .quota-row:last-child { border-bottom: none; }
+        .quota-row .label { color: var(--text-secondary); font-size: 13px; }
+        .quota-row .value { font-weight: 600; font-size: 13px; }
+        .quota-row .value.na { color: var(--text-muted); font-style: italic; }
+        .chain-container { display: flex; flex-direction: column; gap: 16px; margin-top: 20px; }
+        .chain-level { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; position: relative; overflow: hidden; }
+        .chain-level::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px; }
+        .chain-level.high::before { background: linear-gradient(180deg, var(--secondary), #d97706); }
+        .chain-level.middle::before { background: linear-gradient(180deg, var(--primary-light), var(--primary)); }
+        .chain-level.low::before { background: linear-gradient(180deg, var(--success), #059669); }
+        .chain-level .level-badge { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+        .chain-level.high .level-badge { background: rgba(245, 158, 11, 0.2); color: var(--secondary-light); }
+        .chain-level.middle .level-badge { background: rgba(37, 99, 235, 0.2); color: var(--primary-light); }
+        .chain-level.low .level-badge { background: rgba(16, 185, 129, 0.2); color: var(--success); }
+        .chain-level h4 { font-size: 18px; font-weight: 700; margin-bottom: 4px; }
+        .chain-level p { color: var(--text-secondary); font-size: 14px; }
+        .chain-arrow { text-align: center; color: var(--text-muted); font-size: 20px; }
+        .signature-section { margin-top: 40px; padding-top: 32px; border-top: 2px solid var(--border); }
+        .signature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-top: 24px; }
+        .signature-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 28px; text-align: center; position: relative; overflow: hidden; }
+        .signature-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; }
+        .signature-card.senior::after { background: linear-gradient(90deg, var(--secondary), #d97706); }
+        .signature-card.csec::after { background: linear-gradient(90deg, var(--primary-light), var(--primary)); }
+        .signature-text { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; font-style: italic; color: var(--text-primary); margin: 16px 0; line-height: 1.2; }
+        .signature-line { width: 80%; height: 1px; background: linear-gradient(90deg, transparent, var(--text-muted), transparent); margin: 16px auto; }
+        .signature-name { font-size: 14px; font-weight: 600; color: var(--text-primary); }
+        .signature-title { font-size: 12px; color: var(--text-secondary); margin-top: 4px; }
+        .credits { text-align: center; margin-top: 40px; padding: 24px; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(30, 58, 138, 0.05)); border-radius: 16px; border: 1px solid var(--border); }
+        .credits h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; }
+        .credits .names { font-size: 16px; font-weight: 600; color: var(--primary-light); }
+        .admin-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+        .admin-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+        .admin-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
+        .admin-card h3 i { color: var(--primary-light); }
+        .user-list { max-height: 300px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .user-list-item { display: flex; align-items: center; justify-content: space-between; padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 10px; margin-bottom: 8px; border: 1px solid transparent; transition: all 0.3s ease; }
+        .user-list-item:hover { border-color: var(--border); }
+        .user-list-item .user-email { font-size: 13px; font-weight: 500; word-break: break-all; }
+        .user-list-item .user-rank { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; text-transform: uppercase; white-space: nowrap; margin-left: 8px; }
+        .user-list-item .actions { display: flex; gap: 6px; flex-shrink: 0; margin-left: 8px; }
+        .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
+        .icon-btn.delete { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .icon-btn.delete:hover { background: rgba(239, 68, 68, 0.3); }
+        .add-user-form { display: flex; flex-direction: column; gap: 12px; }
+        .add-user-form input, .add-user-form select { padding: 12px 14px; background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; color: var(--text-primary); font-size: 14px; font-family: 'Inter', sans-serif; -webkit-appearance: none; }
+        .add-user-form input:focus, .add-user-form select:focus { outline: none; border-color: var(--primary-light); }
+        .audit-log { max-height: 300px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        .audit-entry { display: flex; align-items: flex-start; gap: 12px; padding: 12px; background: rgba(15, 23, 42, 0.5); border-radius: 10px; margin-bottom: 8px; border-left: 3px solid var(--primary-light); }
+        .audit-entry.removed { border-left-color: var(--danger); }
+        .audit-entry.added { border-left-color: var(--success); }
+        .audit-entry.login { border-left-color: var(--info); }
+        .audit-entry.pin { border-left-color: var(--secondary); }
+        .audit-entry .icon { width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+        .audit-entry .icon.added { background: rgba(16, 185, 129, 0.15); color: var(--success); }
+        .audit-entry .icon.removed { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
+        .audit-entry .icon.login { background: rgba(59, 130, 246, 0.15); color: var(--info); }
+        .audit-entry .icon.pin { background: rgba(245, 158, 11, 0.15); color: var(--secondary); }
+        .audit-entry .details { flex: 1; min-width: 0; }
+        .audit-entry .details .action { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .audit-entry .details .target { font-size: 12px; color: var(--text-secondary); margin-top: 2px; word-break: break-all; }
+        .audit-entry .time { font-size: 11px; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; }
+        .tabs { display: flex; gap: 4px; margin-bottom: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; }
+        .tab { padding: 8px 16px; border-radius: 10px; font-size: 12px; font-weight: 600; cursor: pointer; white-space: nowrap; transition: all 0.3s ease; background: transparent; border: 1px solid var(--border); color: var(--text-secondary); -webkit-tap-highlight-color: transparent; }
+        .tab.active { background: var(--primary); border-color: var(--primary); color: white; }
+        .swipe-hint { display: flex; align-items: center; justify-content: center; gap: 8px; padding: 12px; background: rgba(37, 99, 235, 0.1); border-radius: 10px; margin-bottom: 20px; font-size: 12px; color: var(--primary-light); animation: fadeInOut 3s ease infinite; }
+        @keyframes fadeInOut { 0%, 100% { opacity: 0.6; } 50% { opacity: 1; } }
+        ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: rgba(30,58,138,0.3); border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: rgba(30,58,138,0.5); }
-
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .animate-in { animation: fadeInUp 0.5s ease forwards; }
-
-        @media (max-width: 1200px) { .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
-        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } .admin-stats-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } .admin-form-row { grid-template-columns: 1fr; } }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+        .nav-item, .pin-key, .menu-toggle, .tab, .icon-btn, .btn { touch-action: manipulation; }
+        .pin-key, .nav-item, .menu-toggle { -webkit-user-select: none; user-select: none; }
+        @media (min-width: 768px) {
+            .sidebar { transform: translateX(0); position: fixed; }
+            .main { margin-left: 280px; }
+            .menu-toggle { display: none; }
+            .top-bar { padding-left: 24px; }
+            .admin-grid { grid-template-columns: 1fr 1fr; }
+            .quota-table { display: table; }
+            .quota-table thead { display: table-header-group; }
+            .quota-cards { display: none; }
+            .section-header h1 { font-size: 40px; }
+            .content-area { padding: 32px 40px; }
+            .swipe-hint { display: none; }
+        }
+        @media (min-width: 1024px) {
+            .admin-grid { grid-template-columns: 1fr 1fr 1fr; }
+        }
     </style>
-    <base target="_blank">
 <base target="_blank">
 </head>
 <body>
-
-<!-- LOGIN SCREEN -->
-<div class="login-screen" id="loginScreen">
-    <div class="login-logo"><i class="fas fa-book-open"></i></div>
-    <div class="login-org">Clockwork's United State of America</div>
-    <div class="login-suborg">Tedder Management Staff Team</div>
-    <div class="login-title">Community<br><span>Department</span></div>
-    <div class="login-subtitle">Official Handbook</div>
-    <div class="classified-banner">
-        <div class="label"><i class="fas fa-shield-alt"></i> Classified Document — Restricted Access</div>
-        <p>This handbook is strictly classified and intended exclusively for authorized members of the Community Department within the Tedder Management Staff Team of CUSA. Unauthorized access, distribution, sharing, or leaking of any content contained within this document is a serious violation of your agreement and will result in immediate disciplinary action, up to and including permanent removal from the team and associated groups.</p>
-    </div>
-
-    <!-- STEP 1: EMAIL INPUT -->
-    <div class="login-card" id="loginStepEmail">
-        <h3><i class="fas fa-lock-open" style="color: #60a5fa;"></i> Identity Verification</h3>
-        <p class="desc">Enter your authorized email address below to verify your identity and gain access to the Community Department Handbook. Only authorized personnel may proceed.</p>
-        <div class="input-group">
-            <label>Email Address</label>
-            <input type="email" id="emailInput" placeholder="Enter your authorized email..." autocomplete="off">
+<!-- ========== LOGIN PAGE ========== -->
+<div class="login-page" id="loginPage">
+    <div class="login-container">
+        <div class="classified-banner">
+            <i class="fas fa-shield-halved"></i>
+            <h3>Classified Document</h3>
+            <p>This handbook contains sensitive internal information. Unauthorized distribution, sharing, or leaking of this document is strictly prohibited and will result in immediate disciplinary action. Access is restricted to authorized CUSA Community Department personnel only.</p>
         </div>
-        <button class="btn-primary" id="loginBtn" onclick="handleEmailSubmit()">Request Access</button>
-        <div class="login-error" id="loginError"></div>
-    </div>
-
-    <!-- STEP 2A: CREATE PIN (First Time) -->
-    <div class="login-card" id="loginStepCreatePin" style="display:none;">
-        <h3><i class="fas fa-key" style="color: #60a5fa;"></i> Create Security PIN</h3>
-        <p class="desc">This is your first time logging in. Create a 4-digit PIN to secure your account. You will use this PIN for all future logins.</p>
-        <div class="pin-step-indicator">
-            <div class="pin-step active" id="step1"></div>
-            <div class="pin-step" id="step2"></div>
-        </div>
-        <div class="pin-status" id="createPinStatus">Enter a 4-digit PIN</div>
-        <div class="pin-dots" id="createPinDots">
-            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-        </div>
-        <div class="pin-keypad" id="createPinKeypad">
-            <button class="pin-key" onclick="pinInput(1)">1</button>
-            <button class="pin-key" onclick="pinInput(2)">2</button>
-            <button class="pin-key" onclick="pinInput(3)">3</button>
-            <button class="pin-key" onclick="pinInput(4)">4</button>
-            <button class="pin-key" onclick="pinInput(5)">5</button>
-            <button class="pin-key" onclick="pinInput(6)">6</button>
-            <button class="pin-key" onclick="pinInput(7)">7</button>
-            <button class="pin-key" onclick="pinInput(8)">8</button>
-            <button class="pin-key" onclick="pinInput(9)">9</button>
-            <button class="pin-key empty"></button>
-            <button class="pin-key" onclick="pinInput(0)">0</button>
-            <button class="pin-key backspace" onclick="pinBackspace()"><i class="fas fa-backspace"></i></button>
-        </div>
-        <button class="btn-primary" id="createPinBtn" onclick="submitCreatePin()" style="margin-top: 20px;" disabled>Create PIN</button>
-        <div style="text-align: center; margin-top: 12px;">
-            <button onclick="cancelPinFlow()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Back to Email</button>
-        </div>
-    </div>
-
-    <!-- STEP 2B: CONFIRM PIN -->
-    <div class="login-card" id="loginStepConfirmPin" style="display:none;">
-        <h3><i class="fas fa-check-circle" style="color: #60a5fa;"></i> Confirm Your PIN</h3>
-        <p class="desc">Re-enter your 4-digit PIN to confirm. Make sure you remember it — you will need it for every future login.</p>
-        <div class="pin-step-indicator">
-            <div class="pin-step completed" id="step1b"></div>
-            <div class="pin-step active" id="step2b"></div>
-        </div>
-        <div class="pin-status" id="confirmPinStatus">Re-enter your PIN</div>
-        <div class="pin-dots" id="confirmPinDots">
-            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-        </div>
-        <div class="pin-keypad" id="confirmPinKeypad">
-            <button class="pin-key" onclick="confirmPinInput(1)">1</button>
-            <button class="pin-key" onclick="confirmPinInput(2)">2</button>
-            <button class="pin-key" onclick="confirmPinInput(3)">3</button>
-            <button class="pin-key" onclick="confirmPinInput(4)">4</button>
-            <button class="pin-key" onclick="confirmPinInput(5)">5</button>
-            <button class="pin-key" onclick="confirmPinInput(6)">6</button>
-            <button class="pin-key" onclick="confirmPinInput(7)">7</button>
-            <button class="pin-key" onclick="confirmPinInput(8)">8</button>
-            <button class="pin-key" onclick="confirmPinInput(9)">9</button>
-            <button class="pin-key empty"></button>
-            <button class="pin-key" onclick="confirmPinInput(0)">0</button>
-            <button class="pin-key backspace" onclick="confirmPinBackspace()"><i class="fas fa-backspace"></i></button>
-        </div>
-        <button class="btn-primary" id="confirmPinBtn" onclick="submitConfirmPin()" style="margin-top: 20px;" disabled>Confirm PIN</button>
-        <div style="text-align: center; margin-top: 12px;">
-            <button onclick="backToCreatePin()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Change PIN</button>
+        <div class="login-card">
+            <div class="login-logo">
+                <div class="shield"><i class="fas fa-shield-halved"></i></div>
+                <h1>Community Department<br>Handbook</h1>
+                <span>Clockwork's United States of America</span>
+            </div>
+            <div class="step-indicator" id="stepIndicator">
+                <div class="step-dot active"></div>
+                <div class="step-dot"></div>
+                <div class="step-dot"></div>
+            </div>
+            <div id="step1">
+                <div class="form-group">
+                    <label>Enter Your Email Address</label>
+                    <input type="email" id="emailInput" placeholder="your.email@example.com" autocomplete="email">
+                </div>
+                <button class="btn btn-primary" onclick="checkEmail()">Continue</button>
+                <div class="error-msg" id="step1Error"></div>
+            </div>
+            <div id="step2" style="display:none;">
+                <p style="text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:16px;">Create a 4-digit PIN for <strong id="newUserEmail"></strong></p>
+                <p style="text-align:center; color:var(--text-muted); font-size:12px; margin-bottom:8px;">You will use this PIN every time you log in. Keep it secure.</p>
+                <div class="pin-dots" id="pinDots1">
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                </div>
+                <div class="pin-keypad">
+                    <button class="pin-key" onclick="enterPin(1)">1</button>
+                    <button class="pin-key" onclick="enterPin(2)">2</button>
+                    <button class="pin-key" onclick="enterPin(3)">3</button>
+                    <button class="pin-key" onclick="enterPin(4)">4</button>
+                    <button class="pin-key" onclick="enterPin(5)">5</button>
+                    <button class="pin-key" onclick="enterPin(6)">6</button>
+                    <button class="pin-key" onclick="enterPin(7)">7</button>
+                    <button class="pin-key" onclick="enterPin(8)">8</button>
+                    <button class="pin-key" onclick="enterPin(9)">9</button>
+                    <button class="pin-key" style="visibility:hidden;"></button>
+                    <button class="pin-key" onclick="enterPin(0)">0</button>
+                    <button class="pin-key delete" onclick="deletePin()"><i class="fas fa-delete-left"></i></button>
+                </div>
+                <div class="error-msg" id="step2Error"></div>
+            </div>
+            <div id="step3" style="display:none;">
+                <p style="text-align:center; color:var(--text-secondary); font-size:14px; margin-bottom:16px;">Welcome back, <strong id="returnEmail"></strong></p>
+                <p style="text-align:center; color:var(--text-muted); font-size:12px; margin-bottom:8px;">Enter your PIN to access the handbook</p>
+                <div class="pin-dots" id="pinDots2">
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                    <div class="pin-dot"></div>
+                </div>
+                <div class="pin-keypad">
+                    <button class="pin-key" onclick="verifyPin(1)">1</button>
+                    <button class="pin-key" onclick="verifyPin(2)">2</button>
+                    <button class="pin-key" onclick="verifyPin(3)">3</button>
+                    <button class="pin-key" onclick="verifyPin(4)">4</button>
+                    <button class="pin-key" onclick="verifyPin(5)">5</button>
+                    <button class="pin-key" onclick="verifyPin(6)">6</button>
+                    <button class="pin-key" onclick="verifyPin(7)">7</button>
+                    <button class="pin-key" onclick="verifyPin(8)">8</button>
+                    <button class="pin-key" onclick="verifyPin(9)">9</button>
+                    <button class="pin-key" style="visibility:hidden;"></button>
+                    <button class="pin-key" onclick="verifyPin(0)">0</button>
+                    <button class="pin-key delete" onclick="deleteVerifyPin()"><i class="fas fa-delete-left"></i></button>
+                </div>
+                <div class="error-msg" id="step3Error"></div>
+                <p style="text-align:center; margin-top:12px;">
+                    <a href="#" onclick="resetPinRequest()" style="color:var(--primary-light); font-size:12px; text-decoration:none;">Forgot PIN? Contact an Admin</a>
+                </p>
+            </div>
         </div>
     </div>
-
-    <!-- STEP 3: ENTER EXISTING PIN -->
-    <div class="login-card" id="loginStepEnterPin" style="display:none;">
-        <h3><i class="fas fa-shield-alt" style="color: #60a5fa;"></i> Enter Security PIN</h3>
-        <p class="desc">Welcome back. Enter your 4-digit PIN to access the Community Department Handbook.</p>
-        <div class="pin-status" id="enterPinStatus">Enter your PIN</div>
-        <div class="pin-dots" id="enterPinDots">
-            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
-        </div>
-        <div class="pin-keypad" id="enterPinKeypad">
-            <button class="pin-key" onclick="enterPinInput(1)">1</button>
-            <button class="pin-key" onclick="enterPinInput(2)">2</button>
-            <button class="pin-key" onclick="enterPinInput(3)">3</button>
-            <button class="pin-key" onclick="enterPinInput(4)">4</button>
-            <button class="pin-key" onclick="enterPinInput(5)">5</button>
-            <button class="pin-key" onclick="enterPinInput(6)">6</button>
-            <button class="pin-key" onclick="enterPinInput(7)">7</button>
-            <button class="pin-key" onclick="enterPinInput(8)">8</button>
-            <button class="pin-key" onclick="enterPinInput(9)">9</button>
-            <button class="pin-key empty"></button>
-            <button class="pin-key" onclick="enterPinInput(0)">0</button>
-            <button class="pin-key backspace" onclick="enterPinBackspace()"><i class="fas fa-backspace"></i></button>
-        </div>
-        <button class="btn-primary" id="enterPinBtn" onclick="submitEnterPin()" style="margin-top: 20px;" disabled>Unlock</button>
-        <div style="text-align: center; margin-top: 12px;">
-            <button onclick="forgotPin()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-question-circle"></i> Forgot PIN? Contact an admin.</button>
-        </div>
-        <div style="text-align: center; margin-top: 8px;">
-            <button onclick="cancelPinFlow()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Use different email</button>
-        </div>
-    </div>
-
-    <div class="login-footer">&copy; 2026 Tedder Management Staff Team &middot; CUSA &middot; All Rights Reserved</div>
 </div>
-<!-- MAIN APP -->
-<div class="app-container" id="appContainer">
-    <nav class="sidebar">
+
+<!-- ========== APP ========== -->
+<div class="app" id="app">
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+    <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
-            <div class="brand">
-                <div class="brand-icon"><i class="fas fa-book-open"></i></div>
-                <div><div class="brand-text">Community Department Handbook</div></div>
-            </div>
-            <div class="brand-sub">CUSA &middot; Tedder Management Staff Team</div>
+            <div class="shield-sm"><i class="fas fa-shield-halved"></i></div>
+            <h2>Community Dept.<br>Handbook</h2>
+            <p>CUSA Official</p>
         </div>
-        <div class="sidebar-section-label">Sections</div>
-        <button class="nav-item active" onclick="showSection('section-welcome', this)"><i class="fas fa-home"></i> Welcome &amp; Table of Contents</button>
-        <button class="nav-item" onclick="showSection('section-intro', this)"><i class="fas fa-info-circle"></i> Introduction</button>
-        <button class="nav-item" onclick="showSection('section-responsibilities', this)"><i class="fas fa-tasks"></i> Responsibilities</button>
-        <button class="nav-item" onclick="showSection('section-events', this)"><i class="fas fa-calendar-star"></i> Events &amp; Giveaways</button>
-        <button class="nav-item" onclick="showSection('section-quota', this)"><i class="fas fa-chart-bar"></i> Quota</button>
-        <button class="nav-item" onclick="showSection('section-chain', this)"><i class="fas fa-sitemap"></i> Chain of Command</button>
-        <button class="nav-item" onclick="showSection('section-closing', this)"><i class="fas fa-file-signature"></i> Closing &amp; Signatures</button>
-
-        <div class="sidebar-section-label" id="adminNavLabel" style="display:none;">Administration</div>
-        <button class="nav-item admin-only" id="adminNavItem" onclick="showSection('section-admin', this)"><i class="fas fa-cog"></i> Admin Panel</button>
-    </nav>
-
-    <div class="top-bar">
-        <div class="user-badge">
-            <div class="avatar" id="userAvatar">U</div>
-            <span id="userDisplay">user@email.com</span>
-            <button class="btn-exit" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Exit</button>
+        <div class="user-info" id="userInfo">
+            <div class="email" id="userEmailDisplay"></div>
+            <span class="rank-badge" id="userRankDisplay"></span>
         </div>
-    </div>
-
-    <main class="main-content">
-
-        <!-- SECTION 01: WELCOME -->
-        <section id="section-welcome" class="content-section animate-in">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-book-open"></i> Section 01</div>
-                <h1 class="section-title">Welcome</h1>
-            </div>
-            <div class="content-card">
-                <div class="card-title">Welcome to the Community Department Handbook</div>
-                <div class="card-text">
-                    <p>This handbook serves as the official reference guide for all members of the <strong>Community Department</strong> within the <strong>Tedder Management Staff Team</strong> of <strong>Clockwork's United State of America (CUSA)</strong>. It outlines the expectations, responsibilities, procedures, and policies that every member is expected to understand and uphold.</p>
-                    <p style="margin-top: 12px;">The Community Department is the backbone of CUSA's moderation and community engagement efforts. We are responsible for maintaining a safe, fair, and welcoming environment for all members of the community. This handbook has been crafted to ensure that every member of the team operates with consistency, professionalism, and dedication.</p>
-                    <p style="margin-top: 12px;">This document serves all ranks within the Community Department — from <strong>Community Moderators (CMOD)</strong> to the <strong>Community Director (CD)</strong>. Whether you are newly appointed or a seasoned member, this handbook is your go-to resource for all department guidelines.</p>
+        <div class="sidebar-section">
+            <div class="sidebar-label">Sections</div>
+            <nav>
+                <div class="nav-item active" data-section="welcome" onclick="showSection('welcome')">
+                    <i class="fas fa-house"></i>
+                    <span>Welcome & Table of Contents</span>
                 </div>
-                <div class="alert-box">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <div class="alert-title">Classification Notice</div>
-                        <div class="alert-text">This handbook is strictly classified for authorized Community Department personnel only. Do not share, reproduce, or distribute any part of this document outside the department.</div>
-                    </div>
+                <div class="nav-item" data-section="introduction" onclick="showSection('introduction')">
+                    <i class="fas fa-circle-info"></i>
+                    <span>Introduction</span>
                 </div>
-            </div>
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-list"></i> Table of Contents</div>
-                <div class="toc-grid">
-                    <div class="toc-item" onclick="showSection('section-welcome', null)"><div class="toc-num">01</div><div class="toc-info"><h4>Welcome &amp; Table of Contents</h4><p>Purpose and overview of this handbook</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-intro', null)"><div class="toc-num">02</div><div class="toc-info"><h4>Introduction</h4><p>Department Scope, Core Values &amp; Work Platforms</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-responsibilities', null)"><div class="toc-num">03</div><div class="toc-info"><h4>Responsibilities</h4><p>Roles and duties for all CD ranks</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-events', null)"><div class="toc-num">04</div><div class="toc-info"><h4>Events &amp; Giveaways</h4><p>Event protocol, types, documentation &amp; giveaway guidelines</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-quota', null)"><div class="toc-num">05</div><div class="toc-info"><h4>Quota</h4><p>Weekly quota requirements by rank</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-chain', null)"><div class="toc-num">06</div><div class="toc-info"><h4>Chain of Command</h4><p>Rank structure and command hierarchy</p></div></div>
-                    <div class="toc-item" onclick="showSection('section-closing', null)"><div class="toc-num">07</div><div class="toc-info"><h4>Closing &amp; Signatures</h4><p>Official approval and signatures</p></div></div>
+                <div class="nav-item" data-section="responsibilities" onclick="showSection('responsibilities')">
+                    <i class="fas fa-list-check"></i>
+                    <span>Responsibilities</span>
                 </div>
-            </div>
-        </section>
+                <div class="nav-item" data-section="events" onclick="showSection('events')">
+                    <i class="fas fa-calendar-star"></i>
+                    <span>Events & Giveaways</span>
+                </div>
+                <div class="nav-item" data-section="quota" onclick="showSection('quota')">
+                    <i class="fas fa-chart-bar"></i>
+                    <span>Quota</span>
+                </div>
+                <div class="nav-item" data-section="chain" onclick="showSection('chain')">
+                    <i class="fas fa-sitemap"></i>
+                    <span>Chain of Command</span>
+                </div>
+                <div class="nav-item" data-section="closing" onclick="showSection('closing')">
+                    <i class="fas fa-file-signature"></i>
+                    <span>Closing & Signatures</span>
+                </div>
+            </nav>
+        </div>
+        <div class="sidebar-section">
+            <div class="sidebar-label">Administration</div>
+            <nav>
+                <div class="nav-item admin-only" data-section="admin" onclick="showSection('admin')">
+                    <i class="fas fa-gear"></i>
+                    <span>Admin Panel</span>
+                </div>
+            </nav>
+        </div>
+        <div class="logout-btn" onclick="logout()">
+            <i class="fas fa-right-from-bracket"></i> Log Out
+        </div>
+    </aside>
 
-        <!-- SECTION 02: INTRODUCTION -->
-        <section id="section-intro" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-info-circle"></i> Section 02</div>
-                <h1 class="section-title">Introduction</h1>
+    <main class="main">
+        <div class="top-bar">
+            <button class="menu-toggle" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="top-bar-title" id="topBarTitle">Welcome & Table of Contents</div>
+            <div class="top-bar-actions"></div>
+        </div>
+        <div class="content-area">
+            <div class="swipe-hint" id="swipeHint">
+                <i class="fas fa-hand-pointer"></i>
+                <span>Swipe left/right to navigate sections</span>
             </div>
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-crosshairs"></i> Department Scope</div>
-                <div class="card-text">
-                    <p>The <strong>Community Department</strong> supports the Moderation Department with all non-military community interactions including Discord moderation, in-game support, ticket resolution, community events (CD only), giveaway administration (CD only), and rank logging for eligible personnel:</p>
-                    <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-light); line-height: 2;">
-                        <li>Moderating the CUSA game servers and Discord community to ensure a safe environment for all players.</li>
-                        <li>Planning, organizing, and hosting community events and giveaways to engage the playerbase.</li>
-                        <li>Enforcing the CUSA ruleset fairly and consistently across all platforms.</li>
-                        <li>Documenting all moderation actions, event activity, and rank changes to maintain transparency.</li>
-                        <li>Supporting and nurturing new community members and staff team recruits.</li>
+
+            <!-- WELCOME -->
+            <div class="section active" id="section-welcome">
+                <div class="section-header">
+                    <h1>Welcome</h1>
+                    <p>Community Department Handbook &mdash; CUSA</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-book-open"></i> Table of Contents</h3>
+                    <ul style="list-style:none; padding:0;">
+                        <li style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">1</span><span>Introduction</span>
+                        </li>
+                        <li style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">2</span><span>Responsibilities</span>
+                        </li>
+                        <li style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">3</span><span>Events &amp; Giveaways</span>
+                        </li>
+                        <li style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">4</span><span>Quota</span>
+                        </li>
+                        <li style="padding:10px 0; border-bottom:1px solid var(--border); display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">5</span><span>Chain of Command</span>
+                        </li>
+                        <li style="padding:10px 0; display:flex; align-items:center; gap:12px;">
+                            <span style="background:var(--primary); color:white; width:28px; height:28px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700;">6</span><span>Closing &amp; Signatures</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-circle-exclamation"></i> Document Notice</h3>
+                    <p>This handbook serves as the official guide for all members of the Community Department within Clockwork's United States of America (CUSA). All personnel are expected to read, understand, and abide by the policies outlined herein. Failure to comply may result in disciplinary action.</p>
+                </div>
+            </div>
+
+            <!-- INTRODUCTION -->
+            <div class="section" id="section-introduction">
+                <div class="section-header">
+                    <h1>Introduction</h1>
+                    <p>Purpose and scope of the Community Department</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-bullseye"></i> Purpose</h3>
+                    <p>The Community Department exists to foster a positive, engaging, and well-moderated environment within CUSA. Our mission is to ensure that all community members feel welcome, safe, and heard while maintaining the standards and integrity of the community.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-users"></i> Department Overview</h3>
+                    <p>The Community Department is responsible for overseeing community interactions, organizing events, managing giveaways, enforcing community guidelines, and serving as the bridge between the community and Senior Management.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-gavel"></i> Authority</h3>
+                    <p>All Community Department members operate under the authority of the Community Director and Senior Management. Decisions made by High Command are final and binding. Members are expected to carry out their duties with professionalism, impartiality, and dedication.</p>
+                </div>
+            </div>
+
+            <!-- RESPONSIBILITIES -->
+            <div class="section" id="section-responsibilities">
+                <div class="section-header">
+                    <h1>Responsibilities</h1>
+                    <p>Duties and expectations by rank</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-crown"></i> Community Director (CD)</h3>
+                    <ul>
+                        <li>Oversee all Community Department operations</li>
+                        <li>Approve or deny event proposals and major decisions</li>
+                        <li>Manage department staff and conduct promotions/demotions</li>
+                        <li>Represent the department in Senior Management meetings</li>
+                        <li>Ensure all quotas and standards are maintained</li>
+                        <li>Handle escalated issues and appeals</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-user-tie"></i> Community Secretary (CSEC)</h3>
+                    <ul>
+                        <li>Assist the Community Director in daily operations</li>
+                        <li>Supervise Senior Community Moderators and Community Moderators</li>
+                        <li>Review and approve moderation logs and rank logs</li>
+                        <li>Coordinate events and giveaways</li>
+                        <li>Handle staff reports and internal disputes</li>
+                        <li>Act as CD in their absence</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-user-shield"></i> Senior Community Moderator (SCMOD)</h3>
+                    <ul>
+                        <li>Moderate community channels and enforce rules</li>
+                        <li>Assist in organizing events and giveaways</li>
+                        <li>Train and mentor Community Moderators</li>
+                        <li>Submit weekly moderation logs</li>
+                        <li>Report issues to CSEC or CD</li>
+                        <li>Maintain weekly quota requirements</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-user-check"></i> Community Moderator (CMOD)</h3>
+                    <ul>
+                        <li>Monitor community channels for rule violations</li>
+                        <li>Issue warnings and enforce community guidelines</li>
+                        <li>Participate in events and giveaways</li>
+                        <li>Submit weekly moderation logs</li>
+                        <li>Assist community members with questions</li>
+                        <li>Maintain weekly quota requirements</li>
                     </ul>
                 </div>
             </div>
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-heart"></i> Core Values</div>
-                <div class="card-text" style="margin-bottom: 16px;">These are the principles that guide every member of the Community Department in their day-to-day work.</div>
-                <div class="events-grid">
-                    <div class="event-type"><h4>Integrity</h4><p>We uphold honesty and transparency in all department actions and decisions.</p></div>
-                    <div class="event-type"><h4>Professionalism</h4><p>We conduct ourselves with respect, discipline, and maturity at all times.</p></div>
-                    <div class="event-type"><h4>Dedication</h4><p>We are committed to the growth and well-being of the CUSA community.</p></div>
-                    <div class="event-type"><h4>Fairness</h4><p>We enforce rules and policies without bias, favoritism, or prejudice.</p></div>
-                    <div class="event-type" style="grid-column: 1 / -1;"><h4>Teamwork</h4><p>We collaborate and support one another to achieve the department's goals.</p></div>
-                </div>
-            </div>
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-desktop"></i> Work Platforms</div>
-                <div class="card-text" style="margin-bottom: 16px;">The Community Department operates across the following platforms. All members are expected to maintain an active and professional presence across these spaces.</div>
-                <div class="rank-body" style="padding: 0;">
-                    <ol>
-                        <li><strong style="color: var(--primary);">Roblox</strong> — Primary game platform where moderation and community events take place within CUSA.</li>
-                        <li><strong style="color: var(--primary);">Discord</strong> — Main communication hub for all department meetings, announcements, logs, and coordination.</li>
-                        <li><strong style="color: var(--primary);">Department Logs Channel</strong> — Where all official logs — moderation, event, and rank logs — are submitted by department members.</li>
-                        <li><strong style="color: var(--primary);">Request Channel</strong> — Used for submitting lower quota, VC and other requirements inside quota with a valid reason.</li>
-                        <li><strong style="color: var(--primary);">LoA Channel</strong> — Leave of Absence channel for members who need to temporarily step away from their duties.</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
 
-        <!-- SECTION 03: RESPONSIBILITIES -->
-        <section id="section-responsibilities" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-tasks"></i> Section 03</div>
-                <h1 class="section-title">Responsibilities</h1>
-            </div>
-            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">Every rank within the Community Department carries specific duties and expectations. Below are the official responsibilities for each rank, listed from highest to lowest.</div>
-
-            <div class="rank-card">
-                <div class="rank-header cd">
-                    <div class="rank-title">
-                        <div class="rank-icon"><i class="fas fa-crown"></i></div>
-                        <div><h3>Community Director</h3><span class="rank-abbr">CD · High Command</span></div>
-                    </div>
-                    <span class="badge">5 Responsibilities</span>
+            <!-- EVENTS & GIVEAWAYS -->
+            <div class="section" id="section-events">
+                <div class="section-header">
+                    <h1>Events &amp; Giveaways</h1>
+                    <p>Guidelines for community engagement activities</p>
                 </div>
-                <div class="rank-body">
-                    <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
-                        <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help lower ranks if they need help on a question or issue.</li>
-                        <li>Give news about the department.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-header csec">
-                    <div class="rank-title">
-                        <div class="rank-icon"><i class="fas fa-user-tie"></i></div>
-                        <div><h3>Community Secretary</h3><span class="rank-abbr">CSEC · Middle Command</span></div>
-                    </div>
-                    <span class="badge">8 Responsibilities</span>
-                </div>
-                <div class="rank-body">
-                    <ol>
-                        <li>Assist the Community Director in managing day-to-day departmental operations.</li>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
-                        <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask a partner.</li>
-                        <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help lower ranks if they need help on a question or issue.</li>
-                        <li>Help the Moderation Department with rank logs.</li>
-                        <li>Help Community Director with quota and updates.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-header scmod">
-                    <div class="rank-title">
-                        <div class="rank-icon"><i class="fas fa-star"></i></div>
-                        <div><h3>Senior Community Moderator</h3><span class="rank-abbr">SCMOD · Low Command</span></div>
-                    </div>
-                    <span class="badge">5 Responsibilities</span>
-                </div>
-                <div class="rank-body">
-                    <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
-                        <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask another Community Member.</li>
-                        <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Help Community Moderators if they need help on a question or issue.</li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="rank-card">
-                <div class="rank-header cmod">
-                    <div class="rank-title">
-                        <div class="rank-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div><h3>Community Moderator</h3><span class="rank-abbr">CMOD · Low Command</span></div>
-                    </div>
-                    <span class="badge">5 Responsibilities</span>
-                </div>
-                <div class="rank-body">
-                    <ol>
-                        <li>Monitor and moderate in-game moderation according to Tedder Management Punishment Guide.</li>
-                        <li>Log all moderation actions in mod logs with valid evidence.</li>
-                        <li>If you have any issues or questions, you may ask another Community Member.</li>
-                        <li>Maintain activity requirements as specified in quota section.</li>
-                        <li>Meet weekly quota requirements as outlined in the Quota section of this handbook.</li>
-                    </ol>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 04: EVENTS & GIVEAWAYS -->
-        <section id="section-events" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-calendar-star"></i> Section 04</div>
-                <h1 class="section-title">Events &amp; Giveaways</h1>
-            </div>
-            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">Community events and giveaways are essential for maintaining player retention and fostering positive relations between CUSA Staff Team and community engagement.</div>
-
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-calendar-check"></i> Event Protocol</div>
-                <div class="card-title" style="font-size: 15px; margin-top: 16px;"><i class="fas fa-info-circle" style="background: #e0e7ff; color: #4338ca;"></i> Event Information</div>
-                <div class="card-text" style="margin-bottom: 12px;">The Community Department is authorized to host the following types of community events. <a href="https://docs.google.com/document/d/1UamDHOt-5h33biNPmXUAwBJsR2zx1tfNgKuE9XI0zl4/edit?tab=t.0#heading=h.psoyspka74vk" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: underline;">View our Community Event Games Document <i class="fas fa-external-link-alt" style="font-size: 11px;"></i></a> for a full list of games we use.</div>
-                <div class="card-title" style="font-size: 15px; margin-top: 24px;"><i class="fas fa-layer-group" style="background: #e0e7ff; color: #4338ca;"></i> Event Types</div>
-                <div class="card-text" style="margin-bottom: 12px;">The Community Department is authorized to host the following types of community events:</div>
-                <div class="events-grid">
-                    <div class="event-type"><h4>Game Nights</h4><p>Organized sessions where community members play Roblox games together, fostering team spirit and community bonding.</p></div>
-                    <div class="event-type"><h4>Trivia Events</h4><p>Quiz-style events covering CUSA lore, general knowledge, or Roblox topics.</p></div>
-                    <div class="event-type"><h4>Tournaments</h4><p>Competitive events where community members compete against each other in specific games or challenges.</p></div>
-                    <div class="event-type"><h4>Holiday Events</h4><p>Special themed events organized around real-world or Roblox holidays and celebrations.</p></div>
-                    <div class="event-type"><h4>Obby</h4><p>Games where people do parkour/obby challenges.</p></div>
-                    <div class="event-type"><h4>Horror Games</h4><p>Horror games where people team together to complete a story or defeat something.</p></div>
-                </div>
-            </div>
-
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-file-alt"></i> Event Logging</div>
-                <div class="card-text">
-                    <p>Proper logging is mandatory for all events hosted by Community Department members. Failure to document events may result in the event not counting toward the weekly quota.</p>
-                    <div style="margin-top: 16px; padding-left: 16px; border-left: 3px solid var(--primary-light);">
-                        <p style="font-weight: 600; color: var(--text); margin-bottom: 4px;">Event Log Format</p>
-                        <p style="font-size: 13px;">Logs must include the event name, event description, and host name. (Inside community event channel, not the event logs channel)</p>
+                <div class="card">
+                    <h3><i class="fas fa-calendar-days"></i> Community Events</h3>
+                    <p>Community events are organized to increase engagement, reward active members, and strengthen community bonds. All events must be approved by CSEC+ before announcement.</p>
+                    <div class="highlight-box">
+                        <strong>Event Planning Process:</strong><br>
+                        1. Submit event proposal to CSEC or CD<br>
+                        2. Await approval and feedback<br>
+                        3. Coordinate with relevant departments<br>
+                        4. Announce event with proper formatting<br>
+                        5. Execute and document the event<br>
+                        6. Submit post-event report
                     </div>
                 </div>
-            </div>
-
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-gift"></i> Giveaway Description</div>
-                <div class="card-title" style="font-size: 15px; margin-top: 16px;"><i class="fas fa-info-circle" style="background: #fce7f3; color: #be185d;"></i> Giveaway Information</div>
-                <div class="card-text">
-                    <p>Giveaways are a great way to reward our community and boost engagement. All giveaways must follow the guidelines below to ensure fairness and compliance with CUSA policies:</p>
-                    <ul style="margin-top: 12px; padding-left: 20px; color: var(--text-light); line-height: 2;">
-                        <li>Giveaways may be sponsored by yourself or another member of the Community Department. However, you require permission from CD to host one as they are able to coordinate with the giveaway department in CET.</li>
+                <div class="card">
+                    <h3><i class="fas fa-gift"></i> Giveaways</h3>
+                    <p>Giveaways are a key tool for community retention and growth. All giveaways must follow the established guidelines to ensure fairness and transparency.</p>
+                    <ul>
+                        <li>All giveaways require CSEC+ approval</li>
+                        <li>Prizes must be confirmed available before announcement</li>
+                        <li>Winner selection must be random and verifiable</li>
+                        <li>Prize distribution must be documented</li>
+                        <li>No staff may participate in giveaways they organize</li>
                     </ul>
                 </div>
-                <div class="alert-box red" style="margin-top: 20px;">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <div>
-                        <div class="alert-title">Important Note for Moderators</div>
-                        <div class="alert-text">Moderators are reminded that giveaway hosting is a privilege, not a right. All giveaway winners must be publicly announced in the designated channel. Private giveaways are prohibited and are not to be hosted by any of the Community Moderators.</div>
-                    </div>
+                <div class="card">
+                    <h3><i class="fas fa-clipboard-list"></i> Documentation</h3>
+                    <p>All events and giveaways must be properly documented including: date, time, participants, outcomes, and any issues encountered. Documentation should be submitted within 24 hours of event conclusion.</p>
                 </div>
             </div>
-        </section>
-
-        <!-- SECTION 05: QUOTA -->
-        <section id="section-quota" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-chart-bar"></i> Section 05</div>
-                <h1 class="section-title">Weekly Quota</h1>
-            </div>
-            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">All active members of the Community Department are required to meet their weekly quota. Quotas reset every week and must be logged <strong style="color: var(--text);">every Saturday</strong> in the designated logs channel. Failure to meet quota without an approved exemption may result in disciplinary action.</div>
-
-            <div class="alert-box" style="margin-bottom: 24px;">
-                <i class="fas fa-clock"></i>
-                <div>
-                    <div class="alert-title">Quota Deadline</div>
-                    <div class="alert-text">Quota is logged every Saturday. All logs must be submitted before end of deadline.</div>
+<!-- QUOTA -->
+            <div class="section" id="section-quota">
+                <div class="section-header">
+                    <h1>Quota</h1>
+                    <p>Weekly requirements by rank</p>
                 </div>
-            </div>
-
-            <div class="content-card">
-                <div class="admin-edit-hint" id="quotaAdminHint"><i class="fas fa-lock"></i> Admin-only: Quota values are editable by CD and CSEC ranks.</div>
-                <div class="card-title"><i class="fas fa-table"></i> Quota Requirements by Rank</div>
-                <div class="quota-table-wrap">
-                    <table class="quota-table" id="quotaTable">
+                <div class="highlight-box warning">
+                    <i class="fas fa-triangle-exclamation" style="margin-right:8px;"></i>
+                    <strong>Quota Exemption:</strong> Quota exemption or reduction can be requested either in the <strong>Request Channel</strong> or the <strong>LOA Channel</strong>. All requests must be approved by CSEC+.
+                </div>
+                <div style="overflow-x:auto;">
+                    <table class="quota-table">
                         <thead>
-                            <tr>
-                                <th>Rank</th>
-                                <th>Minutes</th>
-                                <th>Community Events</th>
-                                <th>Moderation Logs</th>
-                                <th>Rank Logs</th>
-                            </tr>
+                            <tr><th>Rank</th><th>Minutes</th><th>Community Events</th><th>Moderation Logs</th><th>Rank Logs</th></tr>
                         </thead>
                         <tbody>
-                            <tr data-rank="cmod">
-                                <td>
-                                    <div class="rank-name">Community Moderator</div>
-                                    <span class="rank-tag" style="background: #e0f2fe; color: #0369a1;">CMOD · Low Command</span>
-                                </td>
-                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
-                                <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
-                                <td><span class="num" data-field="modlogs">20</span> <span class="unit">logs</span></td>
-                                <td><span class="unit">&mdash;</span></td>
+                            <tr>
+                                <td class="rank-cell">Community Director (CD)</td>
+                                <td>120 min</td>
+                                <td>1 event</td>
+                                <td>Review only</td>
+                                <td>Review &amp; Approve</td>
                             </tr>
-                            <tr data-rank="scmod">
-                                <td>
-                                    <div class="rank-name">Senior Community Moderator</div>
-                                    <span class="rank-tag" style="background: #ccfbf1; color: #0f766e;">SCMOD · Low Command</span>
-                                </td>
-                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
-                                <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
-                                <td><span class="num" data-field="modlogs">20</span> <span class="unit">logs</span></td>
-                                <td><span class="unit">&mdash;</span></td>
+                            <tr>
+                                <td class="rank-cell">Community Secretary (CSEC)</td>
+                                <td>120 min</td>
+                                <td>1 event</td>
+                                <td>Review only</td>
+                                <td>Review &amp; Approve</td>
                             </tr>
-                            <tr data-rank="csec">
-                                <td>
-                                    <div class="rank-name">Community Secretary</div>
-                                    <span class="rank-tag" style="background: #ede9fe; color: #5b21b6;">CSEC · Middle Command</span>
-                                </td>
-                                <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
-                                <td><span class="num" data-field="events">3</span> <span class="unit">events</span></td>
-                                <td><span class="num" data-field="modlogs">17</span> <span class="unit">logs</span></td>
-                                <td><span class="num" data-field="ranklogs">15</span> <span class="unit">logs</span></td>
+                            <tr>
+                                <td class="rank-cell">Senior Community Moderator (SCMOD)</td>
+                                <td>90 min</td>
+                                <td>1 event</td>
+                                <td>15 logs</td>
+                                <td class="na">N/A</td>
                             </tr>
-                            <tr data-rank="cd">
-                                <td>
-                                    <div class="rank-name">Community Director</div>
-                                    <span class="rank-tag" style="background: #dbeafe; color: #1e40af;">CD · High Command</span>
-                                </td>
-                                <td><span class="num" data-field="minutes">300</span> <span class="unit">min</span></td>
-                                <td><span class="num" data-field="events">2</span> <span class="unit">events</span></td>
-                                <td><span class="num" data-field="modlogs">15</span> <span class="unit">logs</span></td>
-                                <td><span class="num" data-field="ranklogs">8</span> <span class="unit">logs</span></td>
+                            <tr>
+                                <td class="rank-cell">Community Moderator (CMOD)</td>
+                                <td>60 min</td>
+                                <td>Assist 1 event</td>
+                                <td>10 logs</td>
+                                <td class="na">N/A</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
+                <div class="quota-cards">
+                    <div class="quota-card">
+                        <div class="rank-title">Community Director (CD)</div>
+                        <div class="quota-row"><span class="label">Minutes</span><span class="value">120 min</span></div>
+                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
+                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">Review only</span></div>
+                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value">Review &amp; Approve</span></div>
+                    </div>
+                    <div class="quota-card">
+                        <div class="rank-title">Community Secretary (CSEC)</div>
+                        <div class="quota-row"><span class="label">Minutes</span><span class="value">120 min</span></div>
+                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
+                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">Review only</span></div>
+                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value">Review &amp; Approve</span></div>
+                    </div>
+                    <div class="quota-card">
+                        <div class="rank-title">Senior Community Moderator (SCMOD)</div>
+                        <div class="quota-row"><span class="label">Minutes</span><span class="value">90 min</span></div>
+                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
+                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">15 logs</span></div>
+                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value na">N/A</span></div>
+                    </div>
+                    <div class="quota-card">
+                        <div class="rank-title">Community Moderator (CMOD)</div>
+                        <div class="quota-row"><span class="label">Minutes</span><span class="value">60 min</span></div>
+                        <div class="quota-row"><span class="label">Community Events</span><span class="value">Assist 1 event</span></div>
+                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">10 logs</span></div>
+                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value na">N/A</span></div>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:24px;">
+                    <h3><i class="fas fa-circle-info"></i> Important Notes</h3>
+                    <ul>
+                        <li>Quotas reset every Sunday at 11:59 PM EST</li>
+                        <li>Failure to meet quota for 2 consecutive weeks may result in disciplinary action</li>
+                        <li>Rank logs are restricted to CSEC+ only</li>
+                        <li>All logs must be submitted in the designated channels</li>
+                        <li>LOA requests must be submitted before the quota period begins</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="content-card" style="margin-top: 24px;">
-                <div class="card-title"><i class="fas fa-check-circle" style="background: #dcfce7; color: #16a34a;"></i> Quota Exemptions</div>
-                <div class="card-text">
-                    <p>Members who are unable to meet their weekly quota due to personal circumstances may request an exemption. Approved exemptions will prevent disciplinary action for the week in question. To request a quota exemption:</p>
-                    <div class="events-grid" style="margin-top: 16px;">
-                        <div class="event-type" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #86efac;">
-                            <h4 style="color: #166534;">Option 1 — Request Channel</h4>
-                            <p>Submit a formal exemption request in the <strong>#request</strong> channel. Include your reason and the duration of your requested exemption.</p>
+            <!-- CHAIN OF COMMAND -->
+            <div class="section" id="section-chain">
+                <div class="section-header">
+                    <h1>Chain of Command</h1>
+                    <p>Hierarchy and reporting structure</p>
+                </div>
+                <div class="chain-container">
+                    <div class="chain-level high">
+                        <div class="level-badge">High Command</div>
+                        <h4>Community Director (CD)</h4>
+                        <p>The highest authority within the Community Department. All major decisions, promotions, and disciplinary actions require CD approval.</p>
+                    </div>
+                    <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="chain-level middle">
+                        <div class="level-badge">Middle Command</div>
+                        <h4>Community Secretary (CSEC)</h4>
+                        <p>Directly reports to the CD. Oversees day-to-day operations, supervises Low Command, and acts as CD in their absence.</p>
+                    </div>
+                    <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
+                    <div class="chain-level low">
+                        <div class="level-badge">Low Command</div>
+                        <h4>Senior Community Moderator (SCMOD) &amp; Community Moderator (CMOD)</h4>
+                        <p>Frontline staff responsible for community moderation, event support, and quota fulfillment. Reports to CSEC.</p>
+                    </div>
+                </div>
+                <div class="card" style="margin-top:24px;">
+                    <h3><i class="fas fa-triangle-exclamation"></i> Reporting Protocol</h3>
+                    <ul>
+                        <li>CMOD reports to SCMOD or CSEC</li>
+                        <li>SCMOD reports directly to CSEC</li>
+                        <li>CSEC reports directly to CD</li>
+                        <li>Escalate issues up the chain &mdash; never skip ranks without cause</li>
+                        <li>In emergencies, any member may contact CD directly</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CLOSING & SIGNATURES -->
+            <div class="section" id="section-closing">
+                <div class="section-header">
+                    <h1>Closing &amp; Signatures</h1>
+                    <p>Official acknowledgment and credits</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-file-contract"></i> Closing Statement</h3>
+                    <p>By accessing and reading this handbook, you acknowledge that you understand and agree to abide by all policies, procedures, and expectations outlined herein. The Community Department of Clockwork's United States of America reserves the right to update this handbook at any time. All members will be notified of significant changes.</p>
+                    <div class="highlight-box danger">
+                        <i class="fas fa-lock" style="margin-right:8px;"></i>
+                        <strong>Confidentiality Reminder:</strong> This document is classified. Do not share, screenshot, or distribute any portion of this handbook outside of authorized CUSA Community Department personnel.
+                    </div>
+                </div>
+
+                <div class="signature-section">
+                    <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); margin-bottom:8px;">Senior Management Signatures</h3>
+                    <div class="signature-grid">
+                        <div class="signature-card senior">
+                            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Community Director</div>
+                            <div class="signature-text">Community Director</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-name">[Community Director Name]</div>
+                            <div class="signature-title">Community Director &mdash; High Command</div>
                         </div>
-                        <div class="event-type" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #93c5fd;">
-                            <h4 style="color: #1e40af;">Option 2 — Leave of Absence (LoA)</h4>
-                            <p>Post in the <strong>#loa</strong> channel if you require an extended absence. LoA automatically grants a quota exemption for the approved duration.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="alert-box red" style="margin-top: 20px;">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <div class="alert-title">Warning</div>
-                        <div class="alert-text">Failure to meet quota without an approved exemption will result in a formal strike, and continued non-compliance may lead to demotion or removal from the Community Department.</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SECTION 06: CHAIN OF COMMAND -->
-        <section id="section-chain" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-sitemap"></i> Section 06</div>
-                <h1 class="section-title">Chain of Command</h1>
-            </div>
-            <div class="card-text" style="margin-bottom: 24px; color: var(--text-light);">The Community Department operates under a structured chain of command. All members are expected to follow this hierarchy when reporting issues, escalating matters, or seeking guidance. Bypassing the chain of command without just cause is not permitted.</div>
-
-            <div class="chain-flow">
-                <div class="chain-level high">
-                    <div class="chain-level-header">High Command</div>
-                    <div class="chain-level-body">
-                        <div class="chain-icon"><i class="fas fa-crown"></i></div>
-                        <div class="chain-info">
-                            <h4>Community Director <span class="chain-abbr">(CD)</span> <span class="chain-badge">High Command</span></h4>
-                            <p>The highest authority within the Community Department. The Community Director sets the direction of the department and oversees all operations. They work directly alongside other High Command and Senior Management.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="chain-level middle">
-                    <div class="chain-level-header">Middle Command</div>
-                    <div class="chain-level-body">
-                        <div class="chain-icon"><i class="fas fa-user-tie"></i></div>
-                        <div class="chain-info">
-                            <h4>Community Secretary <span class="chain-abbr">(CSEC)</span> <span class="chain-badge">Middle Command</span></h4>
-                            <p>Middle command who directly assists the Community Director. Community Secretaries handle rank changes and supervise lower command.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="chain-arrow"><i class="fas fa-arrow-down"></i></div>
-                <div class="chain-level low">
-                    <div class="chain-level-header">Low Command</div>
-                    <div class="chain-level-body">
-                        <div class="chain-icon"><i class="fas fa-star"></i></div>
-                        <div class="chain-info">
-                            <h4>Senior Community Moderator <span class="chain-abbr">(SCMOD)</span> <span class="chain-badge">Low Command</span></h4>
-                            <p>Experienced moderators who have proven their dedication and skill within the Community Department. They serve as mentors to Community Moderators and assist them when needed.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="chain-level low" style="margin-top: -8px;">
-                    <div class="chain-level-body" style="border-top: 1px solid var(--border);">
-                        <div class="chain-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div class="chain-info">
-                            <h4>Community Moderator <span class="chain-abbr">(CMOD)</span> <span class="chain-badge">Low Command</span></h4>
-                            <p>The foundation of the Community Department. Community Moderators are responsible for maintaining a welcoming atmosphere for all community members.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-card" style="margin-top: 24px;">
-                <div class="card-title"><i class="fas fa-list-ol"></i> Chain of Command Guidelines</div>
-                <ol class="guidelines-list">
-                    <li>Always address concerns or issues to the rank directly above you first before escalating further.</li>
-                    <li>Community Moderators should report to Senior Community Moderators for guidance.</li>
-                    <li>Senior Community Moderators should escalate significant issues to a Community Secretary.</li>
-                    <li>Community Secretaries bring matters requiring high-level decisions to the Community Director.</li>
-                    <li>In the absence of the Community Director, Community Secretaries are able to help and guide you.</li>
-                    <li>Emergency situations (e.g., severe rule violations, raids) may warrant direct escalation to the highest available rank.</li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- SECTION 07: CLOSING & SIGNATURES -->
-        <section id="section-closing" class="content-section" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-file-signature"></i> Section 07</div>
-                <h1 class="section-title">Closing &amp; Signatures</h1>
-            </div>
-
-            <div class="content-card">
-                <div class="card-title"><i class="fas fa-check-circle" style="background: #dcfce7; color: #16a34a;"></i> Closing Statement</div>
-                <div class="card-text">
-                    <p>This handbook represents the official policies, procedures, and expectations of the <strong>Community Department</strong> within the Tedder Management Staff Team of <strong>Clockwork's United State of America (CUSA)</strong>. Every member of the Community Department is expected to have thoroughly read, understood, and agreed to comply with all sections of this document upon receiving access.</p>
-                    <p style="margin-top: 12px;">The Community Department is committed to maintaining the highest standards of professionalism, fairness, and dedication within CUSA. Together, we build a community worth being proud of.</p>
-                    <p style="margin-top: 12px;">This handbook is subject to updates. Members will be notified of any significant changes. It is the responsibility of each member to stay informed of the latest version of this document.</p>
-                </div>
-                <div style="margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--border); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
-                    <div>
-                        <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px;">Issued By</div>
-                        <div style="font-size: 14px; font-weight: 600; color: var(--text);">Community Department, CUSA</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px;">Department</div>
-                        <div style="font-size: 14px; font-weight: 600; color: var(--text);">Tedder Management Staff Team</div>
-                    </div>
-                    <div>
-                        <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px;">Classification</div>
-                        <div style="font-size: 14px; font-weight: 700; color: var(--warning);">Classified — Internal Use Only</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card-title" style="font-size: 20px; margin-bottom: 8px;"><i class="fas fa-pen-fancy" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);"></i> Official Signatures</div>
-            <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">This handbook has been reviewed, approved, and authorized by the Community Department leadership and endorsed by departmental staff.</div>
-
-            <div class="card-title" style="font-size: 20px; margin-bottom: 8px; margin-top: 32px;"><i class="fas fa-crown" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);"></i> Staff Team Leadership</div>
-            <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">The following individuals hold leadership authority over the Community Department and have reviewed, approved, and authorized this handbook on behalf of CUSA.</div>
-
-            <div class="signatures-grid">
-                <div class="signature-card cd">
-                    <div class="sig-header">
-                        <div class="sig-avatar">CD</div>
-                        <div>
-                            <div class="sig-role-label">Authorized &amp; Approved By</div>
-                            <div class="sig-role-name">Community Director <span class="sig-role-abbr">(CD)</span></div>
+                        <div class="signature-card senior">
+                            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Senior Management</div>
+                            <div class="signature-text">Senior Management</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-name">[Senior Management Name]</div>
+                            <div class="signature-title">Senior Management &mdash; Above CD</div>
                         </div>
                     </div>
-                    <div class="sig-line">[Marshelitto]</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">High Command</span>
-                        <span class="sig-date">Signature</span>
-                    </div>
                 </div>
-                <div class="signature-card staff-overseer">
-                    <div class="sig-header">
-                        <div class="sig-avatar">SM</div>
-                        <div>
-                            <div class="sig-role-label">Overseen &amp; Certified By</div>
-                            <div class="sig-role-name">Senior Management <span class="sig-role-abbr">(SM)</span></div>
+
+                <div class="signature-section">
+                    <h3 style="font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:2px; color:var(--text-muted); margin-bottom:8px;">Community Secretary Signatures</h3>
+                    <div class="signature-grid">
+                        <div class="signature-card csec">
+                            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Community Secretary</div>
+                            <div class="signature-text">CSEC I</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-name">[CSEC Name]</div>
+                            <div class="signature-title">Community Secretary &mdash; Middle Command</div>
+                        </div>
+                        <div class="signature-card csec">
+                            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Community Secretary</div>
+                            <div class="signature-text">CSEC II</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-name">[CSEC Name]</div>
+                            <div class="signature-title">Community Secretary &mdash; Middle Command</div>
+                        </div>
+                        <div class="signature-card csec">
+                            <div style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:2px;">Community Secretary</div>
+                            <div class="signature-text">CSEC III</div>
+                            <div class="signature-line"></div>
+                            <div class="signature-name">[CSEC Name]</div>
+                            <div class="signature-title">Community Secretary &mdash; Middle Command</div>
                         </div>
                     </div>
-                    <div class="sig-line">[Senior Management Username#1]</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">Staff Management</span>
-                        <span class="sig-date">Signature</span>
-                    </div>
+                </div>
+
+                <div class="credits">
+                    <h4>Handbook Created By</h4>
+                    <div class="names">Imperator_Supremus &amp; papervv</div>
+                    <p style="font-size:12px; color:var(--text-muted); margin-top:8px;">Special thanks for their contribution to the CUSA Community Department</p>
                 </div>
             </div>
 
-            <div class="signatures-grid" style="margin-top: 20px;">
-                <div class="signature-card staff-overseer">
-                    <div class="sig-header">
-                        <div class="sig-avatar">SM</div>
-                        <div>
-                            <div class="sig-role-label">Overseen &amp; Certified By</div>
-                            <div class="sig-role-name">Senior Management <span class="sig-role-abbr">(SM)</span></div>
+            <!-- ADMIN PANEL -->
+            <div class="section" id="section-admin">
+                <div class="section-header">
+                    <h1>Admin Panel</h1>
+                    <p>User management and audit logs</p>
+                </div>
+                <div class="admin-grid">
+                    <div class="admin-card">
+                        <h3><i class="fas fa-user-plus"></i> Add User</h3>
+                        <div class="add-user-form">
+                            <input type="email" id="newUserEmailInput" placeholder="user@example.com">
+                            <select id="newUserRank">
+                                <option value="cd">Community Director (CD)</option>
+                                <option value="csec">Community Secretary (CSEC)</option>
+                                <option value="scmod">Senior Community Moderator (SCMOD)</option>
+                                <option value="cmod">Community Moderator (CMOD)</option>
+                            </select>
+                            <button class="btn btn-success" onclick="addUser()">Add User</button>
                         </div>
+                        <div class="error-msg" id="addUserError" style="margin-top:12px;"></div>
                     </div>
-                    <div class="sig-line">[Senior Management Username#2]</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">Staff Management</span>
-                        <span class="sig-date">Signature</span>
+
+                    <div class="admin-card">
+                        <h3><i class="fas fa-users"></i> Authorized Users</h3>
+                        <div class="user-list" id="userList"></div>
                     </div>
-                </div>
-            </div>
 
-            <div class="card-title" style="font-size: 20px; margin-bottom: 8px; margin-top: 40px;"><i class="fas fa-users" style="background: linear-gradient(135deg, #ede9fe, #ddd6fe);"></i> Community Department Leadership</div>
-            <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">The following Community Secretaries have reviewed and acknowledged this handbook. Their signatures serve as formal departmental endorsement and weight to this document.</div>
-
-            <div class="signatures-grid" style="margin-top: 20px;">
-                <div class="signature-card csec">
-                    <div class="sig-header">
-                        <div class="sig-avatar">CSEC</div>
-                        <div>
-                            <div class="sig-role-label">Approved By</div>
-                            <div class="sig-role-name">Community Secretary <span class="sig-role-abbr">(CSEC)</span></div>
+                    <div class="admin-card">
+                        <h3><i class="fas fa-clipboard-list"></i> Audit Logs</h3>
+                        <div class="tabs">
+                            <div class="tab active" onclick="switchAuditTab('user')">User Changes</div>
+                            <div class="tab" onclick="switchAuditTab('login')">Login Audit</div>
+                            <div class="tab" onclick="switchAuditTab('pin')">PIN Settings</div>
                         </div>
-                    </div>
-                    <div class="sig-line">miskaspiritualyti</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">Middle Command</span>
-                        <span class="sig-date">Signature</span>
-                    </div>
-                </div>
-                <div class="signature-card csec">
-                    <div class="sig-header">
-                        <div class="sig-avatar">CSEC</div>
-                        <div>
-                            <div class="sig-role-label">Approved By</div>
-                            <div class="sig-role-name">Community Secretary <span class="sig-role-abbr">(CSEC)</span></div>
-                        </div>
-                    </div>
-                    <div class="sig-line">OnlyQuixcvv</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">Middle Command</span>
-                        <span class="sig-date">Signature</span>
+                        <div class="audit-log" id="auditLog"></div>
                     </div>
                 </div>
             </div>
-
-            <div class="signatures-grid" style="margin-top: 20px;">
-                <div class="signature-card csec">
-                    <div class="sig-header">
-                        <div class="sig-avatar">CSEC</div>
-                        <div>
-                            <div class="sig-role-label">Approved By</div>
-                            <div class="sig-role-name">Community Secretary <span class="sig-role-abbr">(CSEC)</span></div>
-                        </div>
-                    </div>
-                    <div class="sig-line">[BroWhoIsTanqr]</div>
-                    <div class="sig-footer">
-                        <span class="sig-rank">Middle Command</span>
-                        <span class="sig-date">Signature</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="content-card" style="margin-top: 24px; text-align: center;">
-                <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px;">Credits</div>
-                <div style="font-family: 'Dancing Script', cursive; font-size: 24px; color: var(--primary); font-weight: 600;">papervv &amp; Imperator_Supremus</div>
-                <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Staff Team &middot; CUSA</div>
-            </div>
-
-            <div class="doc-footer">
-                <div class="doc-seal">CUSA</div>
-                <h4>Community Department &middot; Official Document</h4>
-                <p>Clockwork's United State of America &middot; Tedder Management Staff Team</p>
-                <p class="classified-footer">This document is classified. Unauthorized distribution is strictly prohibited.</p>
-            </div>
-        </section>
-
-        <!-- SECTION ADMIN: ADMIN PANEL -->
-        <section id="section-admin" class="content-section admin-panel" style="display:none;">
-            <div class="section-header">
-                <div class="section-label"><i class="fas fa-cog"></i> Administration</div>
-                <h1 class="section-title">Admin Panel</h1>
-            </div>
-
-            <div class="admin-stats-grid">
-                <div class="admin-stat-card">
-                    <div class="stat-num" id="statTotalUsers">0</div>
-                    <div class="stat-label">Total Users</div>
-                </div>
-                <div class="admin-stat-card">
-                    <div class="stat-num" id="statTotalAdmins">0</div>
-                    <div class="stat-label">Admins</div>
-                </div>
-                <div class="admin-stat-card">
-                    <div class="stat-num" id="statTotalLogins">0</div>
-                    <div class="stat-label">Total Logins</div>
-                </div>
-            </div>
-
-            <div class="admin-tabs">
-                <button class="admin-tab active" onclick="switchAdminTab('tab-users', this)"><i class="fas fa-users"></i> Manage Access</button>
-                <button class="admin-tab" onclick="switchAdminTab('tab-logins', this)"><i class="fas fa-sign-in-alt"></i> Login Audit</button>
-                <button class="admin-tab" onclick="switchAdminTab('tab-activity', this)"><i class="fas fa-history"></i> Admin Activity</button>
-                <button class="admin-tab" onclick="switchAdminTab('tab-pins', this)"><i class="fas fa-key"></i> PIN Management</button>
-            </div>
-
-            <!-- TAB: MANAGE ACCESS -->
-            <div id="tab-users" class="admin-tab-content active">
-                <div class="admin-form">
-                    <h4><i class="fas fa-user-plus"></i> Add New User</h4>
-                    <div class="admin-form-row">
-                        <div class="input-group">
-                            <label>Email Address</label>
-                            <input type="email" id="newUserEmail" placeholder="user@example.com">
-                        </div>
-                        <button class="btn-success" onclick="addUser()">
-                            <i class="fas fa-plus"></i> Add User
-                        </button>
-                    </div>
-                    <div style="margin-top: 12px; display: flex; align-items: center; gap: 8px;">
-                        <input type="checkbox" id="newUserIsAdmin" style="width: 16px; height: 16px; accent-color: var(--primary);">
-                        <label for="newUserIsAdmin" style="font-size: 13px; color: var(--text-light); cursor: pointer;">Grant admin privileges (can manage users and view audit logs)</label>
-                    </div>
-                </div>
-
-                <div class="content-card">
-                    <div class="card-title"><i class="fas fa-users"></i> Authorized Users</div>
-                    <div class="admin-table-wrap">
-                        <table class="admin-table" id="usersTable">
-                            <thead>
-                                <tr>
-                                    <th>Email</th>
-                                    <th>Role</th>
-                                    <th>Added By</th>
-                                    <th>Date Added</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="usersTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="empty-state" id="usersEmpty" style="display:none;">
-                        <i class="fas fa-users-slash"></i>
-                        <p>No authorized users found.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: LOGIN AUDIT -->
-            <div id="tab-logins" class="admin-tab-content">
-                <div class="content-card">
-                    <div class="card-title"><i class="fas fa-clipboard-list"></i> Login Audit Log</div>
-                    <div class="card-text" style="margin-bottom: 16px;">This log tracks every successful login to the handbook. No IP addresses are collected.</div>
-                    <div class="admin-table-wrap">
-                        <table class="admin-table" id="loginsTable">
-                            <thead>
-                                <tr>
-                                    <th>Email</th>
-                                    <th>Login Time</th>
-                                    <th>Role</th>
-                                </tr>
-                            </thead>
-                            <tbody id="loginsTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="empty-state" id="loginsEmpty" style="display:none;">
-                        <i class="fas fa-clipboard"></i>
-                        <p>No login records yet.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: ADMIN ACTIVITY -->
-            <div id="tab-activity" class="admin-tab-content">
-                <div class="content-card">
-                    <div class="card-title"><i class="fas fa-history"></i> Admin Activity Log</div>
-                    <div class="card-text" style="margin-bottom: 16px;">This log tracks all administrative actions: who added or removed users and when.</div>
-                    <div class="admin-table-wrap">
-                        <table class="admin-table" id="activityTable">
-                            <thead>
-                                <tr>
-                                    <th>Action</th>
-                                    <th>Target Email</th>
-                                    <th>Performed By</th>
-                                    <th>Timestamp</th>
-                                </tr>
-                            </thead>
-                            <tbody id="activityTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="empty-state" id="activityEmpty" style="display:none;">
-                        <i class="fas fa-history"></i>
-                        <p>No admin activity yet.</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- TAB: PIN MANAGEMENT -->
-            <div id="tab-pins" class="admin-tab-content">
-                <div class="content-card">
-                    <div class="card-title"><i class="fas fa-key"></i> PIN Management</div>
-                    <div class="card-text" style="margin-bottom: 16px;">View and reset user PINs. Resetting a PIN will require the user to create a new one on their next login.</div>
-                    <div class="admin-table-wrap">
-                        <table class="admin-table" id="pinsTable">
-                            <thead>
-                                <tr>
-                                    <th>Email</th>
-                                    <th>PIN Status</th>
-                                    <th>Created On</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pinsTableBody">
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="empty-state" id="pinsEmpty" style="display:none;">
-                        <i class="fas fa-key"></i>
-                        <p>No PIN records yet.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </main>
 </div>
 <script>
-// ============================================
-// AUTHORIZED USERS & ADMIN CONFIGURATION
-// ============================================
-// CRITICAL FIX: Default users are ALWAYS available in-memory.
-// localStorage is used ONLY for ADDITIONAL users added by admins.
-// This ensures the handbook works on ANY device/browser immediately.
-const DEFAULT_USERS = [
-    { email: "elspethmiska@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-    { email: "laneyjames333@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-    { email: "imperatore.jr18@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-    { email: "sarthak009k@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-    { email: "bully.tiny2026@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-    { email: "brookcuscus@gmail.com", isAdmin: true, addedBy: "System", dateAdded: "2026-05-12T00:00:00.000Z" },
-];
+// ========== DATA STORE ==========
+const DB = {
+    users: JSON.parse(localStorage.getItem('cusa_users')) || {
+        'admin@cusa.gov': { rank: 'admin', pin: '0000', name: 'System Admin' }
+    },
+    audit: JSON.parse(localStorage.getItem('cusa_audit')) || {
+        user: [],
+        login: [],
+        pin: []
+    },
+    session: JSON.parse(sessionStorage.getItem('cusa_session')) || null
+};
 
-// Runtime user list: defaults + any saved extras from localStorage
-let AUTHORIZED_USERS = [];
+const RANKS = {
+    cd: { label: 'Community Director (CD)', class: 'rank-cd', level: 'High Command' },
+    csec: { label: 'Community Secretary (CSEC)', class: 'rank-csec', level: 'Middle Command' },
+    scmod: { label: 'Senior Community Moderator (SCMOD)', class: 'rank-scmod', level: 'Low Command' },
+    cmod: { label: 'Community Moderator (CMOD)', class: 'rank-cmod', level: 'Low Command' },
+    admin: { label: 'System Administrator', class: 'rank-admin', level: 'Admin' }
+};
 
-// ============================================
-// DATA STORAGE (localStorage) — EXTRAS ONLY
-// ============================================
-let currentUser = '';
-let currentUserIsAdmin = false;
+const SECTIONS = ['welcome', 'introduction', 'responsibilities', 'events', 'quota', 'chain', 'closing', 'admin'];
+let currentSection = 0;
 let tempEmail = '';
 let tempPin = '';
-let confirmPin = '';
-let enterPin = '';
+let currentAuditTab = 'user';
 
-function getExtraUsers() {
-    try {
-        const saved = localStorage.getItem('cusa_extra_users');
-        return saved ? JSON.parse(saved) : [];
-    } catch (e) {
-        return [];
-    }
-}
+// ========== LOGIN FLOW ==========
+function checkEmail() {
+    const email = document.getElementById('emailInput').value.trim().toLowerCase();
+    const error = document.getElementById('step1Error');
 
-function saveExtraUsers(extras) {
-    try {
-        localStorage.setItem('cusa_extra_users', JSON.stringify(extras));
-    } catch (e) {
-        console.log('Could not save extra users to localStorage');
-    }
-}
-
-function rebuildUserList() {
-    const extras = getExtraUsers();
-    // Start with defaults, then merge extras (avoiding duplicates)
-    const merged = [...DEFAULT_USERS];
-    const defaultEmails = new Set(DEFAULT_USERS.map(u => u.email.toLowerCase()));
-    extras.forEach(extra => {
-        if (!defaultEmails.has(extra.email.toLowerCase())) {
-            merged.push(extra);
-        }
-    });
-    AUTHORIZED_USERS = merged;
-}
-
-function getLoginLogs() {
-    try {
-        const logs = localStorage.getItem('cusa_login_logs');
-        return logs ? JSON.parse(logs) : [];
-    } catch (e) {
-        return [];
-    }
-}
-
-function saveLoginLog(log) {
-    try {
-        const logs = getLoginLogs();
-        logs.unshift(log);
-        if (logs.length > 500) logs.length = 500;
-        localStorage.setItem('cusa_login_logs', JSON.stringify(logs));
-    } catch (e) {
-        console.log('Could not save login log');
-    }
-}
-
-function getAdminActivity() {
-    try {
-        const logs = localStorage.getItem('cusa_admin_activity');
-        return logs ? JSON.parse(logs) : [];
-    } catch (e) {
-        return [];
-    }
-}
-
-function saveAdminActivity(log) {
-    try {
-        const logs = getAdminActivity();
-        logs.unshift(log);
-        if (logs.length > 500) logs.length = 500;
-        localStorage.setItem('cusa_admin_activity', JSON.stringify(logs));
-    } catch (e) {
-        console.log('Could not save admin activity');
-    }
-}
-
-// PIN Storage
-function getUserPin(email) {
-    try {
-        const pins = localStorage.getItem('cusa_user_pins');
-        if (pins) {
-            const pinData = JSON.parse(pins);
-            return pinData[email.toLowerCase()] || null;
-        }
-        return null;
-    } catch (e) {
-        return null;
-    }
-}
-
-function saveUserPin(email, pin) {
-    try {
-        let pins = {};
-        const existing = localStorage.getItem('cusa_user_pins');
-        if (existing) {
-            pins = JSON.parse(existing);
-        }
-        pins[email.toLowerCase()] = {
-            pin: pin,
-            createdAt: new Date().toISOString()
-        };
-        localStorage.setItem('cusa_user_pins', JSON.stringify(pins));
-    } catch (e) {
-        console.log('Could not save PIN');
-    }
-}
-
-function removeUserPin(email) {
-    try {
-        const existing = localStorage.getItem('cusa_user_pins');
-        if (existing) {
-            const pins = JSON.parse(existing);
-            delete pins[email.toLowerCase()];
-            localStorage.setItem('cusa_user_pins', JSON.stringify(pins));
-        }
-    } catch (e) {
-        console.log('Could not remove PIN');
-    }
-}
-
-function getAllPins() {
-    try {
-        const pins = localStorage.getItem('cusa_user_pins');
-        return pins ? JSON.parse(pins) : {};
-    } catch (e) {
-        return {};
-    }
-}
-
-// ============================================
-// LOGIN FLOW WITH PIN
-// ============================================
-function handleEmailSubmit() {
-    const input = document.getElementById('emailInput');
-    const btn = document.getElementById('loginBtn');
-    const errorDiv = document.getElementById('loginError');
-    const email = input.value.trim().toLowerCase();
-
-    errorDiv.classList.remove('show');
-    errorDiv.textContent = '';
-    input.style.borderColor = '';
-    input.style.boxShadow = '';
-
-    if (!email) {
-        showLoginError('Please enter an email address.');
+    if (!email || !email.includes('@')) {
+        error.textContent = 'Please enter a valid email address.';
         return;
     }
-
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        showLoginError('Please enter a valid email address.');
-        return;
-    }
-
-    // Rebuild user list fresh each time to ensure defaults are always present
-    rebuildUserList();
-
-    const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email);
-    if (!userEntry) {
-        showLoginError('Access Denied: This email is not authorized for this document.');
-        return;
-    }
-
-    btn.textContent = 'Verifying...';
-    btn.disabled = true;
 
     tempEmail = email;
 
-    setTimeout(() => {
-        const existingPin = getUserPin(email);
-
-        if (existingPin) {
-            showLoginStep('loginStepEnterPin');
-            enterPin = '';
-            updateEnterPinDots();
-            document.getElementById('enterPinStatus').textContent = 'Enter your PIN';
-            document.getElementById('enterPinStatus').className = 'pin-status';
+    if (DB.users[email]) {
+        const user = DB.users[email];
+        if (!user.pin) {
+            // First time login - need to set PIN
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step2').style.display = 'block';
+            document.getElementById('newUserEmail').textContent = email;
+            updateStepIndicator(1);
         } else {
-            showLoginStep('loginStepCreatePin');
-            tempPin = '';
-            confirmPin = '';
-            updateCreatePinDots();
-            updateConfirmPinDots();
-            document.getElementById('createPinStatus').textContent = 'Enter a 4-digit PIN';
-            document.getElementById('createPinStatus').className = 'pin-status';
-            document.getElementById('step1').className = 'pin-step active';
-            document.getElementById('step2').className = 'pin-step';
+            // Returning user - verify PIN
+            document.getElementById('step1').style.display = 'none';
+            document.getElementById('step3').style.display = 'block';
+            document.getElementById('returnEmail').textContent = email;
+            updateStepIndicator(2);
         }
-
-        btn.textContent = 'Request Access';
-        btn.disabled = false;
-    }, 600);
+    } else {
+        error.textContent = 'This email is not authorized. Contact an administrator to be added.';
+    }
 }
 
-function showLoginStep(stepId) {
-    ['loginStepEmail', 'loginStepCreatePin', 'loginStepConfirmPin', 'loginStepEnterPin'].forEach(id => {
-        document.getElementById(id).style.display = id === stepId ? 'block' : 'none';
-    });
-}
-
-function cancelPinFlow() {
-    showLoginStep('loginStepEmail');
-    document.getElementById('emailInput').value = '';
-    document.getElementById('loginError').classList.remove('show');
-    tempEmail = '';
-    tempPin = '';
-    confirmPin = '';
-    enterPin = '';
-}
-
-// ============================================
-// CREATE PIN FLOW
-// ============================================
-function pinInput(num) {
+function enterPin(digit) {
     if (tempPin.length < 4) {
-        tempPin += num;
-        updateCreatePinDots();
-        document.getElementById('createPinBtn').disabled = tempPin.length !== 4;
-    }
-}
+        tempPin += digit;
+        updatePinDots('pinDots1', tempPin.length);
+        if (tempPin.length === 4) {
+            setTimeout(() => {
+                // Save PIN for first-time user
+                DB.users[tempEmail].pin = tempPin;
+                saveUsers();
+                addAudit('pin', 'PIN created for user', tempEmail);
 
-function pinBackspace() {
-    tempPin = tempPin.slice(0, -1);
-    updateCreatePinDots();
-    document.getElementById('createPinBtn').disabled = true;
-}
-
-function updateCreatePinDots() {
-    const dots = document.getElementById('createPinDots').children;
-    for (let i = 0; i < 4; i++) {
-        dots[i].classList.toggle('filled', i < tempPin.length);
-    }
-}
-
-function submitCreatePin() {
-    if (tempPin.length !== 4) return;
-    showLoginStep('loginStepConfirmPin');
-    confirmPin = '';
-    updateConfirmPinDots();
-    document.getElementById('confirmPinStatus').textContent = 'Re-enter your PIN';
-    document.getElementById('confirmPinStatus').className = 'pin-status';
-    document.getElementById('step1b').className = 'pin-step completed';
-    document.getElementById('step2b').className = 'pin-step active';
-    document.getElementById('confirmPinBtn').disabled = true;
-}
-
-function backToCreatePin() {
-    showLoginStep('loginStepCreatePin');
-    tempPin = '';
-    confirmPin = '';
-    updateCreatePinDots();
-    updateConfirmPinDots();
-    document.getElementById('createPinStatus').textContent = 'Enter a 4-digit PIN';
-    document.getElementById('createPinStatus').className = 'pin-status';
-    document.getElementById('step1').className = 'pin-step active';
-    document.getElementById('step2').className = 'pin-step';
-    document.getElementById('createPinBtn').disabled = true;
-}
-
-function confirmPinInput(num) {
-    if (confirmPin.length < 4) {
-        confirmPin += num;
-        updateConfirmPinDots();
-        document.getElementById('confirmPinBtn').disabled = confirmPin.length !== 4;
-    }
-}
-
-function confirmPinBackspace() {
-    confirmPin = confirmPin.slice(0, -1);
-    updateConfirmPinDots();
-    document.getElementById('confirmPinBtn').disabled = true;
-}
-
-function updateConfirmPinDots() {
-    const dots = document.getElementById('confirmPinDots').children;
-    for (let i = 0; i < 4; i++) {
-        dots[i].classList.toggle('filled', i < confirmPin.length);
-    }
-}
-
-function submitConfirmPin() {
-    if (confirmPin.length !== 4) return;
-
-    if (tempPin !== confirmPin) {
-        document.getElementById('confirmPinStatus').textContent = 'PINs do not match. Try again.';
-        document.getElementById('confirmPinStatus').className = 'pin-status error';
-        confirmPin = '';
-        updateConfirmPinDots();
-        document.getElementById('confirmPinBtn').disabled = true;
-        return;
-    }
-
-    saveUserPin(tempEmail, tempPin);
-    completeLogin(tempEmail);
-}
-
-// ============================================
-// ENTER EXISTING PIN FLOW
-// ============================================
-function enterPinInput(num) {
-    if (enterPin.length < 4) {
-        enterPin += num;
-        updateEnterPinDots();
-        document.getElementById('enterPinBtn').disabled = enterPin.length !== 4;
-    }
-}
-
-function enterPinBackspace() {
-    enterPin = enterPin.slice(0, -1);
-    updateEnterPinDots();
-    document.getElementById('enterPinBtn').disabled = true;
-}
-
-function updateEnterPinDots() {
-    const dots = document.getElementById('enterPinDots').children;
-    for (let i = 0; i < 4; i++) {
-        dots[i].classList.toggle('filled', i < enterPin.length);
-    }
-}
-
-function submitEnterPin() {
-    if (enterPin.length !== 4) return;
-
-    const storedPin = getUserPin(tempEmail);
-    if (!storedPin || storedPin.pin !== enterPin) {
-        document.getElementById('enterPinStatus').textContent = 'Incorrect PIN. Please try again.';
-        document.getElementById('enterPinStatus').className = 'pin-status error';
-        enterPin = '';
-        updateEnterPinDots();
-        document.getElementById('enterPinBtn').disabled = true;
-        return;
-    }
-
-    completeLogin(tempEmail);
-}
-
-function forgotPin() {
-    alert('Please contact an admin to reset your PIN. You can reach out via Discord or the admin panel if you have access.');
-}
-
-// ============================================
-// COMPLETE LOGIN
-// ============================================
-function completeLogin(email) {
-    const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email.toLowerCase());
-    if (!userEntry) return;
-
-    currentUser = email;
-    currentUserIsAdmin = userEntry.isAdmin;
-
-    const loginLog = {
-        email: email,
-        timestamp: new Date().toISOString(),
-        role: userEntry.isAdmin ? 'Admin' : 'User'
-    };
-    saveLoginLog(loginLog);
-
-    document.getElementById('loginScreen').classList.add('hidden');
-    document.getElementById('appContainer').classList.add('active');
-    document.getElementById('userDisplay').textContent = email;
-    document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
-
-    if (currentUserIsAdmin) {
-        document.getElementById('adminNavLabel').style.display = 'block';
-        document.getElementById('adminNavItem').classList.add('visible');
-        document.getElementById('quotaAdminHint').classList.add('visible');
-        makeQuotaEditable();
-    }
-
-    tempEmail = '';
-    tempPin = '';
-    confirmPin = '';
-    enterPin = '';
-}
-
-function showLoginError(msg) {
-    const input = document.getElementById('emailInput');
-    const errorDiv = document.getElementById('loginError');
-    input.style.borderColor = '#ef4444';
-    input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
-    errorDiv.textContent = msg;
-    errorDiv.classList.add('show');
-    setTimeout(() => {
-        input.style.borderColor = '';
-        input.style.boxShadow = '';
-    }, 3000);
-}
-
-function handleLogout() {
-    document.getElementById('appContainer').classList.remove('active');
-    document.getElementById('loginScreen').classList.remove('hidden');
-    document.getElementById('emailInput').value = '';
-    document.getElementById('loginBtn').textContent = 'Request Access';
-    document.getElementById('loginBtn').disabled = false;
-    document.getElementById('loginError').classList.remove('show');
-
-    document.getElementById('adminNavLabel').style.display = 'none';
-    document.getElementById('adminNavItem').classList.remove('visible');
-    document.getElementById('quotaAdminHint').classList.remove('visible');
-
-    resetQuotaEditable();
-
-    currentUser = '';
-    currentUserIsAdmin = false;
-    tempEmail = '';
-    tempPin = '';
-    confirmPin = '';
-    enterPin = '';
-
-    showLoginStep('loginStepEmail');
-    showSection('section-welcome', document.querySelector('.nav-item'));
-}
-
-// ============================================
-// NAVIGATION
-// ============================================
-function showSection(sectionId, navEl) {
-    document.querySelectorAll('.content-section').forEach(sec => {
-        sec.style.display = 'none';
-    });
-
-    const target = document.getElementById(sectionId);
-    if (target) {
-        target.style.display = 'block';
-        if (!target.classList.contains('animate-in')) {
-            target.classList.add('animate-in');
+                // Auto-login after PIN creation
+                DB.session = { email: tempEmail, rank: DB.users[tempEmail].rank, loginTime: new Date().toISOString() };
+                sessionStorage.setItem('cusa_session', JSON.stringify(DB.session));
+                addAudit('login', 'First login (PIN created)', tempEmail);
+                enterApp();
+            }, 300);
         }
     }
+}
 
-    if (navEl) {
-        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-        navEl.classList.add('active');
+function deletePin() {
+    tempPin = tempPin.slice(0, -1);
+    updatePinDots('pinDots1', tempPin.length);
+}
+
+function verifyPin(digit) {
+    if (tempPin.length < 4) {
+        tempPin += digit;
+        updatePinDots('pinDots2', tempPin.length);
+        if (tempPin.length === 4) {
+            setTimeout(() => {
+                const user = DB.users[tempEmail];
+                if (user && user.pin === tempPin) {
+                    DB.session = { email: tempEmail, rank: user.rank, loginTime: new Date().toISOString() };
+                    sessionStorage.setItem('cusa_session', JSON.stringify(DB.session));
+                    addAudit('login', 'User logged in', tempEmail);
+                    enterApp();
+                } else {
+                    document.getElementById('step3Error').textContent = 'Incorrect PIN. Please try again.';
+                    tempPin = '';
+                    updatePinDots('pinDots2', 0);
+                }
+            }, 300);
+        }
+    }
+}
+
+function deleteVerifyPin() {
+    tempPin = tempPin.slice(0, -1);
+    updatePinDots('pinDots2', tempPin.length);
+}
+
+function updatePinDots(id, count) {
+    const dots = document.getElementById(id).children;
+    for (let i = 0; i < 4; i++) {
+        dots[i].classList.toggle('filled', i < count);
+    }
+}
+
+function updateStepIndicator(step) {
+    const dots = document.getElementById('stepIndicator').children;
+    for (let i = 0; i < 3; i++) {
+        dots[i].classList.toggle('active', i === step);
+    }
+}
+
+function resetPinRequest() {
+    alert('Please contact an administrator to reset your PIN.');
+}
+
+// ========== APP ENTRY ==========
+function enterApp() {
+    document.getElementById('loginPage').classList.add('hidden');
+    document.getElementById('app').classList.add('active');
+
+    const user = DB.users[DB.session.email];
+    const rankInfo = RANKS[user.rank];
+
+    document.getElementById('userEmailDisplay').textContent = DB.session.email;
+    const rankBadge = document.getElementById('userRankDisplay');
+    rankBadge.textContent = rankInfo.label;
+    rankBadge.className = 'rank-badge ' + rankInfo.class;
+
+    // Show admin panel only for admin rank
+    if (user.rank === 'admin') {
+        document.querySelectorAll('.nav-item.admin-only').forEach(el => el.classList.add('visible'));
     }
 
-    if (sectionId === 'section-admin' && currentUserIsAdmin) {
+    showSection('welcome');
+}
+
+// ========== NAVIGATION ==========
+function showSection(sectionId) {
+    // Hide all sections
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+
+    // Show target section
+    const target = document.getElementById('section-' + sectionId);
+    if (target) target.classList.add('active');
+
+    // Update nav
+    const navItem = document.querySelector('.nav-item[data-section="' + sectionId + '"]');
+    if (navItem) navItem.classList.add('active');
+
+    // Update title
+    const titles = {
+        welcome: 'Welcome & Table of Contents',
+        introduction: 'Introduction',
+        responsibilities: 'Responsibilities',
+        events: 'Events & Giveaways',
+        quota: 'Quota',
+        chain: 'Chain of Command',
+        closing: 'Closing & Signatures',
+        admin: 'Admin Panel'
+    };
+    document.getElementById('topBarTitle').textContent = titles[sectionId] || sectionId;
+
+    // Update current section index
+    currentSection = SECTIONS.indexOf(sectionId);
+
+    // Close sidebar on mobile
+    if (window.innerWidth < 768) {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('sidebarOverlay').classList.remove('active');
+    }
+
+    // Refresh admin data if on admin panel
+    if (sectionId === 'admin') {
         refreshAdminPanel();
     }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// ============================================
-// QUOTA EDITING (Admin only)
-// ============================================
-function makeQuotaEditable() {
-    const table = document.getElementById('quotaTable');
-    if (!table) return;
-
-    const editableCells = table.querySelectorAll('[data-field]');
-    editableCells.forEach(cell => {
-        cell.contentEditable = 'true';
-        cell.style.cursor = 'text';
-        cell.style.borderBottom = '1px dashed var(--primary-light)';
-        cell.title = 'Click to edit quota value';
-
-        cell.addEventListener('blur', function() {
-            const val = this.textContent.trim();
-            if (!/^\d+$/.test(val)) {
-                this.textContent = this.dataset.original || this.textContent;
-            }
-        });
-
-        cell.addEventListener('focus', function() {
-            if (!this.dataset.original) this.dataset.original = this.textContent;
-        });
-    });
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+    document.getElementById('sidebarOverlay').classList.toggle('active');
 }
 
-function resetQuotaEditable() {
-    const table = document.getElementById('quotaTable');
-    if (!table) return;
+// ========== SWIPE NAVIGATION ==========
+let touchStartX = 0;
+let touchEndX = 0;
 
-    const editableCells = table.querySelectorAll('[data-field]');
-    editableCells.forEach(cell => {
-        cell.contentEditable = 'false';
-        cell.style.cursor = '';
-        cell.style.borderBottom = '';
-        cell.title = '';
-    });
+document.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+document.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const threshold = 80;
+    const diff = touchStartX - touchEndX;
+
+    if (Math.abs(diff) > threshold) {
+        if (diff > 0 && currentSection < SECTIONS.length - 1) {
+            // Swipe left - next section
+            showSection(SECTIONS[currentSection + 1]);
+        } else if (diff < 0 && currentSection > 0) {
+            // Swipe right - previous section
+            showSection(SECTIONS[currentSection - 1]);
+        }
+    }
 }
 
-// ============================================
-// ADMIN PANEL FUNCTIONS
-// ============================================
-function switchAdminTab(tabId, btn) {
-    document.querySelectorAll('.admin-tab-content').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    document.getElementById(tabId).classList.add('active');
-
-    document.querySelectorAll('.admin-tab').forEach(tab => {
-        tab.classList.remove('active');
-    });
-    btn.classList.add('active');
-}
-
+// ========== ADMIN PANEL ==========
 function refreshAdminPanel() {
-    rebuildUserList();
-    updateStats();
-    renderUsersTable();
-    renderLoginsTable();
-    renderActivityTable();
-    renderPinsTable();
+    renderUserList();
+    renderAuditLog();
 }
 
-function updateStats() {
-    document.getElementById('statTotalUsers').textContent = AUTHORIZED_USERS.length;
-    document.getElementById('statTotalAdmins').textContent = AUTHORIZED_USERS.filter(u => u.isAdmin).length;
-    document.getElementById('statTotalLogins').textContent = getLoginLogs().length;
-}
+function renderUserList() {
+    const container = document.getElementById('userList');
+    container.innerHTML = '';
 
-function renderUsersTable() {
-    const tbody = document.getElementById('usersTableBody');
-    const emptyState = document.getElementById('usersEmpty');
-    const table = document.getElementById('usersTable');
+    Object.entries(DB.users).forEach(([email, data]) => {
+        if (email === 'admin@cusa.gov') return; // Hide admin
 
-    if (AUTHORIZED_USERS.length === 0) {
-        tbody.innerHTML = '';
-        table.style.display = 'none';
-        emptyState.style.display = 'block';
-        return;
-    }
-
-    table.style.display = 'table';
-    emptyState.style.display = 'none';
-
-    tbody.innerHTML = AUTHORIZED_USERS.map(user => {
-        const isCurrentUser = user.email.toLowerCase() === currentUser.toLowerCase();
-        const isDefault = DEFAULT_USERS.some(d => d.email.toLowerCase() === user.email.toLowerCase());
-        return `
-            <tr>
-                <td class="email-cell">${escapeHtml(user.email)}</td>
-                <td><span class="badge ${user.isAdmin ? 'badge-admin' : 'badge-user'}">${user.isAdmin ? 'Admin' : 'User'}</span></td>
-                <td>${user.addedBy ? escapeHtml(user.addedBy) : '<span style="color:#94a3b8">System</span>'}</td>
-                <td>${user.dateAdded ? formatDate(user.dateAdded) : '<span style="color:#94a3b8">—</span>'}</td>
-                <td class="actions">
-                    ${!isCurrentUser ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : '<span style="color:#94a3b8; font-size:12px;">You</span>'}
-                </td>
-            </tr>
+        const rankInfo = RANKS[data.rank];
+        const item = document.createElement('div');
+        item.className = 'user-list-item';
+        item.innerHTML = `
+            <div style="display:flex; align-items:center; flex:1; min-width:0;">
+                <span class="user-email">${email}</span>
+                <span class="user-rank ${rankInfo.class}">${rankInfo.label}</span>
+            </div>
+            <div class="actions">
+                <button class="icon-btn delete" onclick="removeUser('${email}')" title="Remove user">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
         `;
-    }).join('');
-}
+        container.appendChild(item);
+    });
 
-function renderLoginsTable() {
-    const tbody = document.getElementById('loginsTableBody');
-    const emptyState = document.getElementById('loginsEmpty');
-    const table = document.getElementById('loginsTable');
-    const logs = getLoginLogs();
-
-    if (logs.length === 0) {
-        tbody.innerHTML = '';
-        table.style.display = 'none';
-        emptyState.style.display = 'block';
-        return;
+    if (container.children.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px;">No authorized users yet.</p>';
     }
-
-    table.style.display = 'table';
-    emptyState.style.display = 'none';
-
-    tbody.innerHTML = logs.map(log => `
-        <tr>
-            <td class="email-cell">${escapeHtml(log.email)}</td>
-            <td>${formatDateTime(log.timestamp)}</td>
-            <td><span class="badge ${log.role === 'Admin' ? 'badge-admin' : 'badge-login'}">${escapeHtml(log.role)}</span></td>
-        </tr>
-    `).join('');
-}
-
-function renderActivityTable() {
-    const tbody = document.getElementById('activityTableBody');
-    const emptyState = document.getElementById('activityEmpty');
-    const table = document.getElementById('activityTable');
-    const logs = getAdminActivity();
-
-    if (logs.length === 0) {
-        tbody.innerHTML = '';
-        table.style.display = 'none';
-        emptyState.style.display = 'block';
-        return;
-    }
-
-    table.style.display = 'table';
-    emptyState.style.display = 'none';
-
-    tbody.innerHTML = logs.map(log => `
-        <tr>
-            <td><span class="badge ${log.action === 'ADDED' ? 'badge-added' : (log.action === 'REMOVED' ? 'badge-removed' : 'badge-pin')}">${log.action}</span></td>
-            <td class="email-cell">${escapeHtml(log.targetEmail)}</td>
-            <td class="email-cell">${escapeHtml(log.performedBy)}</td>
-            <td>${formatDateTime(log.timestamp)}</td>
-        </tr>
-    `).join('');
-}
-
-function renderPinsTable() {
-    const tbody = document.getElementById('pinsTableBody');
-    const emptyState = document.getElementById('pinsEmpty');
-    const table = document.getElementById('pinsTable');
-    const pins = getAllPins();
-    const pinEntries = Object.entries(pins);
-
-    if (pinEntries.length === 0) {
-        tbody.innerHTML = '';
-        table.style.display = 'none';
-        emptyState.style.display = 'block';
-        return;
-    }
-
-    table.style.display = 'table';
-    emptyState.style.display = 'none';
-
-    tbody.innerHTML = pinEntries.map(([email, data]) => `
-        <tr>
-            <td class="email-cell">${escapeHtml(email)}</td>
-            <td><span class="badge badge-pin">PIN Set</span></td>
-            <td>${data.createdAt ? formatDateTime(data.createdAt) : '<span style="color:#94a3b8">—</span>'}</td>
-            <td class="actions">
-                <button class="btn-warning" onclick="resetUserPin('${escapeHtml(email)}')"><i class="fas fa-redo"></i> Reset PIN</button>
-            </td>
-        </tr>
-    `).join('');
 }
 
 function addUser() {
-    const emailInput = document.getElementById('newUserEmail');
-    const isAdminCheck = document.getElementById('newUserIsAdmin');
-    const email = emailInput.value.trim().toLowerCase();
+    const email = document.getElementById('newUserEmailInput').value.trim().toLowerCase();
+    const rank = document.getElementById('newUserRank').value;
+    const error = document.getElementById('addUserError');
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address.');
+    if (!email || !email.includes('@')) {
+        error.textContent = 'Please enter a valid email address.';
         return;
     }
 
-    rebuildUserList();
-
-    if (AUTHORIZED_USERS.some(u => u.email.toLowerCase() === email)) {
-        alert('This email is already authorized.');
+    if (DB.users[email]) {
+        error.textContent = 'This user already exists.';
         return;
     }
 
-    const newUser = {
-        email: email,
-        isAdmin: isAdminCheck.checked,
-        addedBy: currentUser,
-        dateAdded: new Date().toISOString()
-    };
+    DB.users[email] = { rank: rank, pin: null };
+    saveUsers();
+    addAudit('user', 'User added', email);
 
-    // Save to extras only
-    const extras = getExtraUsers();
-    extras.push(newUser);
-    saveExtraUsers(extras);
-
-    rebuildUserList();
-
-    saveAdminActivity({
-        action: 'ADDED',
-        targetEmail: email,
-        performedBy: currentUser,
-        timestamp: new Date().toISOString()
-    });
-
-    emailInput.value = '';
-    isAdminCheck.checked = false;
-
-    refreshAdminPanel();
-    alert(`Successfully added ${email} as ${newUser.isAdmin ? 'an admin' : 'a user'}.`);
+    document.getElementById('newUserEmailInput').value = '';
+    error.textContent = '';
+    renderUserList();
 }
 
 function removeUser(email) {
-    if (!confirm(`Are you sure you want to remove ${email}? They will no longer be able to access this document.`)) {
+    if (!confirm('Are you sure you want to remove ' + email + '?')) return;
+
+    delete DB.users[email];
+    saveUsers();
+    addAudit('user', 'User removed', email);
+    renderUserList();
+}
+
+function switchAuditTab(tab) {
+    currentAuditTab = tab;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    event.target.classList.add('active');
+    renderAuditLog();
+}
+
+function renderAuditLog() {
+    const container = document.getElementById('auditLog');
+    container.innerHTML = '';
+
+    const logs = DB.audit[currentAuditTab] || [];
+    const icons = {
+        user: 'fa-user',
+        login: 'fa-right-to-bracket',
+        pin: 'fa-lock'
+    };
+
+    if (logs.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:var(--text-muted); padding:20px;">No audit entries yet.</p>';
         return;
     }
 
-    // Only remove from extras
-    let extras = getExtraUsers();
-    extras = extras.filter(u => u.email.toLowerCase() !== email.toLowerCase());
-    saveExtraUsers(extras);
-
-    rebuildUserList();
-
-    removeUserPin(email);
-
-    saveAdminActivity({
-        action: 'REMOVED',
-        targetEmail: email,
-        performedBy: currentUser,
-        timestamp: new Date().toISOString()
+    logs.slice().reverse().forEach(log => {
+        const entry = document.createElement('div');
+        entry.className = 'audit-entry ' + currentAuditTab;
+        entry.innerHTML = `
+            <div class="icon ${currentAuditTab}">
+                <i class="fas ${icons[currentAuditTab]}"></i>
+            </div>
+            <div class="details">
+                <div class="action">${log.action}</div>
+                <div class="target">${log.target}</div>
+            </div>
+            <div class="time">${formatTime(log.time)}</div>
+        `;
+        container.appendChild(entry);
     });
-
-    refreshAdminPanel();
-    alert(`Successfully removed ${email}.`);
 }
 
-function resetUserPin(email) {
-    if (!confirm(`Reset PIN for ${email}? They will need to create a new PIN on their next login.`)) {
-        return;
+function addAudit(type, action, target) {
+    if (!DB.audit[type]) DB.audit[type] = [];
+    DB.audit[type].push({
+        action: action,
+        target: target,
+        time: new Date().toISOString()
+    });
+    saveAudit();
+}
+
+function formatTime(iso) {
+    const d = new Date(iso);
+    return d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'});
+}
+
+// ========== PERSISTENCE ==========
+function saveUsers() {
+    localStorage.setItem('cusa_users', JSON.stringify(DB.users));
+}
+
+function saveAudit() {
+    localStorage.setItem('cusa_audit', JSON.stringify(DB.audit));
+}
+
+// ========== LOGOUT ==========
+function logout() {
+    DB.session = null;
+    sessionStorage.removeItem('cusa_session');
+    tempEmail = '';
+    tempPin = '';
+
+    document.getElementById('app').classList.remove('active');
+    document.getElementById('loginPage').classList.remove('hidden');
+
+    // Reset login form
+    document.getElementById('emailInput').value = '';
+    document.getElementById('step1').style.display = 'block';
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'none';
+    document.getElementById('step1Error').textContent = '';
+    document.getElementById('step2Error').textContent = '';
+    document.getElementById('step3Error').textContent = '';
+    updatePinDots('pinDots1', 0);
+    updatePinDots('pinDots2', 0);
+    updateStepIndicator(0);
+
+    // Hide admin nav
+    document.querySelectorAll('.nav-item.admin-only').forEach(el => el.classList.remove('visible'));
+}
+
+// ========== INIT ==========
+document.addEventListener('DOMContentLoaded', () => {
+    // Check for existing session
+    if (DB.session && DB.users[DB.session.email]) {
+        enterApp();
     }
 
-    removeUserPin(email);
-
-    saveAdminActivity({
-        action: 'PIN_RESET',
-        targetEmail: email,
-        performedBy: currentUser,
-        timestamp: new Date().toISOString()
-    });
-
-    refreshAdminPanel();
-    alert(`PIN reset for ${email}. They will be prompted to create a new PIN on their next login.`);
-}
-
-// ============================================
-// UTILITIES
-// ============================================
-function escapeHtml(text) {
-    if (!text) return '';
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function formatDate(isoString) {
-    if (!isoString) return '—';
-    const date = new Date(isoString);
-    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-}
-
-function formatDateTime(isoString) {
-    if (!isoString) return '—';
-    const date = new Date(isoString);
-    return date.toLocaleString('en-US', { 
-        year: 'numeric', month: 'short', day: 'numeric',
-        hour: '2-digit', minute: '2-digit', second: '2-digit'
-    });
-}
-
-// ============================================
-// INITIALIZATION
-// ============================================
-document.addEventListener('DOMContentLoaded', function() {
-    // Always rebuild on load to ensure defaults exist
-    rebuildUserList();
-
-    document.getElementById('emailInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') handleEmailSubmit();
-    });
-
-    document.getElementById('emailInput').addEventListener('input', function() {
-        document.getElementById('loginError').classList.remove('show');
-        this.style.borderColor = '';
-        this.style.boxShadow = '';
+    // Enter key on email input
+    document.getElementById('emailInput').addEventListener('keypress', e => {
+        if (e.key === 'Enter') checkEmail();
     });
 });
 </script>
