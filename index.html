@@ -3,45 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta property="og:title" content="Community Department Handbook — CUSA">
-<meta property="og:description" content="Official classified handbook for the Community Department.">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png?ex=6a04a634&is=6a0354b4&hm=ce2a9709c28806b68b205b739ed878877191defa9c6cb08d2deeddcae322919a&">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:site_name" content="CUSA Community Department">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png?ex=6a04a634&is=6a0354b4&hm=ce2a9709c28806b68b205b739ed878877191defa9c6cb08d2deeddcae322919a&">
+    <meta property="og:description" content="Official classified handbook for the Community Department.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png?ex=6a04a634&is=6a0354b4&hm=ce2a9709c28806b68b205b739ed878877191defa9c6cb08d2deeddcae322919a&">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="CUSA Community Department">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://cdn.discordapp.com/attachments/1498018972942209084/1503795508378865724/image.png?ex=6a04a634&is=6a0354b4&hm=ce2a9709c28806b68b205b739ed878877191defa9c6cb08d2deeddcae322919a&">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Department Handbook — CUSA</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary: #1e3a8a;
-            --primary-dark: #172554;
-            --primary-light: #3b82f6;
-            --accent: #60a5fa;
-            --surface: #f8fafc;
-            --text: #1e293b;
-            --text-light: #64748b;
-            --border: #e2e8f0;
-            --glass: rgba(255,255,255,0.08);
-            --glass-border: rgba(255,255,255,0.15);
-            --warning: #dc2626;
-            --warning-bg: rgba(220,38,38,0.12);
-            --success: #16a34a;
-            --success-bg: rgba(22,163,74,0.12);
+            --primary: #1e3a8a; --primary-dark: #172554; --primary-light: #3b82f6;
+            --accent: #60a5fa; --surface: #f8fafc; --text: #1e293b;
+            --text-light: #64748b; --border: #e2e8f0;
+            --glass: rgba(255,255,255,0.08); --glass-border: rgba(255,255,255,0.15);
+            --warning: #dc2626; --warning-bg: rgba(220,38,38,0.12);
+            --success: #16a34a; --success-bg: rgba(22,163,74,0.12);
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); overflow-x: hidden; }
 
-        /* LOGIN SCREEN */
         .login-screen {
             position: fixed; inset: 0;
             background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #172554 100%);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
-            z-index: 1000;
-            transition: opacity 0.6s ease, transform 0.6s ease;
+            z-index: 1000; transition: opacity 0.6s ease, transform 0.6s ease;
         }
         .login-screen::before {
             content: ''; position: absolute; inset: 0;
@@ -91,11 +81,32 @@
         .login-error { color: #fca5a5; font-size: 13px; margin-top: 12px; text-align: center; font-weight: 500; display: none; }
         .login-error.show { display: block; }
 
-        /* APP CONTAINER */
+        /* PIN STYLES */
+        .pin-dots { display: flex; gap: 16px; justify-content: center; margin: 24px 0; }
+        .pin-dot { width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.3); transition: all 0.2s ease; }
+        .pin-dot.filled { background: #60a5fa; border-color: #60a5fa; box-shadow: 0 0 12px rgba(96,165,250,0.5); }
+        .pin-keypad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 240px; margin: 0 auto; }
+        .pin-key {
+            aspect-ratio: 1; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px; color: white; font-size: 22px; font-weight: 600;
+            font-family: 'Inter', sans-serif; cursor: pointer; transition: all 0.15s ease;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pin-key:hover { background: rgba(255,255,255,0.15); transform: scale(1.05); }
+        .pin-key:active { transform: scale(0.95); background: rgba(59,130,246,0.3); }
+        .pin-key.backspace { font-size: 16px; }
+        .pin-key.empty { pointer-events: none; opacity: 0; }
+        .pin-status { text-align: center; color: rgba(255,255,255,0.5); font-size: 13px; margin-bottom: 16px; min-height: 20px; }
+        .pin-status.error { color: #fca5a5; }
+        .pin-status.success { color: #86efac; }
+        .pin-step-indicator { display: flex; gap: 8px; justify-content: center; margin-bottom: 20px; }
+        .pin-step { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.2); transition: all 0.3s ease; }
+        .pin-step.active { background: #60a5fa; box-shadow: 0 0 8px rgba(96,165,250,0.5); }
+        .pin-step.completed { background: #22c55e; }
+
         .app-container { display: none; min-height: 100vh; }
         .app-container.active { display: flex; }
 
-        /* SIDEBAR */
         .sidebar { width: 280px; background: linear-gradient(180deg, #1e3a8a 0%, #1e40af 100%); color: white; position: fixed; height: 100vh; overflow-y: auto; z-index: 100; display: flex; flex-direction: column; }
         .sidebar-header { padding: 24px 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
         .sidebar-header .brand { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
@@ -110,21 +121,18 @@
         .nav-item.admin-only { display: none; }
         .nav-item.admin-only.visible { display: flex; }
 
-        /* TOP BAR */
         .top-bar { position: fixed; top: 0; left: 280px; right: 0; height: 64px; background: linear-gradient(135deg, #1e3a8a, #1e40af); display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; z-index: 99; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
         .user-badge { display: flex; align-items: center; gap: 12px; color: white; font-size: 14px; font-weight: 500; }
         .user-badge .avatar { width: 32px; height: 32px; background: linear-gradient(135deg, #60a5fa, #3b82f6); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; }
         .btn-exit { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: white; padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; margin-left: 16px; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; }
         .btn-exit:hover { background: rgba(255,255,255,0.2); }
 
-        /* MAIN CONTENT */
         .main-content { margin-left: 280px; margin-top: 64px; padding: 40px 48px; max-width: calc(100vw - 280px); min-height: calc(100vh - 64px); }
         .section-header { margin-bottom: 32px; }
         .section-label { display: inline-flex; align-items: center; gap: 8px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: var(--primary); padding: 6px 14px; border-radius: 20px; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 12px; }
         .section-title { font-size: 36px; font-weight: 800; color: var(--primary); line-height: 1.2; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: linear-gradient(90deg, var(--primary-light), var(--accent)); border-radius: 2px; }
 
-        /* CARDS */
         .content-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 28px; margin-bottom: 24px; box-shadow: 0 1px 3px rgba(0,0,0,0.04); transition: box-shadow 0.3s ease; }
         .content-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
         .card-title { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
@@ -132,7 +140,6 @@
         .card-text { color: var(--text-light); font-size: 14px; line-height: 1.8; }
         .card-text strong { color: var(--text); font-weight: 600; }
 
-        /* ALERTS */
         .alert-box { background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px solid #f59e0b; border-radius: 12px; padding: 16px 20px; margin-top: 16px; display: flex; gap: 12px; align-items: flex-start; }
         .alert-box i { color: #d97706; font-size: 18px; margin-top: 2px; }
         .alert-box .alert-title { font-weight: 700; color: #92400e; font-size: 13px; margin-bottom: 4px; }
@@ -146,7 +153,6 @@
         .alert-box.green .alert-title { color: #166534; }
         .alert-box.green .alert-text { color: #15803d; }
 
-        /* TOC */
         .toc-grid { display: grid; gap: 12px; }
         .toc-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: inherit; }
         .toc-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 16px rgba(59,130,246,0.1); transform: translateX(4px); }
@@ -154,7 +160,6 @@
         .toc-info h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
         .toc-info p { font-size: 13px; color: var(--text-light); }
 
-        /* RANK CARDS */
         .rank-card { border-radius: 16px; overflow: hidden; margin-bottom: 20px; box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
         .rank-header { padding: 20px 24px; display: flex; align-items: center; justify-content: space-between; color: white; }
         .rank-header.cd { background: linear-gradient(135deg, #1e3a8a, #312e81); }
@@ -172,14 +177,12 @@
         .rank-body li:last-child { border-bottom: none; }
         .rank-body li::before { content: counter(duty); width: 28px; height: 28px; background: linear-gradient(135deg, #dbeafe, #bfdbfe); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--primary); flex-shrink: 0; }
 
-        /* EVENTS */
         .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 16px; }
         .event-type { background: linear-gradient(135deg, #eff6ff, #dbeafe); border: 1px solid #bfdbfe; border-radius: 12px; padding: 20px; transition: all 0.3s ease; }
         .event-type:hover { transform: translateY(-4px); box-shadow: 0 8px 24px rgba(59,130,246,0.15); }
         .event-type h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
         .event-type p { font-size: 13px; color: var(--text-light); line-height: 1.5; }
 
-        /* QUOTA TABLE */
         .quota-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); margin-top: 20px; }
         .quota-table { width: 100%; border-collapse: collapse; font-size: 14px; }
         .quota-table thead { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
@@ -192,12 +195,10 @@
         .quota-table .num { font-weight: 700; color: var(--primary); font-size: 16px; }
         .quota-table .unit { font-size: 11px; color: var(--text-light); font-weight: 400; }
 
-        /* Admin editable indicator */
         .admin-edit-hint { display: none; background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: #92400e; }
         .admin-edit-hint i { margin-right: 6px; }
         .admin-edit-hint.visible { display: block; }
 
-        /* CHAIN */
         .chain-flow { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
         .chain-level { border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
         .chain-level-header { padding: 12px 20px; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: white; }
@@ -218,13 +219,11 @@
         .chain-info p { font-size: 13px; color: var(--text-light); line-height: 1.7; margin-top: 8px; }
         .chain-arrow { text-align: center; color: var(--primary-light); font-size: 20px; margin: -8px 0; }
 
-        /* GUIDELINES */
         .guidelines-list { list-style: none; counter-reset: guide; }
         .guidelines-list li { counter-increment: guide; display: flex; gap: 12px; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 14px; color: var(--text-light); line-height: 1.6; }
         .guidelines-list li:last-child { border-bottom: none; }
         .guidelines-list li::before { content: counter(guide); width: 28px; height: 28px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: white; flex-shrink: 0; }
 
-        /* SIGNATURES */
         .signatures-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 24px; }
         .signature-card { background: white; border: 1px solid var(--border); border-radius: 16px; padding: 24px; position: relative; overflow: hidden; transition: all 0.3s ease; }
         .signature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
@@ -242,7 +241,6 @@
         .signature-card .sig-rank { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
         .signature-card .sig-date { font-size: 11px; color: var(--text-light); }
 
-        /* ADMIN PANEL STYLES */
         .admin-panel { display: none; }
         .admin-panel.active { display: block; }
 
@@ -265,6 +263,8 @@
         .btn-danger:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220,38,38,0.3); }
         .btn-secondary { padding: 8px 14px; background: linear-gradient(135deg, #64748b, #475569); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
         .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(71,85,105,0.3); }
+        .btn-warning { padding: 8px 14px; background: linear-gradient(135deg, #f59e0b, #d97706); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .btn-warning:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(217,119,6,0.3); }
 
         .admin-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
         .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -281,6 +281,7 @@
         .badge-added { background: #dcfce7; color: #166534; }
         .badge-removed { background: #fef2f2; color: #991b1b; }
         .badge-login { background: #dbeafe; color: #1e40af; }
+        .badge-pin { background: #fef3c7; color: #92400e; }
 
         .admin-tabs { display: flex; gap: 4px; margin-bottom: 24px; background: #f1f5f9; padding: 4px; border-radius: 10px; width: fit-content; }
         .admin-tab { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-light); transition: all 0.2s ease; font-family: inherit; }
@@ -294,28 +295,25 @@
         .empty-state i { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
         .empty-state p { font-size: 14px; }
 
-        /* FOOTER */
         .doc-footer { text-align: center; padding: 40px 0 20px; margin-top: 40px; border-top: 1px solid var(--border); }
         .doc-seal { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800; border: 3px solid var(--border); margin-bottom: 16px; }
         .doc-footer h4 { font-size: 14px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
         .doc-footer p { font-size: 12px; color: var(--text-light); line-height: 1.6; }
         .doc-footer .classified-footer { margin-top: 12px; font-size: 11px; color: var(--warning); font-weight: 600; letter-spacing: 0.5px; }
 
-        /* SCROLLBAR */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: transparent; }
         ::-webkit-scrollbar-thumb { background: rgba(30,58,138,0.3); border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: rgba(30,58,138,0.5); }
 
-        /* ANIMATIONS */
         @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         .animate-in { animation: fadeInUp 0.5s ease forwards; }
 
-        /* RESPONSIVE */
         @media (max-width: 1200px) { .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
         @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } .admin-stats-grid { grid-template-columns: 1fr; } }
         @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } .admin-form-row { grid-template-columns: 1fr; } }
     </style>
+    <base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -331,19 +329,116 @@
         <div class="label"><i class="fas fa-shield-alt"></i> Classified Document — Restricted Access</div>
         <p>This handbook is strictly classified and intended exclusively for authorized members of the Community Department within the Tedder Management Staff Team of CUSA. Unauthorized access, distribution, sharing, or leaking of any content contained within this document is a serious violation of your agreement and will result in immediate disciplinary action, up to and including permanent removal from the team and associated groups.</p>
     </div>
-    <div class="login-card">
+
+    <!-- STEP 1: EMAIL INPUT -->
+    <div class="login-card" id="loginStepEmail">
         <h3><i class="fas fa-lock-open" style="color: #60a5fa;"></i> Identity Verification</h3>
         <p class="desc">Enter your authorized email address below to verify your identity and gain access to the Community Department Handbook. Only authorized personnel may proceed.</p>
         <div class="input-group">
             <label>Email Address</label>
             <input type="email" id="emailInput" placeholder="Enter your authorized email..." autocomplete="off">
         </div>
-        <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Request Access</button>
+        <button class="btn-primary" id="loginBtn" onclick="handleEmailSubmit()">Request Access</button>
         <div class="login-error" id="loginError"></div>
     </div>
+
+    <!-- STEP 2A: CREATE PIN (First Time) -->
+    <div class="login-card" id="loginStepCreatePin" style="display:none;">
+        <h3><i class="fas fa-key" style="color: #60a5fa;"></i> Create Security PIN</h3>
+        <p class="desc">This is your first time logging in. Create a 4-digit PIN to secure your account. You will use this PIN for all future logins.</p>
+        <div class="pin-step-indicator">
+            <div class="pin-step active" id="step1"></div>
+            <div class="pin-step" id="step2"></div>
+        </div>
+        <div class="pin-status" id="createPinStatus">Enter a 4-digit PIN</div>
+        <div class="pin-dots" id="createPinDots">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+        <div class="pin-keypad" id="createPinKeypad">
+            <button class="pin-key" onclick="pinInput(1)">1</button>
+            <button class="pin-key" onclick="pinInput(2)">2</button>
+            <button class="pin-key" onclick="pinInput(3)">3</button>
+            <button class="pin-key" onclick="pinInput(4)">4</button>
+            <button class="pin-key" onclick="pinInput(5)">5</button>
+            <button class="pin-key" onclick="pinInput(6)">6</button>
+            <button class="pin-key" onclick="pinInput(7)">7</button>
+            <button class="pin-key" onclick="pinInput(8)">8</button>
+            <button class="pin-key" onclick="pinInput(9)">9</button>
+            <button class="pin-key empty"></button>
+            <button class="pin-key" onclick="pinInput(0)">0</button>
+            <button class="pin-key backspace" onclick="pinBackspace()"><i class="fas fa-backspace"></i></button>
+        </div>
+        <button class="btn-primary" id="createPinBtn" onclick="submitCreatePin()" style="margin-top: 20px;" disabled>Create PIN</button>
+        <div style="text-align: center; margin-top: 12px;">
+            <button onclick="cancelPinFlow()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Back to Email</button>
+        </div>
+    </div>
+
+    <!-- STEP 2B: CONFIRM PIN -->
+    <div class="login-card" id="loginStepConfirmPin" style="display:none;">
+        <h3><i class="fas fa-check-circle" style="color: #60a5fa;"></i> Confirm Your PIN</h3>
+        <p class="desc">Re-enter your 4-digit PIN to confirm. Make sure you remember it — you will need it for every future login.</p>
+        <div class="pin-step-indicator">
+            <div class="pin-step completed" id="step1b"></div>
+            <div class="pin-step active" id="step2b"></div>
+        </div>
+        <div class="pin-status" id="confirmPinStatus">Re-enter your PIN</div>
+        <div class="pin-dots" id="confirmPinDots">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+        <div class="pin-keypad" id="confirmPinKeypad">
+            <button class="pin-key" onclick="confirmPinInput(1)">1</button>
+            <button class="pin-key" onclick="confirmPinInput(2)">2</button>
+            <button class="pin-key" onclick="confirmPinInput(3)">3</button>
+            <button class="pin-key" onclick="confirmPinInput(4)">4</button>
+            <button class="pin-key" onclick="confirmPinInput(5)">5</button>
+            <button class="pin-key" onclick="confirmPinInput(6)">6</button>
+            <button class="pin-key" onclick="confirmPinInput(7)">7</button>
+            <button class="pin-key" onclick="confirmPinInput(8)">8</button>
+            <button class="pin-key" onclick="confirmPinInput(9)">9</button>
+            <button class="pin-key empty"></button>
+            <button class="pin-key" onclick="confirmPinInput(0)">0</button>
+            <button class="pin-key backspace" onclick="confirmPinBackspace()"><i class="fas fa-backspace"></i></button>
+        </div>
+        <button class="btn-primary" id="confirmPinBtn" onclick="submitConfirmPin()" style="margin-top: 20px;" disabled>Confirm PIN</button>
+        <div style="text-align: center; margin-top: 12px;">
+            <button onclick="backToCreatePin()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Change PIN</button>
+        </div>
+    </div>
+
+    <!-- STEP 3: ENTER EXISTING PIN -->
+    <div class="login-card" id="loginStepEnterPin" style="display:none;">
+        <h3><i class="fas fa-shield-alt" style="color: #60a5fa;"></i> Enter Security PIN</h3>
+        <p class="desc">Welcome back. Enter your 4-digit PIN to access the Community Department Handbook.</p>
+        <div class="pin-status" id="enterPinStatus">Enter your PIN</div>
+        <div class="pin-dots" id="enterPinDots">
+            <div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div><div class="pin-dot"></div>
+        </div>
+        <div class="pin-keypad" id="enterPinKeypad">
+            <button class="pin-key" onclick="enterPinInput(1)">1</button>
+            <button class="pin-key" onclick="enterPinInput(2)">2</button>
+            <button class="pin-key" onclick="enterPinInput(3)">3</button>
+            <button class="pin-key" onclick="enterPinInput(4)">4</button>
+            <button class="pin-key" onclick="enterPinInput(5)">5</button>
+            <button class="pin-key" onclick="enterPinInput(6)">6</button>
+            <button class="pin-key" onclick="enterPinInput(7)">7</button>
+            <button class="pin-key" onclick="enterPinInput(8)">8</button>
+            <button class="pin-key" onclick="enterPinInput(9)">9</button>
+            <button class="pin-key empty"></button>
+            <button class="pin-key" onclick="enterPinInput(0)">0</button>
+            <button class="pin-key backspace" onclick="enterPinBackspace()"><i class="fas fa-backspace"></i></button>
+        </div>
+        <button class="btn-primary" id="enterPinBtn" onclick="submitEnterPin()" style="margin-top: 20px;" disabled>Unlock</button>
+        <div style="text-align: center; margin-top: 12px;">
+            <button onclick="forgotPin()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-question-circle"></i> Forgot PIN? Contact an admin.</button>
+        </div>
+        <div style="text-align: center; margin-top: 8px;">
+            <button onclick="cancelPinFlow()" style="background: none; border: none; color: rgba(255,255,255,0.5); font-size: 12px; cursor: pointer; font-family: inherit;"><i class="fas fa-arrow-left"></i> Use different email</button>
+        </div>
+    </div>
+
     <div class="login-footer">&copy; 2026 Tedder Management Staff Team &middot; CUSA &middot; All Rights Reserved</div>
 </div>
-
 <!-- MAIN APP -->
 <div class="app-container" id="appContainer">
     <nav class="sidebar">
@@ -544,7 +639,6 @@
                 </div>
             </div>
         </section>
-
         <!-- SECTION 04: EVENTS & GIVEAWAYS -->
         <section id="section-events" class="content-section" style="display:none;">
             <div class="section-header">
@@ -556,7 +650,7 @@
             <div class="content-card">
                 <div class="card-title"><i class="fas fa-calendar-check"></i> Event Protocol</div>
                 <div class="card-title" style="font-size: 15px; margin-top: 16px;"><i class="fas fa-info-circle" style="background: #e0e7ff; color: #4338ca;"></i> Event Information</div>
-               <div class="card-text" style="margin-bottom: 12px;">The Community Department is authorized to host the following types of community events. <a href="https://docs.google.com/document/d/1UamDHOt-5h33biNPmXUAwBJsR2zx1tfNgKuE9XI0zl4/edit?tab=t.0#heading=h.psoyspka74vk" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: underline;">View our Community Event Games Document <i class="fas fa-external-link-alt" style="font-size: 11px;"></i></a> for a full list of games we use.</div>
+                <div class="card-text" style="margin-bottom: 12px;">The Community Department is authorized to host the following types of community events. <a href="https://docs.google.com/document/d/1UamDHOt-5h33biNPmXUAwBJsR2zx1tfNgKuE9XI0zl4/edit?tab=t.0#heading=h.psoyspka74vk" target="_blank" style="color: var(--primary); font-weight: 600; text-decoration: underline;">View our Community Event Games Document <i class="fas fa-external-link-alt" style="font-size: 11px;"></i></a> for a full list of games we use.</div>
                 <div class="card-title" style="font-size: 15px; margin-top: 24px;"><i class="fas fa-layer-group" style="background: #e0e7ff; color: #4338ca;"></i> Event Types</div>
                 <div class="card-text" style="margin-bottom: 12px;">The Community Department is authorized to host the following types of community events:</div>
                 <div class="events-grid">
@@ -764,7 +858,6 @@
                 </ol>
             </div>
         </section>
-
         <!-- SECTION 07: CLOSING & SIGNATURES -->
         <section id="section-closing" class="content-section" style="display:none;">
             <div class="section-header">
@@ -798,12 +891,10 @@
             <div class="card-title" style="font-size: 20px; margin-bottom: 8px;"><i class="fas fa-pen-fancy" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);"></i> Official Signatures</div>
             <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">This handbook has been reviewed, approved, and authorized by the Community Department leadership and endorsed by departmental staff.</div>
 
-            <!-- COMMUNITY LEADERSHIP -->
             <div class="card-title" style="font-size: 20px; margin-bottom: 8px; margin-top: 32px;"><i class="fas fa-crown" style="background: linear-gradient(135deg, #dbeafe, #bfdbfe);"></i> Staff Team Leadership</div>
             <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">The following individuals hold leadership authority over the Community Department and have reviewed, approved, and authorized this handbook on behalf of CUSA.</div>
 
             <div class="signatures-grid">
-                <!-- Community Director -->
                 <div class="signature-card cd">
                     <div class="sig-header">
                         <div class="sig-avatar">CD</div>
@@ -818,8 +909,6 @@
                         <span class="sig-date">Signature</span>
                     </div>
                 </div>
-
-                <!-- Staff Overseer -->
                 <div class="signature-card staff-overseer">
                     <div class="sig-header">
                         <div class="sig-avatar">SM</div>
@@ -853,7 +942,6 @@
                 </div>
             </div>
 
-            <!-- COMMUNITY DEPARTMENT APPROVAL -->
             <div class="card-title" style="font-size: 20px; margin-bottom: 8px; margin-top: 40px;"><i class="fas fa-users" style="background: linear-gradient(135deg, #ede9fe, #ddd6fe);"></i> Community Department Leadership</div>
             <div class="card-text" style="margin-bottom: 16px; color: var(--text-light);">The following Community Secretaries have reviewed and acknowledged this handbook. Their signatures serve as formal departmental endorsement and weight to this document.</div>
 
@@ -905,14 +993,12 @@
                 </div>
             </div>
 
-            <!-- CREDITS -->
             <div class="content-card" style="margin-top: 24px; text-align: center;">
                 <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px;">Credits</div>
                 <div style="font-family: 'Dancing Script', cursive; font-size: 24px; color: var(--primary); font-weight: 600;">papervv &amp; Imperator_Supremus</div>
                 <div style="font-size: 12px; color: var(--text-light); margin-top: 4px;">Staff Team &middot; CUSA</div>
             </div>
 
-            <!-- DOCUMENT FOOTER -->
             <div class="doc-footer">
                 <div class="doc-seal">CUSA</div>
                 <h4>Community Department &middot; Official Document</h4>
@@ -920,7 +1006,6 @@
                 <p class="classified-footer">This document is classified. Unauthorized distribution is strictly prohibited.</p>
             </div>
         </section>
-
         <!-- SECTION ADMIN: ADMIN PANEL -->
         <section id="section-admin" class="content-section admin-panel" style="display:none;">
             <div class="section-header">
@@ -947,6 +1032,7 @@
                 <button class="admin-tab active" onclick="switchAdminTab('tab-users', this)"><i class="fas fa-users"></i> Manage Access</button>
                 <button class="admin-tab" onclick="switchAdminTab('tab-logins', this)"><i class="fas fa-sign-in-alt"></i> Login Audit</button>
                 <button class="admin-tab" onclick="switchAdminTab('tab-activity', this)"><i class="fas fa-history"></i> Admin Activity</button>
+                <button class="admin-tab" onclick="switchAdminTab('tab-pins', this)"><i class="fas fa-key"></i> PIN Management</button>
             </div>
 
             <!-- TAB: MANAGE ACCESS -->
@@ -982,7 +1068,6 @@
                                 </tr>
                             </thead>
                             <tbody id="usersTableBody">
-                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -1008,7 +1093,6 @@
                                 </tr>
                             </thead>
                             <tbody id="loginsTableBody">
-                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -1035,7 +1119,6 @@
                                 </tr>
                             </thead>
                             <tbody id="activityTableBody">
-                                <!-- Populated by JS -->
                             </tbody>
                         </table>
                     </div>
@@ -1045,41 +1128,82 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TAB: PIN MANAGEMENT -->
+            <div id="tab-pins" class="admin-tab-content">
+                <div class="content-card">
+                    <div class="card-title"><i class="fas fa-key"></i> PIN Management</div>
+                    <div class="card-text" style="margin-bottom: 16px;">View and reset user PINs. Resetting a PIN will require the user to create a new one on their next login.</div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="pinsTable">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>PIN Status</th>
+                                    <th>Created On</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pinsTableBody">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="pinsEmpty" style="display:none;">
+                        <i class="fas fa-key"></i>
+                        <p>No PIN records yet.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
     </main>
 </div>
-
 <script>
 // ============================================
 // AUTHORIZED USERS & ADMIN CONFIGURATION
 // ============================================
-// Default admin emails - these can access the admin panel
-// Format: { email: "user@example.com", isAdmin: true/false }
-// All users in this list can log in. Only isAdmin=true can access admin panel.
-
-let AUTHORIZED_USERS = [
-    { email: "elspethmiska@gmail.com", isAdmin: true },
+const DEFAULT_USERS = [
+    { email: "elspethmiska@gmail.com", isAdmin: true, addedBy: "System", dateAdded: new Date().toISOString() }
 ];
 
+let AUTHORIZED_USERS = [...DEFAULT_USERS];
+
 // ============================================
-// DATA STORAGE (in-memory with localStorage backup)
+// DATA STORAGE (localStorage)
 // ============================================
 let currentUser = '';
 let currentUserIsAdmin = false;
+let tempEmail = '';
+let tempPin = '';
+let confirmPin = '';
+let enterPin = '';
 
-// Load from localStorage if available
 function loadData() {
     try {
         const savedUsers = localStorage.getItem('cusa_authorized_users');
         if (savedUsers) {
-            AUTHORIZED_USERS = JSON.parse(savedUsers);
+            const parsed = JSON.parse(savedUsers);
+            // Merge saved users with defaults (prevent lockout if localStorage cleared)
+            const defaultEmails = DEFAULT_USERS.map(u => u.email.toLowerCase());
+            const savedEmails = parsed.map(u => u.email.toLowerCase());
+
+            // Add any default users that are missing from saved data
+            DEFAULT_USERS.forEach(defUser => {
+                if (!savedEmails.includes(defUser.email.toLowerCase())) {
+                    parsed.push(defUser);
+                }
+            });
+
+            AUTHORIZED_USERS = parsed;
+            saveUsers(); // Save the merged list back
         } else {
-            // Save defaults on first load
+            // First time ever — use defaults
+            AUTHORIZED_USERS = [...DEFAULT_USERS];
             saveUsers();
         }
     } catch (e) {
         console.log('localStorage not available, using defaults');
+        AUTHORIZED_USERS = [...DEFAULT_USERS];
     }
 }
 
@@ -1103,8 +1227,7 @@ function getLoginLogs() {
 function saveLoginLog(log) {
     try {
         const logs = getLoginLogs();
-        logs.unshift(log); // Add to beginning
-        // Keep only last 500 entries
+        logs.unshift(log);
         if (logs.length > 500) logs.length = 500;
         localStorage.setItem('cusa_login_logs', JSON.stringify(logs));
     } catch (e) {
@@ -1124,8 +1247,7 @@ function getAdminActivity() {
 function saveAdminActivity(log) {
     try {
         const logs = getAdminActivity();
-        logs.unshift(log); // Add to beginning
-        // Keep only last 500 entries
+        logs.unshift(log);
         if (logs.length > 500) logs.length = 500;
         localStorage.setItem('cusa_admin_activity', JSON.stringify(logs));
     } catch (e) {
@@ -1133,22 +1255,73 @@ function saveAdminActivity(log) {
     }
 }
 
+// PIN Storage
+function getUserPin(email) {
+    try {
+        const pins = localStorage.getItem('cusa_user_pins');
+        if (pins) {
+            const pinData = JSON.parse(pins);
+            return pinData[email.toLowerCase()] || null;
+        }
+        return null;
+    } catch (e) {
+        return null;
+    }
+}
+
+function saveUserPin(email, pin) {
+    try {
+        let pins = {};
+        const existing = localStorage.getItem('cusa_user_pins');
+        if (existing) {
+            pins = JSON.parse(existing);
+        }
+        pins[email.toLowerCase()] = {
+            pin: pin,
+            createdAt: new Date().toISOString()
+        };
+        localStorage.setItem('cusa_user_pins', JSON.stringify(pins));
+    } catch (e) {
+        console.log('Could not save PIN');
+    }
+}
+
+function removeUserPin(email) {
+    try {
+        const existing = localStorage.getItem('cusa_user_pins');
+        if (existing) {
+            const pins = JSON.parse(existing);
+            delete pins[email.toLowerCase()];
+            localStorage.setItem('cusa_user_pins', JSON.stringify(pins));
+        }
+    } catch (e) {
+        console.log('Could not remove PIN');
+    }
+}
+
+function getAllPins() {
+    try {
+        const pins = localStorage.getItem('cusa_user_pins');
+        return pins ? JSON.parse(pins) : {};
+    } catch (e) {
+        return {};
+    }
+}
+
 // ============================================
-// LOGIN SYSTEM
+// LOGIN FLOW WITH PIN
 // ============================================
-function handleLogin() {
+function handleEmailSubmit() {
     const input = document.getElementById('emailInput');
     const btn = document.getElementById('loginBtn');
     const errorDiv = document.getElementById('loginError');
     const email = input.value.trim().toLowerCase();
 
-    // Reset error state
     errorDiv.classList.remove('show');
     errorDiv.textContent = '';
     input.style.borderColor = '';
     input.style.boxShadow = '';
 
-    // Validate email format
     if (!email) {
         showLoginError('Please enter an email address.');
         return;
@@ -1160,7 +1333,6 @@ function handleLogin() {
         return;
     }
 
-    // Check if authorized
     const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email);
     if (!userEntry) {
         showLoginError('Access Denied: This email is not authorized for this document.');
@@ -1170,10 +1342,196 @@ function handleLogin() {
     btn.textContent = 'Verifying...';
     btn.disabled = true;
 
+    tempEmail = email;
+
+    setTimeout(() => {
+        const existingPin = getUserPin(email);
+
+        if (existingPin) {
+            // User has PIN — show enter PIN screen
+            showLoginStep('loginStepEnterPin');
+            enterPin = '';
+            updateEnterPinDots();
+            document.getElementById('enterPinStatus').textContent = 'Enter your PIN';
+            document.getElementById('enterPinStatus').className = 'pin-status';
+        } else {
+            // First time — show create PIN screen
+            showLoginStep('loginStepCreatePin');
+            tempPin = '';
+            confirmPin = '';
+            updateCreatePinDots();
+            updateConfirmPinDots();
+            document.getElementById('createPinStatus').textContent = 'Enter a 4-digit PIN';
+            document.getElementById('createPinStatus').className = 'pin-status';
+            document.getElementById('step1').className = 'pin-step active';
+            document.getElementById('step2').className = 'pin-step';
+        }
+
+        btn.textContent = 'Request Access';
+        btn.disabled = false;
+    }, 600);
+}
+
+function showLoginStep(stepId) {
+    ['loginStepEmail', 'loginStepCreatePin', 'loginStepConfirmPin', 'loginStepEnterPin'].forEach(id => {
+        document.getElementById(id).style.display = id === stepId ? 'block' : 'none';
+    });
+}
+
+function cancelPinFlow() {
+    showLoginStep('loginStepEmail');
+    document.getElementById('emailInput').value = '';
+    document.getElementById('loginError').classList.remove('show');
+    tempEmail = '';
+    tempPin = '';
+    confirmPin = '';
+    enterPin = '';
+}
+
+// ============================================
+// CREATE PIN FLOW
+// ============================================
+function pinInput(num) {
+    if (tempPin.length < 4) {
+        tempPin += num;
+        updateCreatePinDots();
+        document.getElementById('createPinBtn').disabled = tempPin.length !== 4;
+    }
+}
+
+function pinBackspace() {
+    tempPin = tempPin.slice(0, -1);
+    updateCreatePinDots();
+    document.getElementById('createPinBtn').disabled = true;
+}
+
+function updateCreatePinDots() {
+    const dots = document.getElementById('createPinDots').children;
+    for (let i = 0; i < 4; i++) {
+        dots[i].classList.toggle('filled', i < tempPin.length);
+    }
+}
+
+function submitCreatePin() {
+    if (tempPin.length !== 4) return;
+
+    // Move to confirm PIN step
+    showLoginStep('loginStepConfirmPin');
+    confirmPin = '';
+    updateConfirmPinDots();
+    document.getElementById('confirmPinStatus').textContent = 'Re-enter your PIN';
+    document.getElementById('confirmPinStatus').className = 'pin-status';
+    document.getElementById('step1b').className = 'pin-step completed';
+    document.getElementById('step2b').className = 'pin-step active';
+    document.getElementById('confirmPinBtn').disabled = true;
+}
+
+function backToCreatePin() {
+    showLoginStep('loginStepCreatePin');
+    tempPin = '';
+    confirmPin = '';
+    updateCreatePinDots();
+    updateConfirmPinDots();
+    document.getElementById('createPinStatus').textContent = 'Enter a 4-digit PIN';
+    document.getElementById('createPinStatus').className = 'pin-status';
+    document.getElementById('step1').className = 'pin-step active';
+    document.getElementById('step2').className = 'pin-step';
+    document.getElementById('createPinBtn').disabled = true;
+}
+
+function confirmPinInput(num) {
+    if (confirmPin.length < 4) {
+        confirmPin += num;
+        updateConfirmPinDots();
+        document.getElementById('confirmPinBtn').disabled = confirmPin.length !== 4;
+    }
+}
+
+function confirmPinBackspace() {
+    confirmPin = confirmPin.slice(0, -1);
+    updateConfirmPinDots();
+    document.getElementById('confirmPinBtn').disabled = true;
+}
+
+function updateConfirmPinDots() {
+    const dots = document.getElementById('confirmPinDots').children;
+    for (let i = 0; i < 4; i++) {
+        dots[i].classList.toggle('filled', i < confirmPin.length);
+    }
+}
+
+function submitConfirmPin() {
+    if (confirmPin.length !== 4) return;
+
+    if (tempPin !== confirmPin) {
+        document.getElementById('confirmPinStatus').textContent = 'PINs do not match. Try again.';
+        document.getElementById('confirmPinStatus').className = 'pin-status error';
+        confirmPin = '';
+        updateConfirmPinDots();
+        document.getElementById('confirmPinBtn').disabled = true;
+        return;
+    }
+
+    // PINs match — save and login
+    saveUserPin(tempEmail, tempPin);
+    completeLogin(tempEmail);
+}
+
+// ============================================
+// ENTER EXISTING PIN FLOW
+// ============================================
+function enterPinInput(num) {
+    if (enterPin.length < 4) {
+        enterPin += num;
+        updateEnterPinDots();
+        document.getElementById('enterPinBtn').disabled = enterPin.length !== 4;
+    }
+}
+
+function enterPinBackspace() {
+    enterPin = enterPin.slice(0, -1);
+    updateEnterPinDots();
+    document.getElementById('enterPinBtn').disabled = true;
+}
+
+function updateEnterPinDots() {
+    const dots = document.getElementById('enterPinDots').children;
+    for (let i = 0; i < 4; i++) {
+        dots[i].classList.toggle('filled', i < enterPin.length);
+    }
+}
+
+function submitEnterPin() {
+    if (enterPin.length !== 4) return;
+
+    const storedPin = getUserPin(tempEmail);
+    if (!storedPin || storedPin.pin !== enterPin) {
+        document.getElementById('enterPinStatus').textContent = 'Incorrect PIN. Please try again.';
+        document.getElementById('enterPinStatus').className = 'pin-status error';
+        enterPin = '';
+        updateEnterPinDots();
+        document.getElementById('enterPinBtn').disabled = true;
+        return;
+    }
+
+    // PIN correct — login
+    completeLogin(tempEmail);
+}
+
+function forgotPin() {
+    alert('Please contact an admin to reset your PIN. You can reach out via Discord or the admin panel if you have access.');
+}
+
+// ============================================
+// COMPLETE LOGIN
+// ============================================
+function completeLogin(email) {
+    const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email.toLowerCase());
+    if (!userEntry) return;
+
     currentUser = email;
     currentUserIsAdmin = userEntry.isAdmin;
 
-    // Log the login (NO IP tracking)
     const loginLog = {
         email: email,
         timestamp: new Date().toISOString(),
@@ -1181,24 +1539,23 @@ function handleLogin() {
     };
     saveLoginLog(loginLog);
 
-    setTimeout(() => {
-        document.getElementById('loginScreen').classList.add('hidden');
-        document.getElementById('appContainer').classList.add('active');
-        document.getElementById('userDisplay').textContent = email;
-        document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
+    document.getElementById('loginScreen').classList.add('hidden');
+    document.getElementById('appContainer').classList.add('active');
+    document.getElementById('userDisplay').textContent = email;
+    document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
 
-        // Show admin nav if admin
-        if (currentUserIsAdmin) {
-            document.getElementById('adminNavLabel').style.display = 'block';
-            document.getElementById('adminNavItem').classList.add('visible');
-            document.getElementById('quotaAdminHint').classList.add('visible');
-            makeQuotaEditable();
-        }
+    if (currentUserIsAdmin) {
+        document.getElementById('adminNavLabel').style.display = 'block';
+        document.getElementById('adminNavItem').classList.add('visible');
+        document.getElementById('quotaAdminHint').classList.add('visible');
+        makeQuotaEditable();
+    }
 
-        // Reset button
-        btn.textContent = 'Request Access';
-        btn.disabled = false;
-    }, 800);
+    // Reset all PIN states
+    tempEmail = '';
+    tempPin = '';
+    confirmPin = '';
+    enterPin = '';
 }
 
 function showLoginError(msg) {
@@ -1208,7 +1565,6 @@ function showLoginError(msg) {
     input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
     errorDiv.textContent = msg;
     errorDiv.classList.add('show');
-
     setTimeout(() => {
         input.style.borderColor = '';
         input.style.boxShadow = '';
@@ -1223,18 +1579,20 @@ function handleLogout() {
     document.getElementById('loginBtn').disabled = false;
     document.getElementById('loginError').classList.remove('show');
 
-    // Hide admin elements
     document.getElementById('adminNavLabel').style.display = 'none';
     document.getElementById('adminNavItem').classList.remove('visible');
     document.getElementById('quotaAdminHint').classList.remove('visible');
 
-    // Reset quota editability
     resetQuotaEditable();
 
     currentUser = '';
     currentUserIsAdmin = false;
+    tempEmail = '';
+    tempPin = '';
+    confirmPin = '';
+    enterPin = '';
 
-    // Go back to welcome section
+    showLoginStep('loginStepEmail');
     showSection('section-welcome', document.querySelector('.nav-item'));
 }
 
@@ -1242,33 +1600,27 @@ function handleLogout() {
 // NAVIGATION
 // ============================================
 function showSection(sectionId, navEl) {
-    // Hide all sections
     document.querySelectorAll('.content-section').forEach(sec => {
         sec.style.display = 'none';
     });
 
-    // Show target section
     const target = document.getElementById(sectionId);
     if (target) {
         target.style.display = 'block';
-        // Add animation class if not already there
         if (!target.classList.contains('animate-in')) {
             target.classList.add('animate-in');
         }
     }
 
-    // Update nav active state
     if (navEl) {
         document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
         navEl.classList.add('active');
     }
 
-    // If admin panel, refresh data
     if (sectionId === 'section-admin' && currentUserIsAdmin) {
         refreshAdminPanel();
     }
 
-    // Scroll to top
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
@@ -1316,14 +1668,11 @@ function resetQuotaEditable() {
 // ADMIN PANEL FUNCTIONS
 // ============================================
 function switchAdminTab(tabId, btn) {
-    // Hide all tab contents
     document.querySelectorAll('.admin-tab-content').forEach(tab => {
         tab.classList.remove('active');
     });
-    // Show target tab
     document.getElementById(tabId).classList.add('active');
 
-    // Update button states
     document.querySelectorAll('.admin-tab').forEach(tab => {
         tab.classList.remove('active');
     });
@@ -1335,6 +1684,7 @@ function refreshAdminPanel() {
     renderUsersTable();
     renderLoginsTable();
     renderActivityTable();
+    renderPinsTable();
 }
 
 function updateStats() {
@@ -1425,25 +1775,51 @@ function renderActivityTable() {
     `).join('');
 }
 
+function renderPinsTable() {
+    const tbody = document.getElementById('pinsTableBody');
+    const emptyState = document.getElementById('pinsEmpty');
+    const table = document.getElementById('pinsTable');
+    const pins = getAllPins();
+    const pinEntries = Object.entries(pins);
+
+    if (pinEntries.length === 0) {
+        tbody.innerHTML = '';
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    table.style.display = 'table';
+    emptyState.style.display = 'none';
+
+    tbody.innerHTML = pinEntries.map(([email, data]) => `
+        <tr>
+            <td class="email-cell">${escapeHtml(email)}</td>
+            <td><span class="badge badge-pin">PIN Set</span></td>
+            <td>${data.createdAt ? formatDateTime(data.createdAt) : '<span style="color:#94a3b8">—</span>'}</td>
+            <td class="actions">
+                <button class="btn-warning" onclick="resetUserPin('${escapeHtml(email)}')"><i class="fas fa-redo"></i> Reset PIN</button>
+            </td>
+        </tr>
+    `).join('');
+}
+
 function addUser() {
     const emailInput = document.getElementById('newUserEmail');
     const isAdminCheck = document.getElementById('newUserIsAdmin');
     const email = emailInput.value.trim().toLowerCase();
 
-    // Validate
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
         alert('Please enter a valid email address.');
         return;
     }
 
-    // Check if already exists
     if (AUTHORIZED_USERS.some(u => u.email.toLowerCase() === email)) {
         alert('This email is already authorized.');
         return;
     }
 
-    // Add user
     const newUser = {
         email: email,
         isAdmin: isAdminCheck.checked,
@@ -1454,7 +1830,6 @@ function addUser() {
     AUTHORIZED_USERS.push(newUser);
     saveUsers();
 
-    // Log admin activity
     saveAdminActivity({
         action: 'ADDED',
         targetEmail: email,
@@ -1462,14 +1837,10 @@ function addUser() {
         timestamp: new Date().toISOString()
     });
 
-    // Clear form
     emailInput.value = '';
     isAdminCheck.checked = false;
 
-    // Refresh
     refreshAdminPanel();
-
-    // Show success
     alert(`Successfully added ${email} as ${newUser.isAdmin ? 'an admin' : 'a user'}.`);
 }
 
@@ -1484,7 +1855,9 @@ function removeUser(email) {
     AUTHORIZED_USERS.splice(index, 1);
     saveUsers();
 
-    // Log admin activity
+    // Also remove their PIN
+    removeUserPin(email);
+
     saveAdminActivity({
         action: 'REMOVED',
         targetEmail: email,
@@ -1494,6 +1867,24 @@ function removeUser(email) {
 
     refreshAdminPanel();
     alert(`Successfully removed ${email}.`);
+}
+
+function resetUserPin(email) {
+    if (!confirm(`Reset PIN for ${email}? They will need to create a new PIN on their next login.`)) {
+        return;
+    }
+
+    removeUserPin(email);
+
+    saveAdminActivity({
+        action: 'PIN_RESET',
+        targetEmail: email,
+        performedBy: currentUser,
+        timestamp: new Date().toISOString()
+    });
+
+    refreshAdminPanel();
+    alert(`PIN reset for ${email}. They will be prompted to create a new PIN on their next login.`);
 }
 
 // ============================================
@@ -1527,12 +1918,10 @@ function formatDateTime(isoString) {
 document.addEventListener('DOMContentLoaded', function() {
     loadData();
 
-    // Enter key on login
     document.getElementById('emailInput').addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') handleLogin();
+        if (e.key === 'Enter') handleEmailSubmit();
     });
 
-    // Clear error on input
     document.getElementById('emailInput').addEventListener('input', function() {
         document.getElementById('loginError').classList.remove('show');
         this.style.borderColor = '';
