@@ -161,7 +161,7 @@
         .credits h4 { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--text-muted); margin-bottom: 12px; }
         .credits .names { font-size: 16px; font-weight: 600; color: var(--primary-light); }
         .admin-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
-        .admin-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 24px; }
+        .admin-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 20px; }
         .admin-card h3 { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; }
         .admin-card h3 i { color: var(--primary-light); }
         .user-list { max-height: 300px; overflow-y: auto; -webkit-overflow-scrolling: touch; }
@@ -171,7 +171,7 @@
         .user-list-item .user-rank { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 600; text-transform: uppercase; white-space: nowrap; margin-left: 8px; }
         .user-list-item .user-rank.rank-admin { background: linear-gradient(135deg, #ef4444, #dc2626); color: white; }
         .user-list-item .actions { display: flex; gap: 6px; flex-shrink: 0; margin-left: 8px; }
-        .icon-btn { width: 32px; height: 32px; border-radius: 8px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 13px; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
+        .icon-btn { width: 28px; height: 28px; border-radius: 6px; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 11px; transition: all 0.3s ease; -webkit-tap-highlight-color: transparent; }
         .icon-btn.delete { background: rgba(239, 68, 68, 0.15); color: var(--danger); }
         .icon-btn.delete:hover { background: rgba(239, 68, 68, 0.3); }
         .add-user-form { display: flex; flex-direction: column; gap: 12px; }
@@ -534,71 +534,27 @@
                     <strong>Quota Exemption:</strong> Quota exemption or reduction can be requested either in the <strong>Request Channel</strong> or the <strong>LOA Channel</strong>. All requests must be approved by CSEC+.
                 </div>
                 <div style="overflow-x:auto;">
-                    <table class="quota-table">
+                    <table class="quota-table" id="quotaTable">
                         <thead>
                             <tr><th>Rank</th><th>Minutes</th><th>Community Events</th><th>Moderation Logs</th><th>Rank Logs</th></tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td class="rank-cell">Community Director (CD)</td>
-                                <td>120 min</td>
-                                <td>1 event</td>
-                                <td>Review only</td>
-                                <td>Review &amp; Approve</td>
-                            </tr>
-                            <tr>
-                                <td class="rank-cell">Community Secretary (CSEC)</td>
-                                <td>120 min</td>
-                                <td>1 event</td>
-                                <td>Review only</td>
-                                <td>Review &amp; Approve</td>
-                            </tr>
-                            <tr>
-                                <td class="rank-cell">Senior Community Moderator (SCMOD)</td>
-                                <td>90 min</td>
-                                <td>1 event</td>
-                                <td>15 logs</td>
-                                <td class="na">N/A</td>
-                            </tr>
-                            <tr>
-                                <td class="rank-cell">Community Moderator (CMOD)</td>
-                                <td>60 min</td>
-                                <td>Assist 1 event</td>
-                                <td>10 logs</td>
-                                <td class="na">N/A</td>
-                            </tr>
+                        <tbody id="quotaTableBody">
+                            <!-- Populated by JS -->
                         </tbody>
                     </table>
                 </div>
-                <div class="quota-cards">
-                    <div class="quota-card">
-                        <div class="rank-title">Community Director (CD)</div>
-                        <div class="quota-row"><span class="label">Minutes</span><span class="value">120 min</span></div>
-                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
-                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">Review only</span></div>
-                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value">Review &amp; Approve</span></div>
+                <div id="quotaEditForm" style="display:none; margin-top:16px;">
+                    <div class="card">
+                        <h3><i class="fas fa-pen-to-square"></i> Edit Quota Values</h3>
+                        <div id="quotaEditFields"></div>
+                        <div style="display:flex; gap:10px; margin-top:16px;">
+                            <button class="btn btn-success" onclick="saveQuotaChanges()" style="width:auto; flex:1;">Save Changes</button>
+                            <button class="btn btn-secondary" onclick="cancelQuotaEdit()" style="width:auto; flex:1;">Cancel</button>
+                        </div>
                     </div>
-                    <div class="quota-card">
-                        <div class="rank-title">Community Secretary (CSEC)</div>
-                        <div class="quota-row"><span class="label">Minutes</span><span class="value">120 min</span></div>
-                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
-                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">Review only</span></div>
-                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value">Review &amp; Approve</span></div>
-                    </div>
-                    <div class="quota-card">
-                        <div class="rank-title">Senior Community Moderator (SCMOD)</div>
-                        <div class="quota-row"><span class="label">Minutes</span><span class="value">90 min</span></div>
-                        <div class="quota-row"><span class="label">Community Events</span><span class="value">1 event</span></div>
-                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">15 logs</span></div>
-                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value na">N/A</span></div>
-                    </div>
-                    <div class="quota-card">
-                        <div class="rank-title">Community Moderator (CMOD)</div>
-                        <div class="quota-row"><span class="label">Minutes</span><span class="value">60 min</span></div>
-                        <div class="quota-row"><span class="label">Community Events</span><span class="value">Assist 1 event</span></div>
-                        <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">10 logs</span></div>
-                        <div class="quota-row"><span class="label">Rank Logs</span><span class="value na">N/A</span></div>
-                    </div>
+                </div>
+                <div class="quota-cards" id="quotaCards">
+                    <!-- Populated by JS -->
                 </div>
                 <div class="card" style="margin-top:24px;">
                     <h3><i class="fas fa-circle-info"></i> Important Notes</h3>
@@ -762,6 +718,13 @@
 </div>
 <script>
 // ========== DATA STORE ==========
+const DEFAULT_QUOTA = {
+    cd: { rank: 'Community Director (CD)', minutes: '120 min', events: '1 event', modLogs: 'Review only', rankLogs: 'Review & Approve' },
+    csec: { rank: 'Community Secretary (CSEC)', minutes: '120 min', events: '1 event', modLogs: 'Review only', rankLogs: 'Review & Approve' },
+    scmod: { rank: 'Senior Community Moderator (SCMOD)', minutes: '90 min', events: '1 event', modLogs: '15 logs', rankLogs: 'N/A' },
+    cmod: { rank: 'Community Moderator (CMOD)', minutes: '60 min', events: 'Assist 1 event', modLogs: '10 logs', rankLogs: 'N/A' }
+};
+
 const DB = {
     users: JSON.parse(localStorage.getItem('cusa_users')) || {
         'admin@cusa.gov': { rank: 'admin', pin: '0000', name: 'System Admin' }
@@ -771,6 +734,7 @@ const DB = {
         login: [],
         pin: []
     },
+    quota: JSON.parse(localStorage.getItem('cusa_quota')) || JSON.parse(JSON.stringify(DEFAULT_QUOTA)),
     session: JSON.parse(sessionStorage.getItem('cusa_session')) || null
 };
 
@@ -907,8 +871,11 @@ function enterApp() {
     // Show admin panel for admin rank users
     if (user.rank === 'admin') {
         document.querySelectorAll('.nav-item.admin-only').forEach(el => el.classList.add('visible'));
+        const quotaControls = document.getElementById('quotaEditControls');
+        if (quotaControls) quotaControls.style.display = 'block';
     }
 
+    renderQuotaTable();
     showSection('welcome');
 }
 
@@ -951,6 +918,11 @@ function showSection(sectionId) {
     // Refresh admin data if on admin panel
     if (sectionId === 'admin') {
         refreshAdminPanel();
+    }
+
+    // Render quota table when visiting quota section
+    if (sectionId === 'quota') {
+        renderQuotaTable();
     }
 }
 
@@ -1002,10 +974,8 @@ function renderUserList() {
         const item = document.createElement('div');
         item.className = 'user-list-item';
         item.innerHTML = `
-            <div style="display:flex; align-items:center; flex:1; min-width:0;">
-                <span class="user-email">${email}</span>
-                <span class="user-rank ${rankInfo.class}">${rankInfo.label}</span>
-            </div>
+            <span class="user-email">${email}</span>
+            <span class="user-rank ${rankInfo.class}">${rankInfo.label}</span>
             <div class="actions">
                 ${data.rank !== 'admin' ? `<button class="icon-btn" onclick="promoteToAdmin('${email}')" title="Promote to Admin" style="background:rgba(245,158,11,0.15);color:var(--secondary);"><i class="fas fa-crown"></i></button>` : ''}
                 <button class="icon-btn delete" onclick="removeUser('${email}')" title="Remove user">
@@ -1119,12 +1089,110 @@ function promoteToAdmin(email) {
     renderUserList();
 }
 
+// ========== QUOTA MANAGEMENT ==========
+function renderQuotaTable() {
+    const tbody = document.getElementById('quotaTableBody');
+    const cards = document.getElementById('quotaCards');
+    if (!tbody || !cards) return;
+
+    tbody.innerHTML = '';
+    cards.innerHTML = '';
+
+    Object.entries(DB.quota).forEach(([key, data]) => {
+        // Desktop table row
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td class="rank-cell">${data.rank}</td>
+            <td>${data.minutes}</td>
+            <td>${data.events}</td>
+            <td>${data.modLogs}</td>
+            <td class="${data.rankLogs === 'N/A' ? 'na' : ''}">${data.rankLogs}</td>
+        `;
+        tbody.appendChild(tr);
+
+        // Mobile card
+        const card = document.createElement('div');
+        card.className = 'quota-card';
+        card.innerHTML = `
+            <div class="rank-title">${data.rank}</div>
+            <div class="quota-row"><span class="label">Minutes</span><span class="value">${data.minutes}</span></div>
+            <div class="quota-row"><span class="label">Community Events</span><span class="value">${data.events}</span></div>
+            <div class="quota-row"><span class="label">Moderation Logs</span><span class="value">${data.modLogs}</span></div>
+            <div class="quota-row"><span class="label">Rank Logs</span><span class="value ${data.rankLogs === 'N/A' ? 'na' : ''}">${data.rankLogs}</span></div>
+        `;
+        cards.appendChild(card);
+    });
+}
+
+function toggleQuotaEdit() {
+    const form = document.getElementById('quotaEditForm');
+    const fields = document.getElementById('quotaEditFields');
+
+    if (form.style.display === 'none') {
+        // Show edit form
+        fields.innerHTML = '';
+        Object.entries(DB.quota).forEach(([key, data]) => {
+            const section = document.createElement('div');
+            section.style.marginBottom = '20px';
+            section.innerHTML = `
+                <h4 style="font-size:14px; font-weight:600; margin-bottom:10px; color:var(--text-primary);">${data.rank}</h4>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                    <div>
+                        <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Minutes</label>
+                        <input type="text" id="quota-${key}-minutes" value="${data.minutes}" style="width:100%; padding:10px; background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; margin-top:4px;">
+                    </div>
+                    <div>
+                        <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Community Events</label>
+                        <input type="text" id="quota-${key}-events" value="${data.events}" style="width:100%; padding:10px; background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; margin-top:4px;">
+                    </div>
+                    <div>
+                        <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Moderation Logs</label>
+                        <input type="text" id="quota-${key}-modLogs" value="${data.modLogs}" style="width:100%; padding:10px; background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; margin-top:4px;">
+                    </div>
+                    <div>
+                        <label style="font-size:11px; color:var(--text-muted); text-transform:uppercase; letter-spacing:1px;">Rank Logs</label>
+                        <input type="text" id="quota-${key}-rankLogs" value="${data.rankLogs}" style="width:100%; padding:10px; background:rgba(15,23,42,0.6); border:1px solid var(--border); border-radius:8px; color:var(--text-primary); font-size:13px; margin-top:4px;">
+                    </div>
+                </div>
+            `;
+            fields.appendChild(section);
+        });
+        form.style.display = 'block';
+    } else {
+        form.style.display = 'none';
+    }
+}
+
+function saveQuotaChanges() {
+    Object.keys(DB.quota).forEach(key => {
+        DB.quota[key].minutes = document.getElementById('quota-' + key + '-minutes').value;
+        DB.quota[key].events = document.getElementById('quota-' + key + '-events').value;
+        DB.quota[key].modLogs = document.getElementById('quota-' + key + '-modLogs').value;
+        DB.quota[key].rankLogs = document.getElementById('quota-' + key + '-rankLogs').value;
+    });
+
+    localStorage.setItem('cusa_quota', JSON.stringify(DB.quota));
+    addAudit('user', 'Quota table updated', DB.session.email);
+
+    document.getElementById('quotaEditForm').style.display = 'none';
+    renderQuotaTable();
+    alert('Quota table updated successfully!');
+}
+
+function cancelQuotaEdit() {
+    document.getElementById('quotaEditForm').style.display = 'none';
+}
+
 function saveUsers() {
     localStorage.setItem('cusa_users', JSON.stringify(DB.users));
 }
 
 function saveAudit() {
     localStorage.setItem('cusa_audit', JSON.stringify(DB.audit));
+}
+
+function saveQuota() {
+    localStorage.setItem('cusa_quota', JSON.stringify(DB.quota));
 }
 
 // ========== LOGOUT ==========
