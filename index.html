@@ -1718,7 +1718,7 @@ function renderUsersTable() {
                 <td>${user.addedBy ? escapeHtml(user.addedBy) : '<span style="color:#94a3b8">System</span>'}</td>
                 <td>${user.dateAdded ? formatDate(user.dateAdded) : '<span style="color:#94a3b8">—</span>'}</td>
                 <td class="actions">
-                    ${!isCurrentUser && !isDefault ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : (isDefault ? '<span style="color:#94a3b8; font-size:12px;">Built-in</span>' : '<span style="color:#94a3b8; font-size:12px;">You</span>')}
+                    ${!isCurrentUser ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : '<span style="color:#94a3b8; font-size:12px;">You</span>'}
                 </td>
             </tr>
         `;
