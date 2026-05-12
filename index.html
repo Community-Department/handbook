@@ -77,7 +77,10 @@
         .btn-primary { width: 100%; padding: 14px; background: linear-gradient(135deg, #3b82f6, #2563eb); border: none; border-radius: 10px; color: white; font-size: 14px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; margin-top: 16px; transition: all 0.3s ease; position: relative; overflow: hidden; }
         .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,99,235,0.4); }
         .btn-primary:active { transform: translateY(0); }
+        .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
         .login-footer { position: absolute; bottom: 24px; color: rgba(255,255,255,0.3); font-size: 12px; }
+        .login-error { color: #fca5a5; font-size: 13px; margin-top: 12px; text-align: center; font-weight: 500; display: none; }
+        .login-error.show { display: block; }
 
         /* APP CONTAINER */
         .app-container { display: none; min-height: 100vh; }
@@ -91,10 +94,12 @@
         .sidebar-header .brand-text { font-size: 15px; font-weight: 700; }
         .sidebar-header .brand-sub { font-size: 11px; color: rgba(255,255,255,0.5); margin-left: 48px; }
         .sidebar-section-label { padding: 20px 20px 8px; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.4); }
-        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 20px; margin: 2px 12px; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; text-decoration: none; }
+        .nav-item { display: flex; align-items: center; gap: 12px; padding: 12px 20px; margin: 2px 12px; border-radius: 10px; cursor: pointer; transition: all 0.2s ease; color: rgba(255,255,255,0.7); font-size: 14px; font-weight: 500; text-decoration: none; border: none; background: none; width: calc(100% - 24px); text-align: left; font-family: inherit; }
         .nav-item:hover { background: rgba(255,255,255,0.08); color: white; }
         .nav-item.active { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; box-shadow: 0 4px 12px rgba(37,99,235,0.3); }
         .nav-item i { width: 20px; text-align: center; font-size: 13px; }
+        .nav-item.admin-only { display: none; }
+        .nav-item.admin-only.visible { display: flex; }
 
         /* TOP BAR */
         .top-bar { position: fixed; top: 0; left: 280px; right: 0; height: 64px; background: linear-gradient(135deg, #1e3a8a, #1e40af); display: flex; align-items: center; justify-content: flex-end; padding: 0 32px; z-index: 99; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
@@ -134,7 +139,7 @@
 
         /* TOC */
         .toc-grid { display: grid; gap: 12px; }
-        .toc-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; }
+        .toc-item { display: flex; align-items: center; gap: 16px; padding: 16px 20px; background: white; border: 1px solid var(--border); border-radius: 12px; cursor: pointer; transition: all 0.3s ease; text-decoration: none; color: inherit; }
         .toc-item:hover { border-color: var(--primary-light); box-shadow: 0 4px 16px rgba(59,130,246,0.1); transform: translateX(4px); }
         .toc-num { width: 44px; height: 44px; background: linear-gradient(135deg, var(--primary), var(--primary-light)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; font-weight: 800; font-size: 16px; flex-shrink: 0; }
         .toc-info h4 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
@@ -181,6 +186,7 @@
         /* Admin editable indicator */
         .admin-edit-hint { display: none; background: linear-gradient(135deg, #fef3c7, #fde68a); border: 1px dashed #f59e0b; border-radius: 8px; padding: 8px 12px; margin-bottom: 12px; font-size: 12px; color: #92400e; }
         .admin-edit-hint i { margin-right: 6px; }
+        .admin-edit-hint.visible { display: block; }
 
         /* CHAIN */
         .chain-flow { display: flex; flex-direction: column; gap: 16px; margin-top: 24px; }
@@ -227,6 +233,58 @@
         .signature-card .sig-rank { font-size: 11px; color: var(--text-light); font-weight: 600; letter-spacing: 0.5px; }
         .signature-card .sig-date { font-size: 11px; color: var(--text-light); }
 
+        /* ADMIN PANEL STYLES */
+        .admin-panel { display: none; }
+        .admin-panel.active { display: block; }
+
+        .admin-stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+        .admin-stat-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
+        .admin-stat-card .stat-num { font-size: 32px; font-weight: 800; color: var(--primary); }
+        .admin-stat-card .stat-label { font-size: 12px; color: var(--text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+
+        .admin-form { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px; }
+        .admin-form h4 { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .admin-form-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: end; }
+        .admin-form .input-group { margin-bottom: 0; }
+        .admin-form .input-group label { color: var(--text-light); font-size: 11px; }
+        .admin-form .input-group input { background: white; border: 1px solid var(--border); color: var(--text); padding: 12px 14px; }
+        .admin-form .input-group input::placeholder { color: #94a3b8; }
+        .admin-form .input-group input:focus { border-color: var(--primary-light); box-shadow: 0 0 0 3px rgba(59,130,246,0.15); }
+        .btn-success { padding: 12px 20px; background: linear-gradient(135deg, #22c55e, #16a34a); border: none; border-radius: 10px; color: white; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+        .btn-success:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(22,163,74,0.3); }
+        .btn-danger { padding: 8px 14px; background: linear-gradient(135deg, #ef4444, #dc2626); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .btn-danger:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220,38,38,0.3); }
+        .btn-secondary { padding: 8px 14px; background: linear-gradient(135deg, #64748b, #475569); border: none; border-radius: 8px; color: white; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.2s ease; }
+        .btn-secondary:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(71,85,105,0.3); }
+
+        .admin-table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); }
+        .admin-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+        .admin-table thead { background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; }
+        .admin-table th { padding: 14px 16px; font-weight: 600; text-align: left; font-size: 12px; letter-spacing: 0.5px; }
+        .admin-table td { padding: 12px 16px; border-bottom: 1px solid var(--border); color: var(--text-light); }
+        .admin-table tr:last-child td { border-bottom: none; }
+        .admin-table tr:nth-child(even) { background: #f8fafc; }
+        .admin-table .email-cell { font-weight: 600; color: var(--text); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+        .admin-table .actions { display: flex; gap: 6px; }
+        .admin-table .badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; }
+        .badge-admin { background: #dbeafe; color: #1e40af; }
+        .badge-user { background: #f1f5f9; color: #475569; }
+        .badge-added { background: #dcfce7; color: #166534; }
+        .badge-removed { background: #fef2f2; color: #991b1b; }
+        .badge-login { background: #dbeafe; color: #1e40af; }
+
+        .admin-tabs { display: flex; gap: 4px; margin-bottom: 24px; background: #f1f5f9; padding: 4px; border-radius: 10px; width: fit-content; }
+        .admin-tab { padding: 10px 20px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; border: none; background: transparent; color: var(--text-light); transition: all 0.2s ease; font-family: inherit; }
+        .admin-tab:hover { color: var(--primary); }
+        .admin-tab.active { background: white; color: var(--primary); box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+
+        .admin-tab-content { display: none; }
+        .admin-tab-content.active { display: block; }
+
+        .empty-state { text-align: center; padding: 40px; color: var(--text-light); }
+        .empty-state i { font-size: 40px; margin-bottom: 12px; opacity: 0.3; }
+        .empty-state p { font-size: 14px; }
+
         /* FOOTER */
         .doc-footer { text-align: center; padding: 40px 0 20px; margin-top: 40px; border-top: 1px solid var(--border); }
         .doc-seal { width: 64px; height: 64px; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; color: white; font-size: 20px; font-weight: 800; border: 3px solid var(--border); margin-bottom: 16px; }
@@ -246,12 +304,9 @@
 
         /* RESPONSIVE */
         @media (max-width: 1200px) { .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
-        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } }
-        @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 1024px) { .sidebar { transform: translateX(-100%); } .main-content { margin-left: 0; max-width: 100vw; } .top-bar { left: 0; } .signatures-grid { grid-template-columns: 1fr; } .signature-card.full-width { grid-column: 1; } .admin-stats-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } .admin-form-row { grid-template-columns: 1fr; } }
     </style>
-<base target="_blank">
-<base target="_blank">
-<base target="_blank">
 <base target="_blank">
 </head>
 <body>
@@ -269,12 +324,13 @@
     </div>
     <div class="login-card">
         <h3><i class="fas fa-lock-open" style="color: #60a5fa;"></i> Identity Verification</h3>
-        <p class="desc">Enter your Roblox username below to verify your identity and gain access to the Community Department Handbook. Only authorized personnel may proceed.</p>
+        <p class="desc">Enter your authorized email address below to verify your identity and gain access to the Community Department Handbook. Only authorized personnel may proceed.</p>
         <div class="input-group">
-            <label>Roblox Username</label>
-            <input type="text" id="usernameInput" placeholder="Enter your exact Roblox username..." autocomplete="off">
+            <label>Email Address</label>
+            <input type="email" id="emailInput" placeholder="Enter your authorized email..." autocomplete="off">
         </div>
         <button class="btn-primary" id="loginBtn" onclick="handleLogin()">Request Access</button>
+        <div class="login-error" id="loginError"></div>
     </div>
     <div class="login-footer">&copy; 2026 Tedder Management Staff Team &middot; CUSA &middot; All Rights Reserved</div>
 </div>
@@ -290,27 +346,30 @@
             <div class="brand-sub">CUSA &middot; Tedder Management Staff Team</div>
         </div>
         <div class="sidebar-section-label">Sections</div>
-        <a href="#section-welcome" class="nav-item active" onclick="setActive(this)"><i class="fas fa-home"></i> Welcome &amp; Table of Contents</a>
-        <a href="#section-intro" class="nav-item" onclick="setActive(this)"><i class="fas fa-info-circle"></i> Introduction</a>
-        <a href="#section-responsibilities" class="nav-item" onclick="setActive(this)"><i class="fas fa-tasks"></i> Responsibilities</a>
-        <a href="#section-events" class="nav-item" onclick="setActive(this)"><i class="fas fa-calendar-star"></i> Events &amp; Giveaways</a>
-        <a href="#section-quota" class="nav-item" onclick="setActive(this)"><i class="fas fa-chart-bar"></i> Quota</a>
-        <a href="#section-chain" class="nav-item" onclick="setActive(this)"><i class="fas fa-sitemap"></i> Chain of Command</a>
-        <a href="#section-closing" class="nav-item" onclick="setActive(this)"><i class="fas fa-file-signature"></i> Closing &amp; Signatures</a>
+        <button class="nav-item active" onclick="showSection('section-welcome', this)"><i class="fas fa-home"></i> Welcome &amp; Table of Contents</button>
+        <button class="nav-item" onclick="showSection('section-intro', this)"><i class="fas fa-info-circle"></i> Introduction</button>
+        <button class="nav-item" onclick="showSection('section-responsibilities', this)"><i class="fas fa-tasks"></i> Responsibilities</button>
+        <button class="nav-item" onclick="showSection('section-events', this)"><i class="fas fa-calendar-star"></i> Events &amp; Giveaways</button>
+        <button class="nav-item" onclick="showSection('section-quota', this)"><i class="fas fa-chart-bar"></i> Quota</button>
+        <button class="nav-item" onclick="showSection('section-chain', this)"><i class="fas fa-sitemap"></i> Chain of Command</button>
+        <button class="nav-item" onclick="showSection('section-closing', this)"><i class="fas fa-file-signature"></i> Closing &amp; Signatures</button>
+
+        <div class="sidebar-section-label" id="adminNavLabel" style="display:none;">Administration</div>
+        <button class="nav-item admin-only" id="adminNavItem" onclick="showSection('section-admin', this)"><i class="fas fa-cog"></i> Admin Panel</button>
     </nav>
 
     <div class="top-bar">
         <div class="user-badge">
             <div class="avatar" id="userAvatar">U</div>
-            <span id="userDisplay">@[Username]</span>
+            <span id="userDisplay">user@email.com</span>
             <button class="btn-exit" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> Exit</button>
         </div>
     </div>
 
     <main class="main-content">
-        
+
         <!-- SECTION 01: WELCOME -->
-        <section id="section-welcome" class="animate-in">
+        <section id="section-welcome" class="content-section animate-in">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-book-open"></i> Section 01</div>
                 <h1 class="section-title">Welcome</h1>
@@ -333,19 +392,19 @@
             <div class="content-card">
                 <div class="card-title"><i class="fas fa-list"></i> Table of Contents</div>
                 <div class="toc-grid">
-                    <a href="#section-welcome" class="toc-item" onclick="setActiveByHref('#section-welcome')"><div class="toc-num">01</div><div class="toc-info"><h4>Welcome &amp; Table of Contents</h4><p>Purpose and overview of this handbook</p></div></a>
-                    <a href="#section-intro" class="toc-item" onclick="setActiveByHref('#section-intro')"><div class="toc-num">02</div><div class="toc-info"><h4>Introduction</h4><p>Department Scope, Core Values &amp; Work Platforms</p></div></a>
-                    <a href="#section-responsibilities" class="toc-item" onclick="setActiveByHref('#section-responsibilities')"><div class="toc-num">03</div><div class="toc-info"><h4>Responsibilities</h4><p>Roles and duties for all CD ranks</p></div></a>
-                    <a href="#section-events" class="toc-item" onclick="setActiveByHref('#section-events')"><div class="toc-num">04</div><div class="toc-info"><h4>Events &amp; Giveaways</h4><p>Event protocol, types, documentation &amp; giveaway guidelines</p></div></a>
-                    <a href="#section-quota" class="toc-item" onclick="setActiveByHref('#section-quota')"><div class="toc-num">05</div><div class="toc-info"><h4>Quota</h4><p>Weekly quota requirements by rank</p></div></a>
-                    <a href="#section-chain" class="toc-item" onclick="setActiveByHref('#section-chain')"><div class="toc-num">06</div><div class="toc-info"><h4>Chain of Command</h4><p>Rank structure and command hierarchy</p></div></a>
-                    <a href="#section-closing" class="toc-item" onclick="setActiveByHref('#section-closing')"><div class="toc-num">07</div><div class="toc-info"><h4>Closing &amp; Signatures</h4><p>Official approval and signatures</p></div></a>
+                    <div class="toc-item" onclick="showSection('section-welcome', null)"><div class="toc-num">01</div><div class="toc-info"><h4>Welcome &amp; Table of Contents</h4><p>Purpose and overview of this handbook</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-intro', null)"><div class="toc-num">02</div><div class="toc-info"><h4>Introduction</h4><p>Department Scope, Core Values &amp; Work Platforms</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-responsibilities', null)"><div class="toc-num">03</div><div class="toc-info"><h4>Responsibilities</h4><p>Roles and duties for all CD ranks</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-events', null)"><div class="toc-num">04</div><div class="toc-info"><h4>Events &amp; Giveaways</h4><p>Event protocol, types, documentation &amp; giveaway guidelines</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-quota', null)"><div class="toc-num">05</div><div class="toc-info"><h4>Quota</h4><p>Weekly quota requirements by rank</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-chain', null)"><div class="toc-num">06</div><div class="toc-info"><h4>Chain of Command</h4><p>Rank structure and command hierarchy</p></div></div>
+                    <div class="toc-item" onclick="showSection('section-closing', null)"><div class="toc-num">07</div><div class="toc-info"><h4>Closing &amp; Signatures</h4><p>Official approval and signatures</p></div></div>
                 </div>
             </div>
         </section>
 
         <!-- SECTION 02: INTRODUCTION -->
-        <section id="section-intro" style="margin-top: 60px;">
+        <section id="section-intro" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-info-circle"></i> Section 02</div>
                 <h1 class="section-title">Introduction</h1>
@@ -390,7 +449,7 @@
         </section>
 
         <!-- SECTION 03: RESPONSIBILITIES -->
-        <section id="section-responsibilities" style="margin-top: 60px;">
+        <section id="section-responsibilities" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-tasks"></i> Section 03</div>
                 <h1 class="section-title">Responsibilities</h1>
@@ -401,7 +460,7 @@
                 <div class="rank-header cd">
                     <div class="rank-title">
                         <div class="rank-icon"><i class="fas fa-crown"></i></div>
-                        <div><h3>Community Director</h3><span class="rank-abbr">CD &middot; High Command</span></div>
+                        <div><h3>Community Director</h3><span class="rank-abbr">CD · High Command</span></div>
                     </div>
                     <span class="badge">5 Responsibilities</span>
                 </div>
@@ -420,7 +479,7 @@
                 <div class="rank-header csec">
                     <div class="rank-title">
                         <div class="rank-icon"><i class="fas fa-user-tie"></i></div>
-                        <div><h3>Community Secretary</h3><span class="rank-abbr">CSEC &middot; Middle Command</span></div>
+                        <div><h3>Community Secretary</h3><span class="rank-abbr">CSEC · Middle Command</span></div>
                     </div>
                     <span class="badge">8 Responsibilities</span>
                 </div>
@@ -442,7 +501,7 @@
                 <div class="rank-header scmod">
                     <div class="rank-title">
                         <div class="rank-icon"><i class="fas fa-star"></i></div>
-                        <div><h3>Senior Community Moderator</h3><span class="rank-abbr">SCMOD &middot; Low Command</span></div>
+                        <div><h3>Senior Community Moderator</h3><span class="rank-abbr">SCMOD · Low Command</span></div>
                     </div>
                     <span class="badge">5 Responsibilities</span>
                 </div>
@@ -461,7 +520,7 @@
                 <div class="rank-header cmod">
                     <div class="rank-title">
                         <div class="rank-icon"><i class="fas fa-shield-alt"></i></div>
-                        <div><h3>Community Moderator</h3><span class="rank-abbr">CMOD &middot; Low Command</span></div>
+                        <div><h3>Community Moderator</h3><span class="rank-abbr">CMOD · Low Command</span></div>
                     </div>
                     <span class="badge">5 Responsibilities</span>
                 </div>
@@ -478,7 +537,7 @@
         </section>
 
         <!-- SECTION 04: EVENTS & GIVEAWAYS -->
-        <section id="section-events" style="margin-top: 60px;">
+        <section id="section-events" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-calendar-star"></i> Section 04</div>
                 <h1 class="section-title">Events &amp; Giveaways</h1>
@@ -532,7 +591,7 @@
         </section>
 
         <!-- SECTION 05: QUOTA -->
-        <section id="section-quota" style="margin-top: 60px;">
+        <section id="section-quota" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-chart-bar"></i> Section 05</div>
                 <h1 class="section-title">Weekly Quota</h1>
@@ -565,7 +624,7 @@
                             <tr data-rank="cmod">
                                 <td>
                                     <div class="rank-name">Community Moderator</div>
-                                    <span class="rank-tag" style="background: #e0f2fe; color: #0369a1;">CMOD &middot; Low Command</span>
+                                    <span class="rank-tag" style="background: #e0f2fe; color: #0369a1;">CMOD · Low Command</span>
                                 </td>
                                 <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
                                 <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
@@ -575,7 +634,7 @@
                             <tr data-rank="scmod">
                                 <td>
                                     <div class="rank-name">Senior Community Moderator</div>
-                                    <span class="rank-tag" style="background: #ccfbf1; color: #0f766e;">SCMOD &middot; Low Command</span>
+                                    <span class="rank-tag" style="background: #ccfbf1; color: #0f766e;">SCMOD · Low Command</span>
                                 </td>
                                 <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
                                 <td><span class="num" data-field="events">4</span> <span class="unit">events</span></td>
@@ -585,7 +644,7 @@
                             <tr data-rank="csec">
                                 <td>
                                     <div class="rank-name">Community Secretary</div>
-                                    <span class="rank-tag" style="background: #ede9fe; color: #5b21b6;">CSEC &middot; Middle Command</span>
+                                    <span class="rank-tag" style="background: #ede9fe; color: #5b21b6;">CSEC · Middle Command</span>
                                 </td>
                                 <td><span class="num" data-field="minutes">450</span> <span class="unit">min</span></td>
                                 <td><span class="num" data-field="events">3</span> <span class="unit">events</span></td>
@@ -595,7 +654,7 @@
                             <tr data-rank="cd">
                                 <td>
                                     <div class="rank-name">Community Director</div>
-                                    <span class="rank-tag" style="background: #dbeafe; color: #1e40af;">CD &middot; High Command</span>
+                                    <span class="rank-tag" style="background: #dbeafe; color: #1e40af;">CD · High Command</span>
                                 </td>
                                 <td><span class="num" data-field="minutes">300</span> <span class="unit">min</span></td>
                                 <td><span class="num" data-field="events">2</span> <span class="unit">events</span></td>
@@ -613,11 +672,11 @@
                     <p>Members who are unable to meet their weekly quota due to personal circumstances may request an exemption. Approved exemptions will prevent disciplinary action for the week in question. To request a quota exemption:</p>
                     <div class="events-grid" style="margin-top: 16px;">
                         <div class="event-type" style="background: linear-gradient(135deg, #f0fdf4, #dcfce7); border-color: #86efac;">
-                            <h4 style="color: #166534;">Option 1 &mdash; Request Channel</h4>
+                            <h4 style="color: #166534;">Option 1 — Request Channel</h4>
                             <p>Submit a formal exemption request in the <strong>#request</strong> channel. Include your reason and the duration of your requested exemption.</p>
                         </div>
                         <div class="event-type" style="background: linear-gradient(135deg, #eff6ff, #dbeafe); border-color: #93c5fd;">
-                            <h4 style="color: #1e40af;">Option 2 &mdash; Leave of Absence (LoA)</h4>
+                            <h4 style="color: #1e40af;">Option 2 — Leave of Absence (LoA)</h4>
                             <p>Post in the <strong>#loa</strong> channel if you require an extended absence. LoA automatically grants a quota exemption for the approved duration.</p>
                         </div>
                     </div>
@@ -633,7 +692,7 @@
         </section>
 
         <!-- SECTION 06: CHAIN OF COMMAND -->
-        <section id="section-chain" style="margin-top: 60px;">
+        <section id="section-chain" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-sitemap"></i> Section 06</div>
                 <h1 class="section-title">Chain of Command</h1>
@@ -698,7 +757,7 @@
         </section>
 
         <!-- SECTION 07: CLOSING & SIGNATURES -->
-        <section id="section-closing" style="margin-top: 60px;">
+        <section id="section-closing" class="content-section" style="display:none;">
             <div class="section-header">
                 <div class="section-label"><i class="fas fa-file-signature"></i> Section 07</div>
                 <h1 class="section-title">Closing &amp; Signatures</h1>
@@ -722,7 +781,7 @@
                     </div>
                     <div>
                         <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 4px;">Classification</div>
-                        <div style="font-size: 14px; font-weight: 700; color: var(--warning);">Classified &mdash; Internal Use Only</div>
+                        <div style="font-size: 14px; font-weight: 700; color: var(--warning);">Classified — Internal Use Only</div>
                     </div>
                 </div>
             </div>
@@ -837,7 +896,7 @@
                 </div>
             </div>
 
-<!-- CREDITS -->
+            <!-- CREDITS -->
             <div class="content-card" style="margin-top: 24px; text-align: center;">
                 <div style="font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px;">Credits</div>
                 <div style="font-family: 'Dancing Script', cursive; font-size: 24px; color: var(--primary); font-weight: 600;">papervv &amp; Imperator_Supremus</div>
@@ -853,141 +912,363 @@
             </div>
         </section>
 
+        <!-- SECTION ADMIN: ADMIN PANEL -->
+        <section id="section-admin" class="content-section admin-panel" style="display:none;">
+            <div class="section-header">
+                <div class="section-label"><i class="fas fa-cog"></i> Administration</div>
+                <h1 class="section-title">Admin Panel</h1>
+            </div>
+
+            <div class="admin-stats-grid">
+                <div class="admin-stat-card">
+                    <div class="stat-num" id="statTotalUsers">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="stat-num" id="statTotalAdmins">0</div>
+                    <div class="stat-label">Admins</div>
+                </div>
+                <div class="admin-stat-card">
+                    <div class="stat-num" id="statTotalLogins">0</div>
+                    <div class="stat-label">Total Logins</div>
+                </div>
+            </div>
+
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchAdminTab('tab-users', this)"><i class="fas fa-users"></i> Manage Access</button>
+                <button class="admin-tab" onclick="switchAdminTab('tab-logins', this)"><i class="fas fa-sign-in-alt"></i> Login Audit</button>
+                <button class="admin-tab" onclick="switchAdminTab('tab-activity', this)"><i class="fas fa-history"></i> Admin Activity</button>
+            </div>
+
+            <!-- TAB: MANAGE ACCESS -->
+            <div id="tab-users" class="admin-tab-content active">
+                <div class="admin-form">
+                    <h4><i class="fas fa-user-plus"></i> Add New User</h4>
+                    <div class="admin-form-row">
+                        <div class="input-group">
+                            <label>Email Address</label>
+                            <input type="email" id="newUserEmail" placeholder="user@example.com">
+                        </div>
+                        <button class="btn-success" onclick="addUser()">
+                            <i class="fas fa-plus"></i> Add User
+                        </button>
+                    </div>
+                    <div style="margin-top: 12px; display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="newUserIsAdmin" style="width: 16px; height: 16px; accent-color: var(--primary);">
+                        <label for="newUserIsAdmin" style="font-size: 13px; color: var(--text-light); cursor: pointer;">Grant admin privileges (can manage users and view audit logs)</label>
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <div class="card-title"><i class="fas fa-users"></i> Authorized Users</div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Role</th>
+                                    <th>Added By</th>
+                                    <th>Date Added</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="usersTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="usersEmpty" style="display:none;">
+                        <i class="fas fa-users-slash"></i>
+                        <p>No authorized users found.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: LOGIN AUDIT -->
+            <div id="tab-logins" class="admin-tab-content">
+                <div class="content-card">
+                    <div class="card-title"><i class="fas fa-clipboard-list"></i> Login Audit Log</div>
+                    <div class="card-text" style="margin-bottom: 16px;">This log tracks every successful login to the handbook. No IP addresses are collected.</div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="loginsTable">
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Login Time</th>
+                                    <th>Role</th>
+                                </tr>
+                            </thead>
+                            <tbody id="loginsTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="loginsEmpty" style="display:none;">
+                        <i class="fas fa-clipboard"></i>
+                        <p>No login records yet.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB: ADMIN ACTIVITY -->
+            <div id="tab-activity" class="admin-tab-content">
+                <div class="content-card">
+                    <div class="card-title"><i class="fas fa-history"></i> Admin Activity Log</div>
+                    <div class="card-text" style="margin-bottom: 16px;">This log tracks all administrative actions: who added or removed users and when.</div>
+                    <div class="admin-table-wrap">
+                        <table class="admin-table" id="activityTable">
+                            <thead>
+                                <tr>
+                                    <th>Action</th>
+                                    <th>Target Email</th>
+                                    <th>Performed By</th>
+                                    <th>Timestamp</th>
+                                </tr>
+                            </thead>
+                            <tbody id="activityTableBody">
+                                <!-- Populated by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="empty-state" id="activityEmpty" style="display:none;">
+                        <i class="fas fa-history"></i>
+                        <p>No admin activity yet.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
 </div>
+
 <script>
-// AUTHORIZED USERS LIST — Only these exact usernames can access the handbook
-// Format: each username must be in quotes, separated by commas
-const AUTHORIZED_USERS = [
-    'miskaspiritualyti',
-    'papervv',
-    'Marshelitto',
-    'OnlyQuixcvv',
-    'BroWhoIsTanqr',
-    'Imperator_Supremus'
-    // Add more usernames below this line:
+// ============================================
+// AUTHORIZED USERS & ADMIN CONFIGURATION
+// ============================================
+// Default admin emails - these can access the admin panel
+// Format: { email: "user@example.com", isAdmin: true/false }
+// All users in this list can log in. Only isAdmin=true can access admin panel.
+
+let AUTHORIZED_USERS = [
+    { email: "admin@cusa.gov", isAdmin: true },
+    { email: "cd@cusa.gov", isAdmin: true },
+    { email: "csec@cusa.gov", isAdmin: true },
+    { email: "moderator@cusa.gov", isAdmin: false }
 ];
 
-// ADMIN USERS — CD and CSEC can edit quota table
-const ADMIN_USERS = [
-    'miskaspiritualyti',
-    'papervv',
-    'Marshelitto',
-    'OnlyQuixcvv',
-    'BroWhoIsTanqr'
-    // Add admin usernames below this line:
-];
-
+// ============================================
+// DATA STORAGE (in-memory with localStorage backup)
+// ============================================
 let currentUser = '';
-let isAdmin = false;
+let currentUserIsAdmin = false;
 
+// Load from localStorage if available
+function loadData() {
+    try {
+        const savedUsers = localStorage.getItem('cusa_authorized_users');
+        if (savedUsers) {
+            AUTHORIZED_USERS = JSON.parse(savedUsers);
+        } else {
+            // Save defaults on first load
+            saveUsers();
+        }
+    } catch (e) {
+        console.log('localStorage not available, using defaults');
+    }
+}
+
+function saveUsers() {
+    try {
+        localStorage.setItem('cusa_authorized_users', JSON.stringify(AUTHORIZED_USERS));
+    } catch (e) {
+        console.log('Could not save to localStorage');
+    }
+}
+
+function getLoginLogs() {
+    try {
+        const logs = localStorage.getItem('cusa_login_logs');
+        return logs ? JSON.parse(logs) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveLoginLog(log) {
+    try {
+        const logs = getLoginLogs();
+        logs.unshift(log); // Add to beginning
+        // Keep only last 500 entries
+        if (logs.length > 500) logs.length = 500;
+        localStorage.setItem('cusa_login_logs', JSON.stringify(logs));
+    } catch (e) {
+        console.log('Could not save login log');
+    }
+}
+
+function getAdminActivity() {
+    try {
+        const logs = localStorage.getItem('cusa_admin_activity');
+        return logs ? JSON.parse(logs) : [];
+    } catch (e) {
+        return [];
+    }
+}
+
+function saveAdminActivity(log) {
+    try {
+        const logs = getAdminActivity();
+        logs.unshift(log); // Add to beginning
+        // Keep only last 500 entries
+        if (logs.length > 500) logs.length = 500;
+        localStorage.setItem('cusa_admin_activity', JSON.stringify(logs));
+    } catch (e) {
+        console.log('Could not save admin activity');
+    }
+}
+
+// ============================================
+// LOGIN SYSTEM
+// ============================================
 function handleLogin() {
-    const input = document.getElementById('usernameInput');
+    const input = document.getElementById('emailInput');
     const btn = document.getElementById('loginBtn');
-    const username = input.value.trim().toLowerCase();
+    const errorDiv = document.getElementById('loginError');
+    const email = input.value.trim().toLowerCase();
 
-    if (!username) {
-        input.style.borderColor = '#ef4444';
-        input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
-        setTimeout(() => { input.style.borderColor = ''; input.style.boxShadow = ''; }, 2000);
+    // Reset error state
+    errorDiv.classList.remove('show');
+    errorDiv.textContent = '';
+    input.style.borderColor = '';
+    input.style.boxShadow = '';
+
+    // Validate email format
+    if (!email) {
+        showLoginError('Please enter an email address.');
         return;
     }
 
-    // Check if username is authorized (case-insensitive match)
-    const isAuthorized = AUTHORIZED_USERS.some(u => u.toLowerCase() === username);
-    if (!isAuthorized) {
-        input.style.borderColor = '#ef4444';
-        input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showLoginError('Please enter a valid email address.');
+        return;
+    }
 
-        // Show error message
-        let errorMsg = document.getElementById('loginError');
-        if (!errorMsg) {
-            errorMsg = document.createElement('div');
-            errorMsg.id = 'loginError';
-            errorMsg.style.cssText = 'color: #fca5a5; font-size: 13px; margin-top: 12px; text-align: center; font-weight: 500;';
-            input.parentElement.parentElement.appendChild(errorMsg);
-        }
-        errorMsg.textContent = 'Access Denied: Username not authorized for this document.';
-
-        btn.textContent = 'Request Access';
-        btn.disabled = false;
-
-        setTimeout(() => { 
-            input.style.borderColor = ''; 
-            input.style.boxShadow = ''; 
-            if (errorMsg) errorMsg.textContent = '';
-        }, 3000);
+    // Check if authorized
+    const userEntry = AUTHORIZED_USERS.find(u => u.email.toLowerCase() === email);
+    if (!userEntry) {
+        showLoginError('Access Denied: This email is not authorized for this document.');
         return;
     }
 
     btn.textContent = 'Verifying...';
     btn.disabled = true;
 
-    currentUser = username;
-    isAdmin = ADMIN_USERS.some(u => u.toLowerCase() === username);
+    currentUser = email;
+    currentUserIsAdmin = userEntry.isAdmin;
+
+    // Log the login (NO IP tracking)
+    const loginLog = {
+        email: email,
+        timestamp: new Date().toISOString(),
+        role: userEntry.isAdmin ? 'Admin' : 'User'
+    };
+    saveLoginLog(loginLog);
 
     setTimeout(() => {
         document.getElementById('loginScreen').classList.add('hidden');
         document.getElementById('appContainer').classList.add('active');
-        document.getElementById('userDisplay').textContent = '@' + username;
-        document.getElementById('userAvatar').textContent = username.charAt(0).toUpperCase();
+        document.getElementById('userDisplay').textContent = email;
+        document.getElementById('userAvatar').textContent = email.charAt(0).toUpperCase();
 
-        // Show admin edit hint if admin
-        if (isAdmin) {
-            const hint = document.getElementById('quotaAdminHint');
-            if (hint) hint.style.display = 'block';
+        // Show admin nav if admin
+        if (currentUserIsAdmin) {
+            document.getElementById('adminNavLabel').style.display = 'block';
+            document.getElementById('adminNavItem').classList.add('visible');
+            document.getElementById('quotaAdminHint').classList.add('visible');
             makeQuotaEditable();
         }
-    }, 1200);
+
+        // Reset button
+        btn.textContent = 'Request Access';
+        btn.disabled = false;
+    }, 800);
+}
+
+function showLoginError(msg) {
+    const input = document.getElementById('emailInput');
+    const errorDiv = document.getElementById('loginError');
+    input.style.borderColor = '#ef4444';
+    input.style.boxShadow = '0 0 0 3px rgba(239,68,68,0.2)';
+    errorDiv.textContent = msg;
+    errorDiv.classList.add('show');
+
+    setTimeout(() => {
+        input.style.borderColor = '';
+        input.style.boxShadow = '';
+    }, 3000);
 }
 
 function handleLogout() {
     document.getElementById('appContainer').classList.remove('active');
     document.getElementById('loginScreen').classList.remove('hidden');
-    document.getElementById('usernameInput').value = '';
+    document.getElementById('emailInput').value = '';
     document.getElementById('loginBtn').textContent = 'Request Access';
     document.getElementById('loginBtn').disabled = false;
+    document.getElementById('loginError').classList.remove('show');
+
+    // Hide admin elements
+    document.getElementById('adminNavLabel').style.display = 'none';
+    document.getElementById('adminNavItem').classList.remove('visible');
+    document.getElementById('quotaAdminHint').classList.remove('visible');
+
+    // Reset quota editability
+    resetQuotaEditable();
+
     currentUser = '';
-    isAdmin = false;
+    currentUserIsAdmin = false;
 
-    // Hide admin hint
-    const hint = document.getElementById('quotaAdminHint');
-    if (hint) hint.style.display = 'none';
+    // Go back to welcome section
+    showSection('section-welcome', document.querySelector('.nav-item'));
 }
 
-function setActive(el) {
-    document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
-    el.classList.add('active');
-}
-
-function setActiveByHref(href) {
-    document.querySelectorAll('.nav-item').forEach(item => {
-        item.classList.remove('active');
-        if (item.getAttribute('href') === href) item.classList.add('active');
+// ============================================
+// NAVIGATION
+// ============================================
+function showSection(sectionId, navEl) {
+    // Hide all sections
+    document.querySelectorAll('.content-section').forEach(sec => {
+        sec.style.display = 'none';
     });
+
+    // Show target section
+    const target = document.getElementById(sectionId);
+    if (target) {
+        target.style.display = 'block';
+        // Add animation class if not already there
+        if (!target.classList.contains('animate-in')) {
+            target.classList.add('animate-in');
+        }
+    }
+
+    // Update nav active state
+    if (navEl) {
+        document.querySelectorAll('.nav-item').forEach(item => item.classList.remove('active'));
+        navEl.classList.add('active');
+    }
+
+    // If admin panel, refresh data
+    if (sectionId === 'section-admin' && currentUserIsAdmin) {
+        refreshAdminPanel();
+    }
+
+    // Scroll to top
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Smooth scroll navigation
-function initSmoothScroll() {
-    document.querySelectorAll('.nav-item, .toc-item').forEach(link => {
-        link.addEventListener('click', function(e) {
-            const href = this.getAttribute('href');
-            if (href && href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                    document.querySelectorAll('.nav-item').forEach(item => {
-                        item.classList.remove('active');
-                        if (item.getAttribute('href') === href) item.classList.add('active');
-                    });
-                }
-            }
-        });
-    });
-}
-
-// Make quota table editable for admins
+// ============================================
+// QUOTA EDITING (Admin only)
+// ============================================
 function makeQuotaEditable() {
     const table = document.getElementById('quotaTable');
     if (!table) return;
@@ -1012,57 +1293,242 @@ function makeQuotaEditable() {
     });
 }
 
-// Initialize
+function resetQuotaEditable() {
+    const table = document.getElementById('quotaTable');
+    if (!table) return;
 
-
-// SECTION HIGHLIGHTING ON SCROLL
-// Uses IntersectionObserver to detect which section is currently in view
-function initSectionHighlight() {
-    const sections = document.querySelectorAll('section[id]');
-    const navItems = document.querySelectorAll('.nav-item');
-
-    if (!sections.length || !navItems.length) return;
-
-    const observerOptions = {
-        root: null,
-        rootMargin: '-20% 0px -60% 0px', // Trigger when section is ~20% from top, keep active until 60% from bottom
-        threshold: 0
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const sectionId = entry.target.id;
-
-                // Remove active from all nav items
-                navItems.forEach(item => item.classList.remove('active'));
-
-                // Add active to the nav item matching this section
-                navItems.forEach(item => {
-                    const href = item.getAttribute('href');
-                    if (href === '#' + sectionId) {
-                        item.classList.add('active');
-                    }
-                });
-            }
-        });
-    }, observerOptions);
-
-    sections.forEach(section => observer.observe(section));
+    const editableCells = table.querySelectorAll('[data-field]');
+    editableCells.forEach(cell => {
+        cell.contentEditable = 'false';
+        cell.style.cursor = '';
+        cell.style.borderBottom = '';
+        cell.title = '';
+    });
 }
 
+// ============================================
+// ADMIN PANEL FUNCTIONS
+// ============================================
+function switchAdminTab(tabId, btn) {
+    // Hide all tab contents
+    document.querySelectorAll('.admin-tab-content').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    // Show target tab
+    document.getElementById(tabId).classList.add('active');
+
+    // Update button states
+    document.querySelectorAll('.admin-tab').forEach(tab => {
+        tab.classList.remove('active');
+    });
+    btn.classList.add('active');
+}
+
+function refreshAdminPanel() {
+    updateStats();
+    renderUsersTable();
+    renderLoginsTable();
+    renderActivityTable();
+}
+
+function updateStats() {
+    document.getElementById('statTotalUsers').textContent = AUTHORIZED_USERS.length;
+    document.getElementById('statTotalAdmins').textContent = AUTHORIZED_USERS.filter(u => u.isAdmin).length;
+    document.getElementById('statTotalLogins').textContent = getLoginLogs().length;
+}
+
+function renderUsersTable() {
+    const tbody = document.getElementById('usersTableBody');
+    const emptyState = document.getElementById('usersEmpty');
+    const table = document.getElementById('usersTable');
+
+    if (AUTHORIZED_USERS.length === 0) {
+        tbody.innerHTML = '';
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    table.style.display = 'table';
+    emptyState.style.display = 'none';
+
+    tbody.innerHTML = AUTHORIZED_USERS.map(user => {
+        const isCurrentUser = user.email.toLowerCase() === currentUser.toLowerCase();
+        return `
+            <tr>
+                <td class="email-cell">${escapeHtml(user.email)}</td>
+                <td><span class="badge ${user.isAdmin ? 'badge-admin' : 'badge-user'}">${user.isAdmin ? 'Admin' : 'User'}</span></td>
+                <td>${user.addedBy ? escapeHtml(user.addedBy) : '<span style="color:#94a3b8">System</span>'}</td>
+                <td>${user.dateAdded ? formatDate(user.dateAdded) : '<span style="color:#94a3b8">—</span>'}</td>
+                <td class="actions">
+                    ${!isCurrentUser ? `<button class="btn-danger" onclick="removeUser('${escapeHtml(user.email)}')"><i class="fas fa-trash"></i> Remove</button>` : '<span style="color:#94a3b8; font-size:12px;">You</span>'}
+                </td>
+            </tr>
+        `;
+    }).join('');
+}
+
+function renderLoginsTable() {
+    const tbody = document.getElementById('loginsTableBody');
+    const emptyState = document.getElementById('loginsEmpty');
+    const table = document.getElementById('loginsTable');
+    const logs = getLoginLogs();
+
+    if (logs.length === 0) {
+        tbody.innerHTML = '';
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    table.style.display = 'table';
+    emptyState.style.display = 'none';
+
+    tbody.innerHTML = logs.map(log => `
+        <tr>
+            <td class="email-cell">${escapeHtml(log.email)}</td>
+            <td>${formatDateTime(log.timestamp)}</td>
+            <td><span class="badge ${log.role === 'Admin' ? 'badge-admin' : 'badge-login'}">${escapeHtml(log.role)}</span></td>
+        </tr>
+    `).join('');
+}
+
+function renderActivityTable() {
+    const tbody = document.getElementById('activityTableBody');
+    const emptyState = document.getElementById('activityEmpty');
+    const table = document.getElementById('activityTable');
+    const logs = getAdminActivity();
+
+    if (logs.length === 0) {
+        tbody.innerHTML = '';
+        table.style.display = 'none';
+        emptyState.style.display = 'block';
+        return;
+    }
+
+    table.style.display = 'table';
+    emptyState.style.display = 'none';
+
+    tbody.innerHTML = logs.map(log => `
+        <tr>
+            <td><span class="badge ${log.action === 'ADDED' ? 'badge-added' : 'badge-removed'}">${log.action}</span></td>
+            <td class="email-cell">${escapeHtml(log.targetEmail)}</td>
+            <td class="email-cell">${escapeHtml(log.performedBy)}</td>
+            <td>${formatDateTime(log.timestamp)}</td>
+        </tr>
+    `).join('');
+}
+
+function addUser() {
+    const emailInput = document.getElementById('newUserEmail');
+    const isAdminCheck = document.getElementById('newUserIsAdmin');
+    const email = emailInput.value.trim().toLowerCase();
+
+    // Validate
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address.');
+        return;
+    }
+
+    // Check if already exists
+    if (AUTHORIZED_USERS.some(u => u.email.toLowerCase() === email)) {
+        alert('This email is already authorized.');
+        return;
+    }
+
+    // Add user
+    const newUser = {
+        email: email,
+        isAdmin: isAdminCheck.checked,
+        addedBy: currentUser,
+        dateAdded: new Date().toISOString()
+    };
+
+    AUTHORIZED_USERS.push(newUser);
+    saveUsers();
+
+    // Log admin activity
+    saveAdminActivity({
+        action: 'ADDED',
+        targetEmail: email,
+        performedBy: currentUser,
+        timestamp: new Date().toISOString()
+    });
+
+    // Clear form
+    emailInput.value = '';
+    isAdminCheck.checked = false;
+
+    // Refresh
+    refreshAdminPanel();
+
+    // Show success
+    alert(`Successfully added ${email} as ${newUser.isAdmin ? 'an admin' : 'a user'}.`);
+}
+
+function removeUser(email) {
+    if (!confirm(`Are you sure you want to remove ${email}? They will no longer be able to access this document.`)) {
+        return;
+    }
+
+    const index = AUTHORIZED_USERS.findIndex(u => u.email.toLowerCase() === email.toLowerCase());
+    if (index === -1) return;
+
+    AUTHORIZED_USERS.splice(index, 1);
+    saveUsers();
+
+    // Log admin activity
+    saveAdminActivity({
+        action: 'REMOVED',
+        targetEmail: email,
+        performedBy: currentUser,
+        timestamp: new Date().toISOString()
+    });
+
+    refreshAdminPanel();
+    alert(`Successfully removed ${email}.`);
+}
+
+// ============================================
+// UTILITIES
+// ============================================
+function escapeHtml(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function formatDate(isoString) {
+    if (!isoString) return '—';
+    const date = new Date(isoString);
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function formatDateTime(isoString) {
+    if (!isoString) return '—';
+    const date = new Date(isoString);
+    return date.toLocaleString('en-US', { 
+        year: 'numeric', month: 'short', day: 'numeric',
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+    });
+}
+
+// ============================================
+// INITIALIZATION
+// ============================================
 document.addEventListener('DOMContentLoaded', function() {
-    initSmoothScroll();
-    initSectionHighlight();
+    loadData();
 
-
-    document.getElementById('usernameInput').addEventListener('keypress', function(e) {
+    // Enter key on login
+    document.getElementById('emailInput').addEventListener('keypress', function(e) {
         if (e.key === 'Enter') handleLogin();
     });
 
-    document.getElementById('usernameInput').addEventListener('input', function() {
-        const errorMsg = document.getElementById('loginError');
-        if (errorMsg) errorMsg.textContent = '';
+    // Clear error on input
+    document.getElementById('emailInput').addEventListener('input', function() {
+        document.getElementById('loginError').classList.remove('show');
         this.style.borderColor = '';
         this.style.boxShadow = '';
     });
