@@ -1177,17 +1177,21 @@ let tempPin = '';
 let confirmPin = '';
 let enterPin = '';
 
-// Line 1182
-const savedUsers = localStorage.getItem('cusa_authorized_users');
-if (savedUsers) {           // ← BUG: This only runs if someone already visited
-    const parsed = JSON.parse(savedUsers);
-    // ... merge defaults ...
-    AUTHORIZED_USERS = parsed;
-} else {
-    // First time ever — use defaults
-    AUTHORIZED_USERS = [...DEFAULT_USERS];
-}
-        }
+function loadData() {
+    try {
+        const savedUsers = localStorage.getItem('cusa_authorized_users');
+        let parsed = savedUsers ? JSON.parse(savedUsers) : [];
+        
+        // ALWAYS merge defaults — prevents lockout on new devices
+        const savedEmails = parsed.map(u => u.email.toLowerCase());
+        DEFAULT_USERS.forEach(defUser => {
+            if (!savedEmails.includes(defUser.email.toLowerCase())) {
+                parsed.push(defUser);
+            }
+        });
+
+        AUTHORIZED_USERS = parsed;
+        saveUsers();
     } catch (e) {
         console.log('localStorage not available, using defaults');
         AUTHORIZED_USERS = [...DEFAULT_USERS];
